@@ -88,6 +88,8 @@ public class HandlerMapping {
 			c = new Update_TimeTableController();
 		} else if (command.equals("시간표 삭제")) {
 			c = new Delete_TimeTableController();
+		} else if (command.equals("addTeacher")) {
+			c = new Create_TeacherController();
 		}else {
 			System.out.println("매핑오타났다 반성하고 고쳐라~~");
 		}
