@@ -17,7 +17,7 @@
 <title>BbacksYoga</title>
 <body>
 <c:if test="${empty url}">
-	<c:import url="${pageContext.servletContext.contextPath}/error.jsp"></c:import>
+	<c:import url="/Member/Idcheck.jsp"></c:import>
 </c:if>
 <c:if test="${!empty url}">
 	<c:import url="${url}"></c:import>

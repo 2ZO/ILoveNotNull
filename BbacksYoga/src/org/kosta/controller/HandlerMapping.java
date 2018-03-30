@@ -6,6 +6,7 @@ import org.kosta.controller.first.Read_BoardController;
 import org.kosta.controller.first.Read_LoginController;
 import org.kosta.controller.first.Read_PostDetailController;
 import org.kosta.controller.first.Update_PostController;
+import org.kosta.controller.first.ViewController_Register;
 import org.kosta.controller.second.Create_ClassController;
 import org.kosta.controller.second.Create_ProgramController;
 import org.kosta.controller.second.Create_TeacherController;
@@ -36,57 +37,59 @@ public class HandlerMapping {
 
 	public Controller create(String command) {
 		Controller c = null;
-					//1Á¶~
-		if (command.equals("·Î±×ÀÎ")) {
+					//1ì¡°~
+		if (command.equals("LogIn")) {
 			c = new Read_LoginController();
-		} else if (command.equals("È¸¿øµî·Ï")) {
+		} else if (command.equals("RegisterView")) {
+			c = new ViewController_Register();
+		}else if (command.equals("íšŒì›ë“±ë¡")) {	
 			c = new Create_RegisterController();
-		} else if (command.equals("°Ô½Ã±Û¾²±â")) {
+		} else if (command.equals("ê²Œì‹œê¸€ì“°ê¸°")) {
 			c = new Create_PostController();
-		} else if (command.equals("°Ô½Ã±Û¼öÁ¤")) {
+		} else if (command.equals("ê²Œì‹œê¸€ìˆ˜ì •")) {
 			c = new Update_PostController();
-		} else if (command.equals("°Ô½Ã±Û »ó¼¼º¸±â")) {
+		} else if (command.equals("ê²Œì‹œê¸€ ìƒì„¸ë³´ê¸°")) {
 			c = new Read_PostDetailController();
-		} else if (command.equals("°Ô½ÃÆÇ ¸®½ºÆ®")) {
+		} else if (command.equals("ê²Œì‹œíŒ ë¦¬ìŠ¤íŠ¸")) {
 			c = new Read_BoardController();
-					//2Á¶~
-		} else if (command.equals("¼±»ı´Ô ¸®½ºÆ®")) {
+					//2ì¡°~
+		} else if (command.equals("ì„ ìƒë‹˜ ë¦¬ìŠ¤íŠ¸")) {
 			c = new Read_TeacherListController();
-		} else if (command.equals("¼±»ı´Ô »ó¼¼")) {
+		} else if (command.equals("ì„ ìƒë‹˜ ìƒì„¸")) {
 			c = new Read_TeacherDetailController();
-		} else if (command.equals("ÇÁ·Î±×·¥ ¸®½ºÆ®")) {
+		} else if (command.equals("í”„ë¡œê·¸ë¨ ë¦¬ìŠ¤íŠ¸")) {
 			c = new Read_ProgramListController();
-		} else if (command.equals("ÇÁ·Î±×·¥ »ó¼¼")) {
+		} else if (command.equals("í”„ë¡œê·¸ë¨ ìƒì„¸")) {
 			c = new Read_ProgramDetailController();
-		} else if (command.equals("³»Á¤º¸ ÆĞ½º¿öµå Ã¼Å©")) {
+		} else if (command.equals("ë‚´ì •ë³´ íŒ¨ìŠ¤ì›Œë“œ ì²´í¬")) {
 			c = new Read_MyInfoCheckController();
-		} else if (command.equals("³»Á¤º¸ ¼öÁ¤")) {
+		} else if (command.equals("ë‚´ì •ë³´ ìˆ˜ì •")) {
 			c = new Update_MyInfoController();
-		} else if (command.equals("¼±»ı´Ô µî·Ï")) {
+		} else if (command.equals("ì„ ìƒë‹˜ ë“±ë¡")) {
 			c = new Create_TeacherController();
-		} else if (command.equals("ÇÁ·Î±×·¥ µî·Ï")) {
+		} else if (command.equals("í”„ë¡œê·¸ë¨ ë“±ë¡")) {
 			c = new Create_ProgramController();
-		} else if (command.equals("°­ÁÂ »ı¼º")) {
+		} else if (command.equals("ê°•ì¢Œ ìƒì„±")) {
 			c = new Create_ClassController();
-		} 				//3Á¶!
-		else if (command.equals("°­ÁÂ ½ÅÃ»")) {
+		} 				//3ì¡°
+		else if (command.equals("ê°•ì¢Œì‹ ì²­")) {
 			c = new Create_RegisterClassController();
-		} else if (command.equals("ÀüÃ¼ ½Ã°£Ç¥ ¸®½ºÆ® ¹Ş±â")) {
+		} else if (command.equals("ì „ì²´ ì‹œê°„í‘œ ë¦¬ìŠ¤íŠ¸ ë°›ê¸°")) {
 			c = new Read_TimeTableController();
-		} else if (command.equals("¼ö°­ ÇöÈ²")) {
+		} else if (command.equals("ìˆ˜ê°•í˜„í™©")) {
 			c = new Read_RegisterController();
-		} else if (command.equals("¼ö°­ Ãë¼Ò")) {
+		} else if (command.equals("ìˆ˜ê°•ì·¨ì†Œ")) {
 			c = new Delete_RegisterClassController();
-		} else if (command.equals("½Ã°£Ç¥ µî·Ï")) {
+		} else if (command.equals("ì‹œê°„í‘œ ë“±ë¡")) {
 			c = new Create_TimeTableController();
-		} else if (command.equals("°ü¸®ÀÚ ½Ã°£Ç¥ ¸®½ºÆ® ¹Ş±â")) {
+		} else if (command.equals("ê´€ë¦¬ì ì‹œê°„í‘œ ë¦¬ìŠ¤íŠ¸ ë°›ê¸°")) {
 			c = new Read_AdminTimeTableController();
-		} else if (command.equals("½Ã°£Ç¥ ¼öÁ¤")) {
+		} else if (command.equals("ì‹œê°„í‘œ ìˆ˜ì •")) {
 			c = new Update_TimeTableController();
-		} else if (command.equals("½Ã°£Ç¥ »èÁ¦")) {
+		} else if (command.equals("ì‹œê°„í‘œ ì‚­ì œ")) {
 			c = new Delete_TimeTableController();
 		}else {
-			System.out.println("¸ÅÇÎ ¿ÀÅ¸³µ´Ù ¹İ¼ºÇÏ°í °íÃÄ¶ó~");
+			System.out.println("ë§¤í•‘ì˜¤íƒ€ë‚¬ë‹¤ ë°˜ì„±í•˜ê³  ê³ ì³ë¼~~");
 		}
 		return c;
 	}
