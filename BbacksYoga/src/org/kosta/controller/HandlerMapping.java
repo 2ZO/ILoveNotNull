@@ -36,57 +36,59 @@ public class HandlerMapping {
 
 	public Controller create(String command) {
 		Controller c = null;
-					//1Á¶~
-		if (command.equals("·Î±×ÀÎ")) {
+		// 1ï¿½ï¿½~
+		/*if (command.equals("ï¿½Î±ï¿½ï¿½ï¿½")) {
 			c = new Read_LoginController();
-		} else if (command.equals("È¸¿øµî·Ï")) {
+		} else if (command.equals("È¸ï¿½ï¿½ï¿½ï¿½ï¿½")) {
 			c = new Create_RegisterController();
-		} else if (command.equals("°Ô½Ã±Û¾²±â")) {
+		} else if (command.equals("ï¿½Ô½Ã±Û¾ï¿½ï¿½ï¿½")) {
 			c = new Create_PostController();
-		} else if (command.equals("°Ô½Ã±Û¼öÁ¤")) {
+		} else if (command.equals("ï¿½Ô½Ã±Û¼ï¿½ï¿½ï¿½")) {
 			c = new Update_PostController();
-		} else if (command.equals("°Ô½Ã±Û »ó¼¼º¸±â")) {
+		} else if (command.equals("ï¿½Ô½Ã±ï¿½ ï¿½ó¼¼ºï¿½ï¿½ï¿½")) {
 			c = new Read_PostDetailController();
-		} else if (command.equals("°Ô½ÃÆÇ ¸®½ºÆ®")) {
+		} else if (command.equals("ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®")) {
 			c = new Read_BoardController();
-					//2Á¶~
-		} else if (command.equals("¼±»ý´Ô ¸®½ºÆ®")) {
+			// 2ï¿½ï¿½~
+		} else if (command.equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®")) {
 			c = new Read_TeacherListController();
-		} else if (command.equals("¼±»ý´Ô »ó¼¼")) {
+		} else if (command.equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½")) {
 			c = new Read_TeacherDetailController();
-		} else if (command.equals("ÇÁ·Î±×·¥ ¸®½ºÆ®")) {
+		} else if (command.equals("ï¿½ï¿½ï¿½Î±×·ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®")) {
 			c = new Read_ProgramListController();
-		} else if (command.equals("ÇÁ·Î±×·¥ »ó¼¼")) {
+		} else if (command.equals("ï¿½ï¿½ï¿½Î±×·ï¿½ ï¿½ï¿½")) {
 			c = new Read_ProgramDetailController();
-		} else if (command.equals("³»Á¤º¸ ÆÐ½º¿öµå Ã¼Å©")) {
+		} else if (command.equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©")) {
 			c = new Read_MyInfoCheckController();
-		} else if (command.equals("³»Á¤º¸ ¼öÁ¤")) {
+		} else if (command.equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")) {
 			c = new Update_MyInfoController();
-		} else if (command.equals("¼±»ý´Ô µî·Ï")) {
+		} else if (command.equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½")) {
 			c = new Create_TeacherController();
-		} else if (command.equals("ÇÁ·Î±×·¥ µî·Ï")) {
+		} else if (command.equals("ï¿½ï¿½ï¿½Î±×·ï¿½ ï¿½ï¿½ï¿½")) {
 			c = new Create_ProgramController();
-		} else if (command.equals("°­ÁÂ »ý¼º")) {
+		} else if (command.equals("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")) {
 			c = new Create_ClassController();
-		} 				//3Á¶!
-		else if (command.equals("°­ÁÂ ½ÅÃ»")) {
+		} // 3ï¿½ï¿½!
+		else if (command.equals("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã»")) {
 			c = new Create_RegisterClassController();
-		} else if (command.equals("ÀüÃ¼ ½Ã°£Ç¥ ¸®½ºÆ® ¹Þ±â")) {
+		} else if (command.equals("ï¿½ï¿½Ã¼ ï¿½Ã°ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Þ±ï¿½")) {
 			c = new Read_TimeTableController();
-		} else if (command.equals("¼ö°­ ÇöÈ²")) {
+		} else if (command.equals("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È²")) {
 			c = new Read_RegisterController();
-		} else if (command.equals("¼ö°­ Ãë¼Ò")) {
+		} else if (command.equals("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½")) {
 			c = new Delete_RegisterClassController();
-		} else if (command.equals("½Ã°£Ç¥ µî·Ï")) {
+		} else if (command.equals("ï¿½Ã°ï¿½Ç¥ ï¿½ï¿½ï¿½")) {
 			c = new Create_TimeTableController();
-		} else if (command.equals("°ü¸®ÀÚ ½Ã°£Ç¥ ¸®½ºÆ® ¹Þ±â")) {
+		} else if (command.equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Þ±ï¿½")) {
 			c = new Read_AdminTimeTableController();
-		} else if (command.equals("½Ã°£Ç¥ ¼öÁ¤")) {
+		} else if (command.equals("ï¿½Ã°ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½")) {
 			c = new Update_TimeTableController();
-		} else if (command.equals("½Ã°£Ç¥ »èÁ¦")) {
+		} else if (command.equals("ï¿½Ã°ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½")) {
 			c = new Delete_TimeTableController();
-		}else {
-			System.out.println("¸ÅÇÎ ¿ÀÅ¸³µ´Ù ¹Ý¼ºÇÏ°í °íÃÄ¶ó~");
+		} else*/ if (command.equals("addTeacher")) {
+			c = new Create_TeacherController();
+		} else {
+			System.out.println("ì—†ëŠ” ì»¨íŠ¸ë¡¤ëŸ¬ì—¬ìœ ");
 		}
 		return c;
 	}
