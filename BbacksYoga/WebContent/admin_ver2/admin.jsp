@@ -8,6 +8,6 @@
 </head>
 <body>
 	<a href="Create_AddTeacher.jsp">선생님 등록</a><br>
-	
+	<a href="Create_Program.jsp">프로그램 등록</a><br>
 </body>
 </html>

@@ -4,13 +4,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.kosta.controller.Controller;
+import org.kosta.model.DAO.ProgramDAO;
 
 public class Create_ProgramController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		String programName = request.getParameter("programName");
+		String programDetail =request.getParameter("programDetail");
+		ProgramDAO.getInstance().addProgram(programName, programDetail);
+		return "redirect:admin_ver2/admin.jsp";
 	}
-
 }
