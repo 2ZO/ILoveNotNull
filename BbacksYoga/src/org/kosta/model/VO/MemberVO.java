@@ -10,6 +10,8 @@ public class MemberVO {
 	private String password_question;
 	private String password_answer;
 	private String regDate;
+	private String member_status;
+	private String class_package;
 
 	public String getId() {
 		return id;
@@ -83,15 +85,25 @@ public class MemberVO {
 		this.regDate = regDate;
 	}
 
-	@Override
-	public String toString() {
-		return "MemberVO [id=" + id + ", password=" + password + ", name=" + name + ", phone_number=" + phone_number
-				+ ", address=" + address + ", email=" + email + ", password_question=" + password_question
-				+ ", password_answer=" + password_answer + ", regDate=" + regDate + "]";
+	public String getMember_status() {
+		return member_status;
+	}
+
+	public void setMember_status(String member_status) {
+		this.member_status = member_status;
+	}
+
+	public String getClass_package() {
+		return class_package;
+	}
+
+	public void setClass_package(String class_package) {
+		this.class_package = class_package;
 	}
 
 	public MemberVO(String id, String password, String name, String phone_number, String address, String email,
-			String password_question, String password_answer, String regDate) {
+			String password_question, String password_answer, String regDate, String member_status,
+			String class_package) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -102,10 +114,20 @@ public class MemberVO {
 		this.password_question = password_question;
 		this.password_answer = password_answer;
 		this.regDate = regDate;
+		this.member_status = member_status;
+		this.class_package = class_package;
 	}
 
 	public MemberVO() {
 		super();
+	}
+
+	@Override
+	public String toString() {
+		return "MemberVO [id=" + id + ", password=" + password + ", name=" + name + ", phone_number=" + phone_number
+				+ ", address=" + address + ", email=" + email + ", password_question=" + password_question
+				+ ", password_answer=" + password_answer + ", regDate=" + regDate + ", member_status=" + member_status
+				+ ", class_package=" + class_package + "]";
 	}
 
 }
