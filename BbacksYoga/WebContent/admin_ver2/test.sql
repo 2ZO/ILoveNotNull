@@ -12,6 +12,7 @@ member_status varchar2(10) not null,
 class_package varchar2(10) not null --3회 or 5회
 )
 
+
 -- 요가 강사 테이블 생성
 create table yoga_teacher(
 teacherId NUMBER primary key,
@@ -20,6 +21,8 @@ teacherNick varchar2(50) not null,
 teacherProfile varchar2(600),
 imgUrl varchar2(100)
 )
+
+
 -- teacherId 시퀀스 생성
 create sequence tchNo_seq;
 
