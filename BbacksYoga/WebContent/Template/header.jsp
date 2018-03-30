@@ -1,15 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-    <meta charset="utf-8">
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
-  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/nav.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <!-- header -->
 <header>
-	<h1 id="headerLogo"><a href="index.jsp"><img src="../image/logo01.png" alt="logo"></a></h1>
+	<h1 id="headerLogo"><a href="index.jsp"><img src="${pageContext.request.contextPath}/image/logo01.png" alt="logo"></a></h1>
 	<div id="rightWrap">
 	<ul id="headerRight">
 		<li><a href="login.jsp">Login</a></li>
