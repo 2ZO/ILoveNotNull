@@ -10,6 +10,7 @@ import org.kosta.controller.first.ViewController_Register;
 import org.kosta.controller.second.Create_ClassController;
 import org.kosta.controller.second.Create_ProgramController;
 import org.kosta.controller.second.Create_TeacherController;
+import org.kosta.controller.second.Read_AddClassViewController;
 import org.kosta.controller.second.Read_MyInfoCheckController;
 import org.kosta.controller.second.Read_ProgramDetailController;
 import org.kosta.controller.second.Read_ProgramListController;
@@ -88,8 +89,10 @@ public class HandlerMapping {
 			c = new Update_TimeTableController();
 		} else if (command.equals("시간표 삭제")) {
 			c = new Delete_TimeTableController();
-		} else if (command.equals("addTeacher")) {
+		} else if (command.equals("addTeacher")) { //강사등록
 			c = new Create_TeacherController();
+		}else if(command.equals("addClassView")) { //강좌등록시 강사, 프로그램 데이터를 불러옴
+			c = new Read_AddClassViewController();
 		}else {
 			System.out.println("매핑오타났다 반성하고 고쳐라~~");
 		}

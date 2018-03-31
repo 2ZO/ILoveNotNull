@@ -66,4 +66,10 @@ public class TeacherVO {
 		super();
 	}
 
+	public TeacherVO(String teacherId, String teacherName, String teacherNick) {
+		this.teacherId = teacherId;
+		this.teacherName = teacherName;
+		this.teacherNick = teacherNick;
+	}
+
 }

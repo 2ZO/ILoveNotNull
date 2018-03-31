@@ -4,17 +4,20 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
+import org.kosta.model.VO.ProgramVO;
+import org.kosta.model.VO.TeacherVO;
 import org.kosta.model.etc.DataSourceManager;
 
 
 public class TeacherDAO {
 		private static TeacherDAO instance=new TeacherDAO();
-		private DataSource datasource;
+		private DataSource dataSource;
 		private TeacherDAO() {
-			datasource=DataSourceManager.getInstance().getDataSource();
+			dataSource=DataSourceManager.getInstance().getDataSource();
 		}
 		public static TeacherDAO getInstance() {
 			return instance;
@@ -34,7 +37,7 @@ public class TeacherDAO {
 			Connection con=null;
 			PreparedStatement pstmt=null;
 			try {
-				con=datasource.getConnection();
+				con=dataSource.getConnection();
 				String sql="insert into yoga_teacher(teacherId,teacherName,teacherNick,teacherProfile,imgUrl) values(tchNo_seq.nextval,?,?,?,?)";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setString(1, name);
@@ -46,4 +49,22 @@ public class TeacherDAO {
 				closeAll(pstmt, con);
 			}		
 		}
+		public ArrayList<TeacherVO> getTeacherList() throws SQLException {
+			Connection con=null;		
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			ArrayList<TeacherVO> list=new ArrayList<TeacherVO>();
+			try {
+				con=dataSource.getConnection();
+				String sql="select teacherId, teacherName, teacherNick from yoga_teacher";
+				pstmt=con.prepareStatement(sql);
+				rs=pstmt.executeQuery();
+				while(rs.next())
+					list.add(new TeacherVO(rs.getString(1),rs.getString(2),rs.getString(3)));
+			}finally {
+				closeAll(rs, pstmt, con);
+			}
+			return list;
+		}
+
 }

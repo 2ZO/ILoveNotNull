@@ -8,6 +8,6 @@
 </head>
 <body>
 	<a href="Create_AddTeacher.jsp">선생님 등록</a><br>
-	
+	<a href="${pageContext.request.contextPath}/DispatcherServlet?command=addClassView">강좌 등록</a><br>
 </body>
 </html>
