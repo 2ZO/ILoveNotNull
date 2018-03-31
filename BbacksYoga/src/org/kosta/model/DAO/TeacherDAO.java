@@ -56,15 +56,33 @@ public class TeacherDAO {
 			ArrayList<TeacherVO> list=new ArrayList<TeacherVO>();
 			try {
 				con=dataSource.getConnection();
-				String sql="select teacherId, teacherName, teacherNick from yoga_teacher";
+				String sql="select teacherId, teacherName, teacherNick, teacherProfile ,imgUrl  from yoga_teacher";
 				pstmt=con.prepareStatement(sql);
 				rs=pstmt.executeQuery();
 				while(rs.next())
-					list.add(new TeacherVO(rs.getString(1),rs.getString(2),rs.getString(3)));
+					list.add(new TeacherVO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)));
 			}finally {
 				closeAll(rs, pstmt, con);
 			}
 			return list;
+		}
+		public TeacherVO getTeacherInfobyId(String teacherId) throws SQLException {
+			Connection con=null;		
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			TeacherVO tvo=null;
+			try {
+				con=dataSource.getConnection();
+				String sql="select teacherId, teacherName, teacherNick, teacherProfile ,imgUrl  from yoga_teacher where teacherId=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, teacherId);
+				rs=pstmt.executeQuery();
+				while(rs.next())
+					tvo=new TeacherVO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5));
+			}finally {
+				closeAll(rs, pstmt, con);
+			}
+			return tvo;
 		}
 
 }

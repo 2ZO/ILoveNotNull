@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!Doctype html>
 <html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +10,8 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/CSS/nav.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/footer.css">  
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/TeacherList.css"> <!-- 선생님 리스트 css추가 -->
+<script src="${pageContext.request.contextPath}/js/TeacherProfile.jsp"></script> <!-- 선생님 프로필 자바스크립트 -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script

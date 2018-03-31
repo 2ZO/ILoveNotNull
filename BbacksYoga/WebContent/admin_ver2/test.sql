@@ -22,9 +22,13 @@ teacherProfile varchar2(600),
 imgUrl varchar2(100)
 )
 
-
 -- teacherId 시퀀스 생성
 create sequence tchNo_seq;
+
+
+-- 선생님 검색 
+select teacherId, teacherName, teacherNick from yoga_teacher
+
 
 -- 요가 프로그램 테이블 생성
 create table yoga_program(

@@ -102,7 +102,7 @@
 					<li class="dropdown"><a class="dropdown-toggle"	data-toggle="dropdown" href="#">Bbak's</a>
 						<ul class="dropdown-menu">
 							<li><a href="#">Bbak's 요가소개</a></li>
-							<li><a href="#">강사진소개</a></li>
+							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=teacherList">강사진소개</a></li>
 							<li><a href="#">시설소개</a></li>
 						</ul></li>
 				</ul>

@@ -4,13 +4,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.kosta.controller.Controller;
+import org.kosta.model.DAO.TeacherDAO;
+import org.kosta.model.VO.TeacherVO;
 
 public class Read_TeacherDetailController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		String teacherId=request.getParameter("teacherId");
+		TeacherVO tvo=TeacherDAO.getInstance().getTeacherInfobyId(teacherId);
+		request.setAttribute("teacherInfo", tvo);
+		request.setAttribute("url", "/Class/TeacherDetail.jsp");
+		return "Template/layout.jsp";
 	}
 
 }
