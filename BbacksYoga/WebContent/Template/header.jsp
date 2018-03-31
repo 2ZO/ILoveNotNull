@@ -60,7 +60,7 @@
 </script>
 <!-- header -->
 <header>
-<div class="mask>
+<div class="mask"></div>
 	<form class="loginForm window"
 		action="${pageContext.request.contextPath}/DispatcherServlet" method="post">
 		<input type="hidden" value="LogIn" name="command">
@@ -132,5 +132,4 @@
 			</div>
 		</div>
 	</nav>
-</div>
 </header>
