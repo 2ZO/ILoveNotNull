@@ -36,10 +36,9 @@
 <div class="row main">
   <img src=${pageContext.request.contextPath}/Image/teacher/${requestScope.teacherInfo.img_url} class="profile-img">
   <div class="profile-text">
-    <h1 class="profile-name">
-    	<span>${requestScope.teacherInfo.teacherName}</span><br>
-    	<span>${requestScope.teacherInfo.teacherNick}</span><br>
-    </h1>
-    <span class="profile-title">${requestScope.teacherInfo.teacherProfile}</span>
+	
+    	<span id="name">${requestScope.teacherInfo.teacherName}</span>&nbsp;
+    	<span id="nick">${requestScope.teacherInfo.teacherNick}</span><br>
+        <span class="profile-title">${requestScope.teacherInfo.teacherProfile}</span>
   </div>
 </div>
