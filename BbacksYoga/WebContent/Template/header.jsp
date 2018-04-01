@@ -59,8 +59,9 @@
 	});
 </script>
 <!-- header -->
-<header>
+
 <div class="mask"></div>
+	<!-- modal형 로그인 페이지 -->
 	<form class="loginForm window"
 		action="${pageContext.request.contextPath}/DispatcherServlet" method="post">
 		<input type="hidden" value="LogIn" name="command">
@@ -74,28 +75,40 @@
 			<input type="submit" value="LogIn" class="btn btn-dark" />
 		</div>
 	</form>
+	<!-- header 쪽 로고 -->	
+	
+	<div class="row">
+	    <div class="col-sm-4"></div>
+	    <div class="col-sm-4">
+		    <h1 id="headerLogo">
+				<a href="index.jsp"><img src="${pageContext.request.contextPath}/Image/logo01.png" alt="logo"></a>
+			</h1>
+	    </div>
+	    <div class="col-sm-4" style="background-color:lavender;">
+	    	<div id="rightWrap" class="setDiv">
+				<ul id="headerRight">
+					<c:choose>
+						<c:when test="${empty memberVO}">
+							<li><span class="showMask">Login</span>
+							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=RegisterView">Join</a></li>
+							<!-- "	-->
+						</c:when>
+						<c:otherwise>
+							<li><span>${memberVO.name}님 환영합니다.</span>
+							<li><span><a href="????">My Page</a></span>
+							<li><span><a href="${pageContext.request.contextPath}/Member/Logout.jsp">LogOut</a></span>
+						</c:otherwise>
+					</c:choose>
+				</ul>
+			</div>	    
+	    </div>
+ 	</div>
+	
+	
 
-	<h1 id="headerLogo">
-		<a href="index.jsp"><img src="${pageContext.request.contextPath}/Image/logo01.png" alt="logo"></a>
-	</h1>
-
-	<div id="rightWrap" class="setDiv">
-		<ul id="headerRight">
-			<c:choose>
-				<c:when test="${empty memberVO}">
-					<li><span class="showMask">Login</span>
-					<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=RegisterView">Join</a></li>
-					<!-- "	-->
-				</c:when>
-				<c:otherwise>
-					<li><span>${memberVO.name}님 환영합니다.</span>
-					<li><span><a href="????">My Page</a></span>
-					<li><span><a href="${pageContext.request.contextPath}/Member/Logout.jsp">LogOut</a></span>
-				</c:otherwise>
-			</c:choose>
-		</ul>
-	</div>
-
+	
+	
+	<!-- 메뉴  -->
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navWrap">
@@ -120,6 +133,7 @@
 						<ul class="dropdown-menu">
 							<li><a href="#">FAQ</a></li>
 							<li><a href="#">Q&amp;A</a></li>
+							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=writePostView">(임시) 글쓰기</a></li>
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav">
@@ -132,4 +146,3 @@
 			</div>
 		</div>
 	</nav>
-</header>
