@@ -33,5 +33,19 @@ public class PostDAO {
 		if(con!=null)
 			con.close();
 	}
-	
+	public void createPost(String title, String content, String id) throws SQLException {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=dataSource.getConnection();
+			String sql="insert into post values(post_seq.nextval,?,?,?,sysdate)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setString(3, id);
+			pstmt.executeUpdate();
+		}finally {
+			closeAll(pstmt, con);
+		}		
+	}	
 }

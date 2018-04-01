@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/postEditor.js"></script>
 <div class="container">
 	<div class="row text">
 		<div class="col-sm-12">
@@ -85,29 +86,4 @@
 			</form>
 		</div>
 	</div>
-
-<script type="text/javascript">
-	// iframe에 글을 쓸 수 있음
-	dhtmlframe.document.designMode = "On";
-	
-	// iframe에 editor 기능들 적용
-	function htmledit(execute,values)
-	{
-	        if(values==null)
-	        {
-	                dhtmlframe.document.execCommand(execute);
-	        }
-	        else
-	        {
-	                dhtmlframe.document.execCommand(execute,"",values);
-	        }
-	}
-	
-	//iframe 내용을 textarea로 전송
-    function datasubmit()
-    {
-            form.content.value = dhtmlframe.document.body.innerHTML;
-    }
-</script>
-
-
+</div>

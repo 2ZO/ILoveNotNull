@@ -16,9 +16,14 @@ public class Create_PostController implements Controller {
 		String title=request.getParameter("title");
 		String content=request.getParameter("content");
 		MemberVO mvo=(MemberVO)session.getAttribute("memberVO");
-		String id=mvo.getId();
-		if(mvo.getId()==null)
-			id="visitor";
+		//비회원이라고 생각하고
+		String id="visitor";
+		//비회원이 아니면 session정보가 입력됨
+		if(mvo!=null)
+			id=mvo.getId();		
+		//게시판에 글쓰기
+		PostDAO.getInstance().createPost(title,content,id);
+		System.out.println("글쓰기 컨트롤러 끝");
 		return "redirect:index.jsp";
 	}
 
