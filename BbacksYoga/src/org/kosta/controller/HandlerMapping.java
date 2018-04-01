@@ -45,9 +45,12 @@ public class HandlerMapping {
 			c = new ViewController_Register();
 		}else if (command.equals("회원등록")) {	
 			c = new Create_RegisterController();
-		} else if (command.equals("게시글쓰기")) {
+		} else if (command.equals("postWrite")) {
 			c = new Create_PostController();
-		} else if (command.equals("게시글수정")) {
+		} else if(command.equals("writePostView")) { //임시 글쓰기 확인하려고
+			c = new Create_PostControllerView();
+		}		
+		else if (command.equals("게시글수정")) {
 			c = new Update_PostController();
 		} else if (command.equals("게시글 상세보기")) {
 			c = new Read_PostDetailController();
