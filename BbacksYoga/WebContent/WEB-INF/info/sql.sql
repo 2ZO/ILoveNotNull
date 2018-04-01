@@ -40,15 +40,15 @@ teacherId NUMBER not null,
 capacity NUMBER not null,
 classTime NUMBER not null,
 classDay varchar2(10) not null,
-constraint fk_teacherId foreign key(teacherId) references YOGA_TEACHER(treacherId),
+constraint fk_teacherId foreign key(teacherId) references YOGA_TEACHER(teacherId),
 constraint fk_programNo foreign key(programNo) references yoga_program(programNo),
-constraint uk_class unique(programNo, teacherId, classTime, classDay)                // 추가 
+constraint uk_class unique(programNo, teacherId, classTime, classDay)            // 추가     
 )
 -- classNo 시퀀스 생성
 create sequence class_seq;
 
 create table registerStatus(
-rsNo NUMBER PRIMARY KEY,                       //추가 
+rsNo NUMBER PRIMARY KEY,                      //추가  
 classNo NUMBER not null,
 id VARCHAR2(100) not null,
 regDate date not null,
@@ -67,9 +67,9 @@ id varchar2(50) not null,
 regDate date not null,
 constraint fk_post2 foreign key(id) references yoga_member(id)
 )
-drop table registerStatus
-drop table yoga_member
-drop table POST
+drop table registerStatus;
+drop table yoga_member;
+drop table POST;
 drop table yoga_class;
 drop table yoga_teacher;
 drop table yoga_program;
