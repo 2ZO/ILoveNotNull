@@ -8,11 +8,33 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/header.js"></script>
 <!-- 스크립트 별도 폴더에 넣고 import -->
+<script type="text/javascript">
+/*로그인 ajax로 처리하기~*/
+$(document).ready(function(){
+$("#logInBtn").click(function(){
+		$.ajax({
+		type:"post",
+		dataType:"json",   
+		url:"${pageContext.request.contextPath}/DispatcherServlet",
+		data:$("#logInForm").serialize(),
+		success:function(data){
+			//alert(data.length);
+			if(data.flag=="false"){
+				$("#loginFail").html("LogIn Fail");
+			}else{
+				//flag가 true면 메인페이지로 바로 이등~
+				location.href="${pageContext.request.contextPath}/index.jsp"
+			}
+			//$("#membody").html(info);
+		}//success
+	});//ajax
+	});
+});
+</script>
 <!-- header -->
-
 <div class="mask"></div>
 	<!-- modal형 로그인 페이지 -->
-	<form class="loginForm window"
+	<form class="loginForm window" id="logInForm"
 		action="${pageContext.request.contextPath}/DispatcherServlet" method="post">
 		<input type="hidden" value="LogIn" name="command">
 		<div>
@@ -22,7 +44,8 @@
 			<label for="password">PASSWORD:</label> <input type="password" required="required" name="userPassword" />
 		</div>
 		<div id="loginBtn">
-			<input type="submit" value="LogIn" class="btn btn-dark" />
+			<input type="button" value="LogIn" id="logInBtn"class="btn btn-dark" />
+			<label id="loginFail"></label>
 		</div>
 	</form>
 	<!-- header 쪽 로고 -->	
