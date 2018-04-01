@@ -109,4 +109,20 @@
 	
 }
 
+/*목록으로 돌아가기 버튼*/
+.back_button{
+	margin-top: 20px;
+}
+#back_page{
+	background-color:#6a841c;
+	color: white;
+	padding: 15px 25px;
+	text-align: center;
+    text-decoration: none;
+	border: none;
+	border-radius: 5%;
+	margin: auto;
+	display: inline-block;
+    font-size: 16px;
+}
 

@@ -76,3 +76,20 @@ iframe{
     display: block;
 }
 
+/*포스트 용 버튼*/
+.post_button{
+	text-align: center;
+}
+
+#post_button_bt {
+	background-color:#6a841c;
+	color: white;
+	padding: 15px 25px;
+	text-align: center;
+    text-decoration: none;
+	border: none;
+	border-radius: 5%;
+	margin: auto;
+	display: inline-block;
+    font-size: 16px;
+}
