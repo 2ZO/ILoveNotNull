@@ -1,7 +1,9 @@
-package org.kosta.controller;
+package org.kosta.controller.first;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.kosta.controller.Controller;
 
 public class Create_PostControllerView implements Controller {
 
