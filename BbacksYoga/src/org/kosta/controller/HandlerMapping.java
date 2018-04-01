@@ -1,6 +1,7 @@
 package org.kosta.controller;
 
 import org.kosta.controller.first.Create_PostController;
+import org.kosta.controller.first.Create_PostControllerView;
 import org.kosta.controller.first.Create_RegisterController;
 import org.kosta.controller.first.Read_BoardController;
 import org.kosta.controller.first.Read_LoginController;

@@ -76,13 +76,14 @@
 				
 				<!-- 쓰기영역 -->
 				<br>
-				<IFRAME NAME=dhtmlframe></IFRAME><br>
-				
+				<IFRAME NAME=dhtmlframe></IFRAME><br>				
 				<!-- 쓰기영역 html -->
 				<textarea rows="10" cols="40" class="postContents" name="content">	</textarea>
-				<!-- 글 등록 -->
-				<input type="submit" value="등록" Onclick="datasubmit()">
-
+				<!-- 글 등록 & 취소-->
+				<div class="post_button">
+					<input id="post_button_bt" type="submit" value="등록" Onclick="datasubmit()">
+					<input id="post_button_bt" type="button" value="취소" Onclick="history.back()">
+				</div>
 			</form>
 		</div>
 	</div>
