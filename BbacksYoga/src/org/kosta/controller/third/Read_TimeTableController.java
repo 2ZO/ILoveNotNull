@@ -18,7 +18,7 @@ public class Read_TimeTableController implements Controller {
 		HttpSession session=request.getSession(false);
 		MemberVO vo=(MemberVO) session.getAttribute("memberVO");//session값 받기
 		ArrayList<RSVO> list=null;
-		if(vo==null) {
+		if(session==null||vo==null) {
 			list=RSDAO.getInstance().readTimetableInfo();
 		}else {
 			String user_package = RSDAO.getInstance().readUserPackage(vo.getId());
