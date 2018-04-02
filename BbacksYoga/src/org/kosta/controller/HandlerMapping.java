@@ -7,7 +7,6 @@ import org.kosta.controller.first.Read_BoardController;
 import org.kosta.controller.first.Read_LoginController;
 import org.kosta.controller.first.Read_PostDetailController;
 import org.kosta.controller.first.Update_PostController;
-import org.kosta.controller.first.ViewController_Register;
 import org.kosta.controller.second.Create_ClassController;
 import org.kosta.controller.second.Create_ProgramController;
 import org.kosta.controller.second.Create_TeacherController;
@@ -42,8 +41,6 @@ public class HandlerMapping {
 					//1조~
 		if (command.equals("LogIn")) {
 			c = new Read_LoginController();
-		} else if (command.equals("RegisterView")) {
-			c = new ViewController_Register();
 		}else if (command.equals("회원등록")) {	
 			c = new Create_RegisterController();
 		} else if (command.equals("postWrite")) {

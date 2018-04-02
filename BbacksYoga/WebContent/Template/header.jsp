@@ -8,29 +8,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/header.js"></script>
 <!-- 스크립트 별도 폴더에 넣고 import -->
-<script type="text/javascript">
-/*로그인 ajax로 처리하기~*/
-$(document).ready(function(){
-$("#logInBtn").click(function(){
-		$.ajax({
-		type:"post",
-		dataType:"json",   
-		url:"${pageContext.request.contextPath}/DispatcherServlet",
-		data:$("#logInForm").serialize(),
-		success:function(data){
-			//alert(data.length);
-			if(data.flag=="false"){
-				$("#loginFail").html("LogIn Fail");
-			}else{
-				//flag가 true면 메인페이지로 바로 이등~
-				location.href="${pageContext.request.contextPath}/index.jsp"
-			}
-			//$("#membody").html(info);
-		}//success
-	});//ajax
-	});
-});
-</script>
+
 <!-- header -->
 	<!-- header 쪽 로고 -->	
 	
@@ -47,7 +25,7 @@ $("#logInBtn").click(function(){
 					<c:choose>
 						<c:when test="${empty memberVO}">
 							<li><a href="${pageContext.request.contextPath}/Member/Login.Jsp">Login</a></li>
-							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=RegisterView">Join</a></li>
+							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=page&url=/Member/Register.jsp">Join</a></li>
 							<!-- "	-->
 						</c:when>
 						<c:otherwise>
