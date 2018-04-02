@@ -5,7 +5,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
    $(".regLink").click(function(){
-	   if(${sessionScope.vo.id==null}){
+	   if(${sessionScope.memberVO.id==null}){
 		   alert("로그인을 하세요.");
 		   return false;
 	   }
