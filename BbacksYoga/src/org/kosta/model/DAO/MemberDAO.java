@@ -52,7 +52,7 @@ public class MemberDAO {
 		}
 		return member;	
 	}
-	public MemberVO updateMyinfoById(String id, String password) throws SQLException {
+	public MemberVO checkMyinfoById(String id, String password) throws SQLException {
 		MemberVO member=null;
 		Connection con=null;
 		PreparedStatement pstmt=null;
