@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
    $(".regLink").click(function(){
+	   if(${sessionScope.memberVO.id==null}){
+		   alert("로그인을 하세요.");
+		   return false;
+	   }
 	      if(${requestScope.userPackage>0}){
 	          return confirm($(this).text()+"를 수강하시겠습니까?");
 	       }else{
@@ -15,24 +20,44 @@ $(document).ready(function(){
 </script>
 
 <style type="text/css">
-
 table {
 	text-align: center;
     border-collapse: collapse;
     width: 100%;
+    background-image: url("TimeTable/레드벨벳.jpg");
+	background-size: cover;
+	font-weight: bold;
+	opacity: 0.8;
+}
+
+body {
+	margin: 0;
+	font-family: sans-serif;
+	font-weight: 100;
 }
 
 th, td {
-	border-style: solid;
+ 	border-style: solid; 
 	border-width: 1px;
     padding: 8px;
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
+a{
+	color: black;
+	text-decoration: none;
+	
+}
+a:hover{
+	color: pink;
+	text-decoration: none;
+}
+.fullClass{
+	color:red;
+}
 
 </style>
 <div class="container">
-<a href="DispatcherServlet?command=Read_Register">수강내역확인</a>&emsp;신청 가능 횟수: <span id="userPackage">${requestScope.userPackage}</span>
+<!-- <a href="DispatcherServlet?command=Read_Register">수강내역확인</a>&emsp; -->신청 가능 횟수: <span id="userPackage">${requestScope.userPackage}</span>
 	<table>
 		<thead>
 			<tr>

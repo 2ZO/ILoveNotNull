@@ -115,4 +115,7 @@ code {
 	padding-top: 170px;
 }
  */
-
+ /*페이징 가운데*/
+.pagingInfo{
+	text-align: center;
+}
