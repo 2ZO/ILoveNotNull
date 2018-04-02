@@ -23,8 +23,10 @@ public class Read_MyInfoCheckController implements Controller {
 			mvo=MemberDAO.getInstance().checkMyinfoById(id, password);
 			if(mvo==null)
 				return "password_fail.jsp";
-			else
+			else {
+				request.setAttribute("MemberVO", mvo);
 				return "MyInfoModify.jsp";
+			}
 		}
 	}
 
