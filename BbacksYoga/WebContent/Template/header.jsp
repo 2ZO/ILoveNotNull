@@ -9,6 +9,7 @@
 <script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/header.js"></script>
 <!-- 스크립트 별도 폴더에 넣고 import -->
 <script type="text/javascript">
+/*로그인 ajax로 처리하기~*/
 $(document).ready(function(){
 $("#logInBtn").click(function(){
 		$.ajax({
@@ -111,7 +112,7 @@ $("#logInBtn").click(function(){
 				<ul class="nav navbar-nav">
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">My Page</a>
 						<ul class="dropdown-menu">
-							<li><a href="${pageContext.request.contextPath}/Template/layout.jsp">내정보 수정</a></li>
+							<li><a href="#">내정보 수정</a></li>
 							<li><a href="#">수강내역 확인</a></li>
 						</ul></li>
 				</ul>

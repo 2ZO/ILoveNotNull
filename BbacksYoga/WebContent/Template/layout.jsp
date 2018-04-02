@@ -56,7 +56,7 @@ $(document).ready(function(){
 	<!-- 메인 -->
 	<main role="main" class="container">
 	<c:if test="${empty url}">
-		<c:import url="/Member/Idcheck.jsp"></c:import>
+		<c:import url="center.jsp"></c:import>
 	</c:if>
 	<c:if test="${!empty url}">
 		<c:import url="${url}"></c:import>
