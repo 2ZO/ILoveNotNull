@@ -11,8 +11,12 @@ regDate date not null,
 member_status varchar2(10) not null,
 class_package varchar2(10) not null --3회 or 5회
 )
-select count(*) from yoga_program
-select programNo,programName from yoga_program where rownum between 1 and 5;
+select count(*) from yoga_program;
+select programNo, programName
+from(
+	select  row_number() over(order by programNo asc) as rnum, programNo, programName 
+	from yoga_program 
+) where rnum between 1 and 10;
 -- 요가 강사 테이블 생성
 create table yoga_teacher(
 teacherId NUMBER primary key,
@@ -36,6 +40,9 @@ programNo NUMBER primary key,
 programName varchar2(50) not null,
 programDetail varchar2(50)
 )
+
+
+select * from YOGA_PROGRAM;
 -- programNo 시퀀스 생성
 create sequence prgNo_seq;
 
@@ -166,6 +173,8 @@ capacity,
 classTime,
 classDay
 ) values(class_seq.nextval,1,1,10,1,'mon');
+
+select * from yoga_class
 --클래스 추가
 insert into yoga_class(
 classNo,

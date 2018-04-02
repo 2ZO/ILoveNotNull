@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
-import org.kosta.model.VO.MemberVO;
+
+import org.kosta.model.VO.PostVO;
 import org.kosta.model.etc.DataSourceManager;
 
 public class PostDAO {
@@ -47,5 +49,45 @@ public class PostDAO {
 		}finally {
 			closeAll(pstmt, con);
 		}		
+	}
+	public ArrayList<PostVO> getPostingList() throws SQLException {
+		ArrayList<PostVO> list=new ArrayList<PostVO>();
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dataSource.getConnection();
+			String sql="select postNo,title,id,to_char(regdate,'YYYY.MM.DD') from POST order by postNo desc";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				PostVO pvo=new PostVO();
+				pvo.setPostNo(rs.getString(1));
+				pvo.setTitle(rs.getString(2));
+				pvo.setId(rs.getString(3));
+				pvo.setRegDate(rs.getString(4));
+				list.add(pvo);
+			}
+		}finally {
+			closeAll(rs, pstmt, con);
+		}
+		return list;
+	}
+	public int getTotalPostCount() throws SQLException {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int count=0;
+		try {
+			con=dataSource.getConnection();
+			String sql="select count(*) from post";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next())
+				count=rs.getInt(1);
+		}finally {
+			closeAll(rs, pstmt, con);
+		}
+		return count;
 	}	
 }
