@@ -67,6 +67,12 @@ id varchar2(50) not null,
 regDate date not null,
 constraint fk_post2 foreign key(id) references yoga_member(id)
 )
+
+select * from post 
+insert into post values(post_seq.nextval,'안녕','반가워요 테스트 중이예여','visitor',sysdate);
+
+
+
 drop table registerStatus;
 drop table yoga_member;
 drop table POST;
@@ -108,6 +114,12 @@ id,password,name,phone_number,address,email,password_question,password_answer,re
 insert into yoga_member(
 id,password,name,phone_number,address,email,password_question,password_answer,regDate,member_status,class_package
 ) values('sys','1234','hwang',3434,'판교','naver.com','test','test',sysdate,'true','3');
+
+
+--멤버 정보 수정
+select id,password,name,phone_number,address,email,password_question,password_answer,regDate,member_status,class_package from yoga_member where id='java' and password='1234';
+update UPDATE yoga_member SET  WHERE id='java' and password='1234';
+
 --기본 게시물 추가
 insert into POST(
 postNo,

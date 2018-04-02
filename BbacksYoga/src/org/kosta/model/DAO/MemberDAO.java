@@ -52,4 +52,25 @@ public class MemberDAO {
 		}
 		return member;	
 	}
+	public MemberVO updateMyinfoById(String id, String password) throws SQLException {
+		MemberVO member=null;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try{
+			con=dataSource.getConnection();
+			String sql="select password,name,phone_number,address,email,password_question,password_answer,regDate,member_status,class_package from yoga_member where id=? and password=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, password);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				member= new MemberVO(id, rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10));
+			}
+		}finally{
+			closeAll(rs, pstmt,con);
+		}
+		return member;	
+		
+	}
 }
