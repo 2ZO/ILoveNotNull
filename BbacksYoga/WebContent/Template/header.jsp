@@ -63,6 +63,7 @@
 							<li><a href="#">FAQ</a></li>
 							<li><a href="#">Q&amp;A</a></li>
 							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=writePostView">(임시) 글쓰기</a></li>
+							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=page&url=/Post/PostDetail.jsp">(임시테스트) 글보기</a></li>
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav">

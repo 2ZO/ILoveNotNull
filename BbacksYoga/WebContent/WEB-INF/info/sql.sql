@@ -180,13 +180,13 @@ classTime,
 classDay
 ) values(class_seq.nextval,1,2,10,2,'fri');
 
-
+create sequence rs_seq;  
 ------------------------------------------------------------
 create table registerStatus(
+rsNo NUMBER PRIMARY KEY, 
 classNo NUMBER not null,
 id VARCHAR2(100) not null,
 regDate date not null,
 constraint fk_class foreign key(classNo) references yoga_class(classNo),
-constraint fk_yoga_member foreign key(id) references yoga_member(id),
-constraint pk_registerStatus primary key(classNo,id)
+constraint fk_yoga_member foreign key(id) references yoga_member(id)
 )
