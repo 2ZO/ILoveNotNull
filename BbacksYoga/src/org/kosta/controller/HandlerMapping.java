@@ -66,7 +66,7 @@ public class HandlerMapping {
 			c = new Read_ProgramListController();
 		} else if (command.equals("프로그램 상세")) {
 			c = new Read_ProgramDetailController();
-		} else if (command.equals("내정보 패스워드 체크")) {
+		} else if (command.equals("memberPassword")) {
 			c = new Read_MyInfoCheckController();
 		} else if (command.equals("내정보 수정")) {
 			c = new Update_MyInfoController();
