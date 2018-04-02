@@ -12,17 +12,15 @@ public class Read_MyInfoCheckController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("내정보 수정 시작");
 		HttpSession session=request.getSession(false);
+		System.out.println((session==null));
 		if(session==null) {
 			return "noSession.jsp";
-		}else {
+		}else{
 			MemberVO mvo=(MemberVO)session.getAttribute("memberVO");
 			String id=mvo.getId();
 			String password=request.getParameter("memberPassword");
-			mvo=MemberDAO.getInstance().updateMyinfoById(id, password);
-			System.out.println(mvo);
-			System.out.println("내정보 수정 끝");
+			mvo=MemberDAO.getInstance().checkMyinfoById(id, password);
 			if(mvo==null)
 				return "password_fail.jsp";
 			else
