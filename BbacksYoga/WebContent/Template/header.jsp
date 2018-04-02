@@ -61,7 +61,7 @@
 					<li class="dropdown"><a class="dropdown-toggle"	data-toggle="dropdown" href="#">Community</a>
 						<ul class="dropdown-menu">
 							<li><a href="#">FAQ</a></li>
-							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=postList">Q&amp;A</a></li>
+							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=postList&nowPage=1">Q&amp;A</a></li>
 							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=writePostView">(임시) 글쓰기</a></li>
 						</ul></li>
 				</ul>

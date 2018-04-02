@@ -8,7 +8,7 @@
 	}
 	/*테이블 디자인 다 똑같이 넣어요..*/
 </style>
-<table>
+<table class="table table-bordered  table-hover boardlist">
   <thead>
   	<tr>
     	<th>번호</th>
@@ -18,7 +18,7 @@
     </tr>
   </thead>
   <tbody>
-  	<c:forEach items="${requestScope.list}" var="post">
+  	<c:forEach items="${requestScope.lvo.list}" var="post">
   		<tr>
   			<td>${post.postNo}</td>
   			<td>${post.title}</td>
@@ -28,3 +28,15 @@
   	</c:forEach>	
   </tbody>
 </table>
+<ul>
+	<c:forEach var="paging" begin="${requestScope.lvo.pagingBean.endPageOfPageGroup}" end="${requestScope.lvo.pagingBean.startPageOfPageGroup}"> 
+		<c:choose>
+			<c:when test="${paging==requestScope.lvo.pagingBean.nowPage}">
+				<li>${paging}</li>
+			</c:when>
+			<c:otherwise>
+			<li><a href="DispatcherServlet?command=list&nowPage=${paging}">${paging}</a></li>
+			</c:otherwise>
+		</c:choose> 	
+	</c:forEach>
+ </ul>

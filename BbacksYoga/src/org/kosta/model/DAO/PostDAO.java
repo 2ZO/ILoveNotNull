@@ -73,8 +73,21 @@ public class PostDAO {
 		}
 		return list;
 	}
-	public int getTotalPostCount() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getTotalPostCount() throws SQLException {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int count=0;
+		try {
+			con=dataSource.getConnection();
+			String sql="select count(*) from post";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next())
+				count=rs.getInt(1);
+		}finally {
+			closeAll(rs, pstmt, con);
+		}
+		return count;
 	}	
 }
