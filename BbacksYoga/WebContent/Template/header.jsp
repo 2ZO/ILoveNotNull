@@ -53,7 +53,7 @@
 					<li class="dropdown"><a class="dropdown-toggle"	data-toggle="dropdown" href="#">Lesson</a>
 						<ul class="dropdown-menu">
 							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=programList">프로그램 소개</a></li>
-							<li><a href="#">강좌시간표</a></li>
+							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=Read_Timetable">강좌시간표</a></li>
 							<li><a href="#">강좌 신청</a></li>
 						</ul></li>
 				</ul>
@@ -69,7 +69,7 @@
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">My Page</a>
 						<ul class="dropdown-menu">
 							<li><a href="DispatcherServlet?command=page&url=/Member/MyInfoCheck.jsp">내정보 수정</a></li>
-							<li><a href="#">수강내역 확인</a></li>
+							<li><a href="DispatcherServlet?command=Read_Register">수강내역 확인</a></li>
 						</ul></li>
 				</ul>
 			</div>
