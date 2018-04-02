@@ -21,7 +21,100 @@
         		width: 120px;
         		margin: 0 auto;
         	}
+        	span{
+        		color:red;
+        	}
         </style>
+        
+<script type="text/javascript">
+/*id 중복체크 ajax로 처리하기~*/
+
+function flagTest(){
+	if($("#idFlag").val()=="false"){
+		alert("아이디 중복체크 해주세요.");
+		return false;
+	}else if($("#emailFlag").val()=="false"){
+		alert("이메일 중복체크 해주세요.");
+		return false;
+	}else if($("#pwdFlag").val()=="false"){
+		alert("패스워드가 일치하지 않습니다.");
+		return false;
+	}else{
+		return true;
+	}
+	
+}
+$(document).ready(function(){
+$("#checkId").click(function(){
+		$.ajax({
+		type:"get",
+		dataType:"json",
+		url:"${pageContext.request.contextPath}/DispatcherServlet?command=getMemberById",
+		data:$("#registerForm").serialize(),
+		success:function(data){
+			//alert(data.length);
+			if(data.flag=="false"){
+				$("#idCheck").html("중복된 아이디 입니다.");
+			}else{
+				$("#idCheck").html("사용가능한 아이디 입니다.");
+				$("#idFlag").val("true");
+			}
+			//(info);
+		}//success
+	});//ajax
+	});
+$("#id").change(function(){
+	$("#idCheck").html("");
+	$("#idFlag").val("false");
+});
+$("#email").change(function(){
+	$("#emailCheck").html("");
+	$("#emailFlag").val("false");
+});
+$("#password").change(function(){
+	$("#passwordCheck").html("");
+	$("#pwdFlag").val("false");
+});
+	//이메일중복체크
+	$("#checkEmail").click(function(){
+		$.ajax({
+		type:"get",
+		dataType:"json",
+		url:"${pageContext.request.contextPath}/DispatcherServlet?command=getMemberByEmail",
+		data:$("#registerForm").serialize(),
+		success:function(data){
+			//alert(data.length);
+			if(data.flag=="false"){
+				$("#emailCheck").html("중복된 이메일 입니다.");
+			}else{
+				$("#emailCheck").html("사용가능한 이메일 입니다.");
+				$("#emailFlag").val("true");
+			}
+			//(info);
+		}//success
+	});//ajax
+	});
+	//패스워드 자릿수 제한
+	$("#password").on('keyup', function(){
+		if($("#password").val().length<8){
+			$("#warn").html("8자이상 입력해주세요.");
+		}else{
+			$("#warn").html("");
+		}
+	});
+	//비번 중복체크
+	$("#passwordCheck").keyup(function(){
+		console.log($(this).val());
+		if($("#password").val()==$(this).val()){ 
+			$("#warnPasswordCheck").html("일치합니다.");
+		}else{
+			$("#warnPasswordCheck").html("일치하지 않습니다.");
+			$("#pwdFlag").val("true");
+		}
+	});
+	
+});
+</script>
 </head>
 <body>
 	 <div class="container"><!-- 좌우측의 공간 확보 -->
@@ -48,33 +141,39 @@
             <!--// 모달창 -->
             <hr/>
                 <!-- 본문 들어가는 부분 -->
-        <form class="form-horizontal" role="form" method="post" action="javascript:alert( 'success!' );">
-
+        <form class="form-horizontal" role="form" id="registerForm" method="post" action="${pageContext.request.contextPath}/DispatcherServlet">
+        	<input type="hidden" name="command" value="register"> 	
+        	<input type="hidden" id=idFlag" value="false">
+        	<input type="hidden" id="pwdFlag" value="false">
+        	<input type="hidden" id="emailFlag" value="false">
             <div class="form-group" id="divId">
-                <label for="inputId" class="col-lg-2 control-label">아이디</label>
-                <div class="col-lg-8">
-                    <input type="text" class="form-control onlyAlphabetAndNumber" id="id" data-rule-required="true" placeholder="30자이내의 알파벳, 언더스코어(_), 숫자만 입력 가능합니다." maxlength="30">	
+                <label for="inputId" class="col-lg-3 control-label">아이디</label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control onlyAlphabetAndNumber" id="id" name="id" data-rule-required="true" placeholder="20자이내의 알파벳, 언더스코어(_), 숫자만 입력 가능합니다." maxlength="20" required="required">	
                 </div>
-                <div class="col-lg-2">
-                	<input type="button" value="중복확인" onclick="checkId()">
-                </div>
+                <div class="col-lg-4">
+                	<input type="button" value="중복확인" id="checkId">      
+                	<span id="idCheck"></span>    
+                </div>      
             </div>
             <div class="form-group" id="divPassword">
-                <label for="inputPassword" class="col-lg-2 control-label">패스워드</label>
-                <div class="col-lg-10">
-                    <input type="password" class="form-control" id="password" name="excludeHangul" data-rule-required="true" placeholder="패스워드" maxlength="30">
+                <label for="inputPassword" class="col-lg-3 control-label">패스워드</label>
+                <div class="col-lg-6">
+                    <input type="password" class="form-control" name ="password" id="password" name="excludeHangul" data-rule-required="true" placeholder="패스워드, 8자 이상입력" maxlength="30" required="required">
+              		<span id="warn"></span>
                 </div>
             </div>
             <div class="form-group" id="divPasswordCheck">
-                <label for="inputPasswordCheck" class="col-lg-2 control-label">패스워드 확인</label>
-                <div class="col-lg-10">
-                    <input type="password" class="form-control" id="passwordCheck" data-rule-required="true" placeholder="패스워드 확인" maxlength="30">
+                <label for="inputPasswordCheck" class="col-lg-3 control-label">패스워드 확인</label>
+                <div class="col-lg-6">
+                    <input type="password" class="form-control" id="passwordCheck" data-rule-required="true" placeholder="패스워드 확인" maxlength="30" required="required">
+               		 <span id="warnPasswordCheck"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label for="passwordHint" class="col-lg-2 control-label">패스워드 힌트</label>
-                <div class="col-lg-10">
-                    <select class="form-control" id="passwordQuestion">
+                <label for="passwordHint" class="col-lg-3 control-label">패스워드 힌트</label>
+                <div class="col-lg-6">
+                    <select class="form-control" id="password_question" name="password_question">
                         <option value="question1">나의 고향은?</option>
                         <option value="question2">나의 초등학교는?</option>
                         <option value="question3">내가 가장 좋아하는 음식은?</option>
@@ -82,52 +181,53 @@
                 </div>
             </div>
             <div class="form-group" id="passwordHintCheck">
-                <label for="inputPasswordCheck" class="col-lg-2 control-label">패스워드 힌트 답변</label>
-                <div class="col-lg-10">
-                    <input type="password" class="form-control" id="hintCheck" data-rule-required="true" placeholder="패스워드 힌트 답변" maxlength="30">
+                <label for="inputPasswordCheck" class="col-lg-3 control-label">패스워드 힌트 답변</label>
+                <div class="col-lg-6">
+                    <input type="text" class="form-control" id="password_answer" name="password_answer" data-rule-required="true" placeholder="패스워드 힌트 답변" maxlength="30" required="required">
                 </div>
             </div>
             <div class="form-group" id="divName">
-                <label for="inputName" class="col-lg-2 control-label">이름</label>
-                <div class="col-lg-10">
-                    <input type="text" class="form-control onlyHangul" id="name" data-rule-required="true" placeholder="한글만 입력 가능합니다." maxlength="15">
+                <label for="inputName" class="col-lg-3 control-label">이름</label>
+                <div class="col-lg-6">
+                    <input type="text" class="form-control onlyHangul" name ="name" id="name" data-rule-required="true" placeholder="한글만 입력 가능합니다." maxlength="15" required="required">
                 </div>
             </div>
              
-            <div class="form-group" id="address">
-                <label for="inputNickname" class="col-lg-2 control-label">주소</label>
-                <div class="col-lg-10">
-                    <input type="text" class="form-control" id="nickname" data-rule-required="true" placeholder="주소" maxlength="15">
+            <div class="form-group" id="Address">
+                <label for="inputNickname" class="col-lg-3 control-label">주소</label>
+                <div class="col-lg-6">
+                    <input type="text" class="form-control" name= "address" id="address" data-rule-required="true" placeholder="주소" maxlength="15" required="required">
                 </div>
             </div>
              
             <div class="form-group" id="divEmail">
-                <label for="inputEmail" class="col-lg-2 control-label">이메일</label>
-                <div class="col-lg-8">
-                    <input type="email" class="form-control" id="email" data-rule-required="true" placeholder="이메일" maxlength="40">
+                <label for="inputEmail" class="col-lg-3 control-label">이메일</label>
+                <div class="col-lg-4">
+                    <input type="email" class="form-control" id = "email" name="email" data-rule-required="true" placeholder="이메일" maxlength="40" required="required">
                 </div>
-                <div class="col-lg-2">
-                	<input type="button" value="중복확인" onclick="checkEmail()">
+                <div class="col-lg-4">
+                	<input type="button" value="중복확인" id="checkEmail">
+                	 <span id="emailCheck"></span>
                 </div>
             </div>
             <div class="form-group" id="divPhoneNumber">
-                <label for="inputPhoneNumber" class="col-lg-2 control-label">휴대폰 번호</label>
-                <div class="col-lg-10">
-                    <input type="tel" class="form-control onlyNumber" id="phoneNumber" data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요." maxlength="11">
+                <label for="inputPhoneNumber" class="col-lg-3 control-label">휴대폰 번호</label>
+                <div class="col-lg-6">
+                    <input type="tel" class="form-control onlyNumber" name = "phone_number" id="phone_number" data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요." maxlength="11" required="required">
                 </div>
             </div>
             <div class="form-group">
-                <label for="weekCount" class="col-lg-2 control-label"> 1주일 당 신청 횟수</label>
-                <div class="col-lg-10">
-                    <select class="form-control" id="gender">
-                        <option value="count3">3회</option>
-                        <option value="count5">5회</option>
+                <label for="weekCount" class="col-lg-3 control-label"> 1주일 당 신청 횟수</label>
+                <div class="col-lg-6">
+                    <select class="form-control" id="class_package" name="class_package">
+                        <option value="3">3회</option>
+                        <option value="5">5회</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-lg-offset-2 col-lg-10">
-                    <button type="submit" class="btn btn-default">Sign in</button>
+                <div class="col-lg-offset-8 col-lg-10">
+                    <button type="submit" class="btn btn-default" id="RegisterBtn" onclick="return flagTest()">Sign in</button>
                 </div>
             </div>
         </form>

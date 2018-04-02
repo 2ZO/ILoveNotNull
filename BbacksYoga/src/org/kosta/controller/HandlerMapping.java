@@ -5,6 +5,8 @@ import org.kosta.controller.first.Create_PostControllerView;
 import org.kosta.controller.first.Create_RegisterController;
 import org.kosta.controller.first.Read_BoardController;
 import org.kosta.controller.first.Read_LoginController;
+import org.kosta.controller.first.Read_MemberByEmailController;
+import org.kosta.controller.first.Read_MemberByIdController;
 import org.kosta.controller.first.Read_PostDetailController;
 import org.kosta.controller.first.Update_PostController;
 import org.kosta.controller.second.Create_ClassController;
@@ -41,9 +43,13 @@ public class HandlerMapping {
 					//1조~
 		if (command.equals("LogIn")) {
 			c = new Read_LoginController();
-		}else if (command.equals("회원등록")) {	
+		}else if (command.equals("register")) {	
 			c = new Create_RegisterController();
-		} else if (command.equals("postWrite")) {
+		}else if (command.equals("getMemberById")) {	
+			c = new Read_MemberByIdController();
+		}else if (command.equals("getMemberByEmail")) {	
+			c = new Read_MemberByEmailController();
+		}  else if (command.equals("postWrite")) {
 			c = new Create_PostController();
 		} else if(command.equals("writePostView")) { //임시 글쓰기 확인하려고
 			c = new Create_PostControllerView();
