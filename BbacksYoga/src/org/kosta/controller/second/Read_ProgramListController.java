@@ -17,7 +17,6 @@ public class Read_ProgramListController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		int count = ProgramDAO.getInstance().getProgramListTotal();
-		System.out.println(count);
 		String pno = request.getParameter("pageNo");
 		PagingBean pagingBean = null;
 		if(pno==null) {
