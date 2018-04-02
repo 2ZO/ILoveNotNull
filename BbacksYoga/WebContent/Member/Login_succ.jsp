@@ -3,6 +3,6 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script>
-alert("로그인 실패");
-location.href="${pageContext.request.contextPath}/index.jsp"
+alert("회원가입 축하드립니다. \n로그인 해주세요.");
+location.href="${pageContext.request.contextPath}/DispatcherServlet?command=page&url=/Member/Login.jsp";
 </script> 

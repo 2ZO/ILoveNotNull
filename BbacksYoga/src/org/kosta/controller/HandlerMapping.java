@@ -5,6 +5,8 @@ import org.kosta.controller.first.Create_PostControllerView;
 import org.kosta.controller.first.Create_RegisterController;
 import org.kosta.controller.first.Read_BoardController;
 import org.kosta.controller.first.Read_LoginController;
+import org.kosta.controller.first.Read_MemberByEmailController;
+import org.kosta.controller.first.Read_MemberByIdController;
 import org.kosta.controller.first.Read_PostDetailController;
 import org.kosta.controller.first.Update_PostController;
 import org.kosta.controller.second.Create_ClassController;
@@ -41,9 +43,13 @@ public class HandlerMapping {
 					//1조~
 		if (command.equals("LogIn")) {
 			c = new Read_LoginController();
-		}else if (command.equals("회원등록")) {	
+		}else if (command.equals("register")) {	
 			c = new Create_RegisterController();
-		} else if (command.equals("postWrite")) {
+		}else if (command.equals("getMemberById")) {	
+			c = new Read_MemberByIdController();
+		}else if (command.equals("getMemberByEmail")) {	
+			c = new Read_MemberByEmailController();
+		}  else if (command.equals("postWrite")) {
 			c = new Create_PostController();
 		} else if(command.equals("writePostView")) { //임시 글쓰기 확인하려고
 			c = new Create_PostControllerView();
@@ -71,19 +77,19 @@ public class HandlerMapping {
 			c = new Create_TeacherController();
 		} else if (command.equals("createProgram")) {
 			c = new Create_ProgramController();
-		} else if (command.equals("강좌등록")) {
+		} else if (command.equals("addclass")) {
 			c = new Create_ClassController();
 		}else if(command.equals("addClassView")) { //강좌등록시 강사, 프로그램 데이터를 불러옴
 			c = new Read_AddClassViewController();
 		}
 		//3조
-		else if (command.equals("강좌신청")) {
+		else if (command.equals("Create_RegisterClass")) {
 			c = new Create_RegisterClassController();
-		} else if (command.equals("전체 시간표 리스트 받기")) {
+		} else if (command.equals("Read_Timetable")) {
 			c = new Read_TimeTableController();
-		} else if (command.equals("수강현황")) {
+		} else if (command.equals("Read_Register")) {
 			c = new Read_RegisterController();
-		} else if (command.equals("수강취소")) {
+		} else if (command.equals("Delete_Register")) {
 			c = new Delete_RegisterClassController();
 		} else if (command.equals("시간표 등록")) {
 			c = new Create_TimeTableController();

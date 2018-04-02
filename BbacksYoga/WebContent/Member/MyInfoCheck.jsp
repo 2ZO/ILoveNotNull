@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:if test="${sessionScope.MemberVO.id==null}">
+<c:if test="${sessionScope.memberVO.id==null}">
 	<script>
 		alert("로그인해주세요");
 		location.href="index.jsp";
