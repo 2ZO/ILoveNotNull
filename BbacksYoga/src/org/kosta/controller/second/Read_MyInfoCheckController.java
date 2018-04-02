@@ -2,15 +2,30 @@ package org.kosta.controller.second;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.kosta.controller.Controller;
+import org.kosta.model.DAO.MemberDAO;
+import org.kosta.model.VO.MemberVO;
 
 public class Read_MyInfoCheckController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		HttpSession session=request.getSession(false);
+		System.out.println((session==null));
+		if(session==null) {
+			return "noSession.jsp";
+		}else{
+			MemberVO mvo=(MemberVO)session.getAttribute("memberVO");
+			String id=mvo.getId();
+			String password=request.getParameter("memberPassword");
+			mvo=MemberDAO.getInstance().checkMyinfoById(id, password);
+			if(mvo==null)
+				return "password_fail.jsp";
+			else
+				return "MyInfoModify.jsp";
+		}
 	}
 
 }

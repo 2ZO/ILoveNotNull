@@ -107,7 +107,7 @@ $("#logInBtn").click(function(){
 				<ul class="nav navbar-nav">
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">My Page</a>
 						<ul class="dropdown-menu">
-							<li><a href="#">내정보 수정</a></li>
+							<li><a href="DispatcherServlet?command=page&url=/Member/MyInfoCheck.jsp">내정보 수정</a></li>
 							<li><a href="#">수강내역 확인</a></li>
 						</ul></li>
 				</ul>

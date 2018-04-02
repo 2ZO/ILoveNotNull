@@ -66,7 +66,7 @@ public class HandlerMapping {
 			c = new Read_ProgramListController();
 		} else if (command.equals("프로그램 상세")) {
 			c = new Read_ProgramDetailController();
-		} else if (command.equals("memberPassword")) {
+		} else if (command.equals("passwordCheck")) {
 			c = new Read_MyInfoCheckController();
 		} else if (command.equals("내정보 수정")) {
 			c = new Update_MyInfoController();
@@ -98,6 +98,10 @@ public class HandlerMapping {
 			c = new Delete_TimeTableController();
 		} else if (command.equals("addTeacher")) { 
 			c = new Create_TeacherController();
+		}
+		//Paging Controller
+		else if(command.equals("page")) {
+			c= new PageController();
 		}else {
 			System.out.println("매핑오타났다 반성하고 고쳐라~~");
 		}
