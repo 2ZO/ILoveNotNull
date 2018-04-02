@@ -12,6 +12,10 @@ member_status varchar2(10) not null,
 class_package varchar2(10) not null --3회 or 5회
 )
 
+select *from YOGA_MEMBER
+update yoga_member set password_question='question2' where id='java'
+select * from POST
+
 -- 요가 강사 테이블 생성
 create table yoga_teacher(
 teacherId NUMBER primary key,
@@ -48,7 +52,7 @@ constraint uk_class unique(programNo, teacherId, classTime, classDay)           
 create sequence class_seq;
 
 create table registerStatus(
-rsNo NUMBER PRIMARY KEY,                      //추가  
+rsNo NUMBER PRIMARY KEY,                      
 classNo NUMBER not null,
 id VARCHAR2(100) not null,
 regDate date not null,
