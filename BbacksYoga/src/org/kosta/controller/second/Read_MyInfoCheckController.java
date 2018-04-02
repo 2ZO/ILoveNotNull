@@ -15,17 +15,18 @@ public class Read_MyInfoCheckController implements Controller {
 		HttpSession session=request.getSession(false);
 		System.out.println((session==null));
 		if(session==null) {
-			return "noSession.jsp";
+			return "Member/noSession.jsp";
 		}else{
 			MemberVO mvo=(MemberVO)session.getAttribute("memberVO");
 			String id=mvo.getId();
 			String password=request.getParameter("memberPassword");
 			mvo=MemberDAO.getInstance().checkMyinfoById(id, password);
 			if(mvo==null)
-				return "password_fail.jsp";
+				return "Member/password_fail.jsp";
 			else {
 				request.setAttribute("MemberVO", mvo);
-				return "MyInfoModify.jsp";
+				request.setAttribute("url","/Member/MyInfoModify.jsp");
+				return "Template/layout.jsp";
 			}
 		}
 	}
