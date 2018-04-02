@@ -77,13 +77,13 @@ public class HandlerMapping {
 			c = new Read_AddClassViewController();
 		}
 		//3조
-		else if (command.equals("강좌신청")) {
+		else if (command.equals("Create_RegisterClass")) {
 			c = new Create_RegisterClassController();
-		} else if (command.equals("전체 시간표 리스트 받기")) {
+		} else if (command.equals("Read_Timetable")) {
 			c = new Read_TimeTableController();
-		} else if (command.equals("수강현황")) {
+		} else if (command.equals("Read_Register")) {
 			c = new Read_RegisterController();
-		} else if (command.equals("수강취소")) {
+		} else if (command.equals("Delete_Register")) {
 			c = new Delete_RegisterClassController();
 		} else if (command.equals("시간표 등록")) {
 			c = new Create_TimeTableController();
