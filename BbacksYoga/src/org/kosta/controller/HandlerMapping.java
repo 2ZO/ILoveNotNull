@@ -59,9 +59,9 @@ public class HandlerMapping {
 			c = new Read_TeacherListController();
 		} else if (command.equals("teacherDetail")) {
 			c = new Read_TeacherDetailController();
-		} else if (command.equals("프로그램 리스트")) {
+		} else if (command.equals("programList")) {
 			c = new Read_ProgramListController();
-		} else if (command.equals("프로그램 상세")) {
+		} else if (command.equals("programDetail")) {
 			c = new Read_ProgramDetailController();
 		} else if (command.equals("passwordCheck")) {
 			c = new Read_MyInfoCheckController();

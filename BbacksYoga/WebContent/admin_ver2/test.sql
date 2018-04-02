@@ -171,5 +171,6 @@ capacity,
 classTime,
 classDay
 ) values(class_seq.nextval,1,2,10,2,'fri');
-
+select programNo,programName,programDetail from yoga_program where programNo='1';
 차근차근 만들어보시고 insert까지 모두 해주세여~
+select count(*) from yoga_program;

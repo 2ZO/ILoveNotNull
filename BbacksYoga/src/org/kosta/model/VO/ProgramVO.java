@@ -8,6 +8,12 @@ public class ProgramVO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public ProgramVO(String programNo, String programName) {
+		super();
+		this.programNo = programNo;
+		this.programName = programName;
+	}
 	public ProgramVO(String programNo, String programName, String programDetail) {
 		super();
 		this.programNo = programNo;
