@@ -18,6 +18,10 @@
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<!-- script url test -->
+
+
+
 <!-- 팝업창 js -->
 <!-- 이거 js폴더로 옮기고 싶은데 이상하게 옮기면 팝업창 404뜸 -_- 경로문제인듯 제가 내일고칠께욤 -->
 <script type="text/javascript">
@@ -52,7 +56,7 @@ $(document).ready(function(){
 	<!-- 메인 -->
 	<main role="main" class="container">
 	<c:if test="${empty url}">
-		<c:import url="/Member/Idcheck.jsp"></c:import>
+		<c:import url="center.jsp"></c:import>
 	</c:if>
 	<c:if test="${!empty url}">
 		<c:import url="${url}"></c:import>

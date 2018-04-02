@@ -56,7 +56,7 @@ body {
   position: absolute;	/* footer 고정  */
   bottom: 0;
   width: 100%;		/* footer 넓이 */
-  height: 70px;		/* footer 높이  */
+  height: 120px;		/* footer 높이  */
   line-height: 5px; /* Vertically center the text there */
   background-color: #333;	/* footer 배경 색깔  */
   color:#9d9d9d;			/* footer 폰트 색깔  */
@@ -111,8 +111,8 @@ code {
   font-size: 80%;
 }
 
-.setDiv{
+/* .setDiv{
 	padding-top: 170px;
 }
-
+ */
 

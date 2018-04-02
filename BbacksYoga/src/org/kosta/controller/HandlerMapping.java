@@ -7,7 +7,6 @@ import org.kosta.controller.first.Read_BoardController;
 import org.kosta.controller.first.Read_LoginController;
 import org.kosta.controller.first.Read_PostDetailController;
 import org.kosta.controller.first.Update_PostController;
-import org.kosta.controller.first.ViewController_Register;
 import org.kosta.controller.second.Create_ClassController;
 import org.kosta.controller.second.Create_ProgramController;
 import org.kosta.controller.second.Create_TeacherController;
@@ -42,8 +41,6 @@ public class HandlerMapping {
 					//1조~
 		if (command.equals("LogIn")) {
 			c = new Read_LoginController();
-		} else if (command.equals("RegisterView")) {
-			c = new ViewController_Register();
 		}else if (command.equals("회원등록")) {	
 			c = new Create_RegisterController();
 		} else if (command.equals("postWrite")) {
@@ -66,7 +63,7 @@ public class HandlerMapping {
 			c = new Read_ProgramListController();
 		} else if (command.equals("programDetail")) {
 			c = new Read_ProgramDetailController();
-		} else if (command.equals("내정보 패스워드 체크")) {
+		} else if (command.equals("passwordCheck")) {
 			c = new Read_MyInfoCheckController();
 		} else if (command.equals("내정보 수정")) {
 			c = new Update_MyInfoController();
@@ -98,6 +95,10 @@ public class HandlerMapping {
 			c = new Delete_TimeTableController();
 		} else if (command.equals("addTeacher")) { 
 			c = new Create_TeacherController();
+		}
+		//Paging Controller
+		else if(command.equals("page")) {
+			c= new PageController();
 		}else {
 			System.out.println("매핑오타났다 반성하고 고쳐라~~");
 		}

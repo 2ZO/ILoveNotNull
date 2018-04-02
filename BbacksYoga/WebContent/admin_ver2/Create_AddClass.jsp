@@ -6,7 +6,7 @@
 
 <!-- 선생님 선택 -->
 <!-- 선생님은 선생님 table에서 값을 불러옴  -->
-<select name="day">
+<select name="teacherId">
 	<option value="none" >선생님을 선택하세요</option>
 <c:forEach items="${requestScope.teacherList}" var="list">
 	<option value="${list.teacherId}" >${list.teacherName}&lt;${list.teacherNick}&gt;</option>
@@ -15,14 +15,23 @@
 </select>
 
 
+<select name="programId">
+	<option value="none" >프로그램을 선택하세요</option>
+<c:forEach items="${requestScope.programList}" var="list">
+	<option value="${list.programId}" >${list.programName}</option>
+	<%-- ${list.TeacherVO.teacherId} --%>
+</c:forEach>
+</select>
+
+
 <!-- 요일 선택 -->
 <select name="day">
-  <option value="0" selected="selected">월</option>
-  <option value="1">화</option>
-  <option value="2">수</option>
-  <option value="3">목</option>
-  <option value="4">금</option>
-  <option value="5">토</option>
+  <option value="mon" selected="selected">월</option>
+  <option value="tue">화</option>
+  <option value="wed">수</option>
+  <option value="thu">목</option>
+  <option value="fri">금</option>
+  <option value="sat">토</option>
 </select>
 
 <!-- 교시 선택 -->
