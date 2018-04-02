@@ -52,5 +52,23 @@ public class ClassDAO {
 			closeAll(pstmt, con);
 		}			
 	}
+	public ArrayList<String> getClassListById(String teacherId) throws SQLException {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		ArrayList<String> list=new ArrayList<String>();
+		try {
+			con=dataSource.getConnection();
+			String sql="select p.programName from yoga_class c, YOGA_PROGRAM p where c.programno=p.programno and teacherid=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, teacherId);
+			rs=pstmt.executeQuery();
+			while(rs.next())
+				list.add(rs.getString(1));
+		}finally {
+			closeAll(rs,pstmt, con);
+		}
+		return list;
+	}
 
 }

@@ -11,7 +11,15 @@ regDate date not null,
 member_status varchar2(10) not null,
 class_package varchar2(10) not null --3회 or 5회
 )
+<<<<<<< HEAD
 
+select *from YOGA_MEMBER
+update yoga_member set password_question='question2' where id='java'
+select * from POST
+
+=======
+select * from yoga_member 
+>>>>>>> branch 'master' of https://github.com/2ZO/ILoveNotNull.git
 -- 요가 강사 테이블 생성
 create table yoga_teacher(
 teacherId NUMBER primary key,
@@ -44,11 +52,14 @@ constraint fk_teacherId foreign key(teacherId) references YOGA_TEACHER(teacherId
 constraint fk_programNo foreign key(programNo) references yoga_program(programNo),
 constraint uk_class unique(programNo, teacherId, classTime, classDay)            // 추가     
 )
+
+select * from yoga_class;
+select p.programName from yoga_class c, YOGA_PROGRAM p where c.programno=p.programno and teacherid='1';
 -- classNo 시퀀스 생성
 create sequence class_seq;
 
 create table registerStatus(
-rsNo NUMBER PRIMARY KEY,                      //추가  
+rsNo NUMBER PRIMARY KEY,                      
 classNo NUMBER not null,
 id VARCHAR2(100) not null,
 regDate date not null,
@@ -70,7 +81,6 @@ constraint fk_post2 foreign key(id) references yoga_member(id)
 
 select * from post 
 insert into post values(post_seq.nextval,'안녕','반가워요 테스트 중이예여','visitor',sysdate);
-
 
 
 drop table registerStatus;
@@ -113,7 +123,7 @@ id,password,name,phone_number,address,email,password_question,password_answer,re
 --관리자
 insert into yoga_member(
 id,password,name,phone_number,address,email,password_question,password_answer,regDate,member_status,class_package
-) values('sys','1234','hwang',3434,'판교','naver.com','test','test',sysdate,'true','3');
+) values('visitor','1234','hwang',3434,'판교','naver.com','test','test',sysdate,'true','3');
 
 
 --멤버 정보 수정

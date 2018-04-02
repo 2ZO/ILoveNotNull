@@ -40,6 +40,9 @@ programNo NUMBER primary key,
 programName varchar2(50) not null,
 programDetail varchar2(50)
 )
+
+
+select * from YOGA_PROGRAM;
 -- programNo 시퀀스 생성
 create sequence prgNo_seq;
 
@@ -170,6 +173,8 @@ capacity,
 classTime,
 classDay
 ) values(class_seq.nextval,1,1,10,1,'mon');
+
+select * from yoga_class
 --클래스 추가
 insert into yoga_class(
 classNo,

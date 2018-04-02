@@ -11,7 +11,11 @@
         </div>
         <div class="profile-description2">
 			<div class="profile-des">수강중인 프로그램</div>
-			<div class="profile-des">나중에 데이터 받아올 곳</div>
+			<div class="profile-des">
+				<c:forEach items="${requestScope.classList}" var="i">
+					${i}&nbsp;
+				</c:forEach>
+			</div>
         </div>
         <div class="back_button"> 
         <input id="back_page" type="button" value="목록으로" onclick="history.back()">
