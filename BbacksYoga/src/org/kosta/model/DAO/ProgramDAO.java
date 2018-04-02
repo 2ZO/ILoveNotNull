@@ -77,16 +77,17 @@ public class ProgramDAO {
 		ResultSet rs = null;
 		try {
 			con = datasource.getConnection();
-			String sql = "select programNo,programName from yoga_program where rownum between ? and ?";
-			pstmt = con.prepareStatement(sql);
+			StringBuilder sql=new StringBuilder();
+			sql.append("select programNo, programName from( ");
+			sql.append("select  row_number() over(order by programNo asc) ");
+			sql.append("as rnum, programNo, programName from yoga_program) ");
+			sql.append("where rnum between ? and ?");
+			pstmt=con.prepareStatement(sql.toString());	
 			pstmt.setInt(1, pagingBean.getStartRowNumber());
 			pstmt.setInt(2, pagingBean.getEndRowNumber());
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				ProgramVO vo=new ProgramVO();
-				vo.setProgramNo(rs.getString(1));
-				vo.setProgramName(rs.getString(2));
-				list.add(vo);
+				list.add(new ProgramVO(rs.getString(1), rs.getString(2)));
 			}
 		}finally {
 			closeAll(rs, pstmt, con);
