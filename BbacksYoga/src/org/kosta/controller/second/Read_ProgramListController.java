@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.kosta.controller.Controller;
 import org.kosta.model.DAO.ProgramDAO;
+import org.kosta.model.VO.ListVO;
 import org.kosta.model.VO.ProgramVO;
 import org.kosta.model.etc.PagingBean;
 
@@ -14,19 +15,19 @@ public class Read_ProgramListController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ArrayList<ProgramVO> list = ProgramDAO.getInstance().getProgramList();
-		System.out.println(list.get(0));
-		PagingBean pb = null;
-		String pno = request.getParameter("programNo");
+		
 		int count = ProgramDAO.getInstance().getProgramListTotal();
+		String pno = request.getParameter("pageNo");
+		PagingBean pagingBean = null;
 		if(pno==null) {
-			pb = new PagingBean(count);
+			pagingBean = new PagingBean(count);
 		}
 		else {
-			pb = new PagingBean(count, Integer.parseInt(pno));
+			pagingBean = new PagingBean(count, Integer.parseInt(pno));
 		}
-		request.setAttribute("pb", pb);
-		request.setAttribute("list", list);
+		ArrayList<ProgramVO> list = ProgramDAO.getInstance().getProgramList(pagingBean);
+		ListVO listVO = new ListVO(list, pagingBean);
+		request.setAttribute("lvo", listVO);
 		request.setAttribute("url", "/Class/ProgramList.jsp");
 		return  "Template/layout.jsp";
 	}

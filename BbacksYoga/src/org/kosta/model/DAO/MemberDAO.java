@@ -73,4 +73,80 @@ public class MemberDAO {
 		return member;	
 		
 	}
+	
+	//회원가입 때 아이디중복체크
+	public boolean getMemberById(String id) throws SQLException {
+		// TODO Auto-generated method stub
+		boolean flag= true;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;	
+		try{
+			con=dataSource.getConnection();
+			String sql="select id from yoga_member where id=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				System.out.println(rs.getString(1));
+				flag=false;
+			}
+		}finally{
+			closeAll(rs, pstmt,con);
+		}
+		return flag;
+	}
+	
+	//회원가입 때 이메일 중복 체크
+	public boolean getMemberByEmail(String email) throws SQLException {
+		// TODO Auto-generated method stub
+		boolean flag= true;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;	
+		try{
+			con=dataSource.getConnection();
+			String sql="select id from yoga_member where email=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				flag=false;
+			}
+		}finally{
+			closeAll(rs, pstmt,con);
+		}
+		return flag;
+	}
+	//회원가입
+	public void createMember(MemberVO vo) throws SQLException {
+		// TODO Auto-generated method stub
+		System.out.println(vo.toString());
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;	
+		try{
+			con=dataSource.getConnection();
+			StringBuilder sb = new StringBuilder();
+			sb.append("insert into yoga_member(id,password,name,phone_number,address,email,password_question,");
+			sb.append("password_answer,regDate,member_status,class_package) ");
+			sb.append("values(?,?,?,?,?,?,?,?,sysdate,'true',?)");
+			
+			pstmt=con.prepareStatement(sb.toString());
+			pstmt.setString(1, vo.getId());
+			pstmt.setString(2, vo.getPassword());
+			pstmt.setString(3, vo.getName());
+			pstmt.setString(4, vo.getPhone_number());
+			pstmt.setString(5, vo.getAddress());
+			pstmt.setString(6, vo.getEmail());
+			pstmt.setString(7, vo.getPassword_question());
+			pstmt.setString(8, vo.getPassword_answer());
+			pstmt.setString(9, vo.getClass_package());
+			rs=pstmt.executeQuery();
+
+		}finally{
+			closeAll(rs, pstmt,con);
+		}
+	}
+
 }

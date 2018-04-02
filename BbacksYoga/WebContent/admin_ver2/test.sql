@@ -11,8 +11,8 @@ regDate date not null,
 member_status varchar2(10) not null,
 class_package varchar2(10) not null --3회 or 5회
 )
-
-
+select count(*) from yoga_program
+select programNo,programName from yoga_program where rownum between 1 and 5;
 -- 요가 강사 테이블 생성
 create table yoga_teacher(
 teacherId NUMBER primary key,
@@ -178,3 +178,13 @@ classDay
 select programNo,programName,programDetail from yoga_program where programNo='1';
 차근차근 만들어보시고 insert까지 모두 해주세여~
 select count(*) from yoga_program;
+create table registerStatus(
+rsNo NUMBER PRIMARY KEY,                      
+classNo NUMBER not null,
+id VARCHAR2(100) not null,
+regDate date not null,
+constraint fk_class foreign key(classNo) references yoga_class(classNo),
+constraint fk_yoga_member foreign key(id) references yoga_member(id)
+)
+
+create sequence rs_seq;    
