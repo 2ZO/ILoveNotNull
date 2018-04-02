@@ -10,16 +10,14 @@
 	<option value="none" >선생님을 선택하세요</option>
 <c:forEach items="${requestScope.teacherList}" var="list">
 	<option value="${list.teacherId}" >${list.teacherName}&lt;${list.teacherNick}&gt;</option>
-	<%-- ${list.TeacherVO.teacherId} --%>
 </c:forEach>
 </select>
 
 
 <select name="programId">
 	<option value="none" >프로그램을 선택하세요</option>
-<c:forEach items="${requestScope.programList}" var="list">
-	<option value="${list.programId}" >${list.programName}</option>
-	<%-- ${list.TeacherVO.teacherId} --%>
+<c:forEach items="${requestScope.programList}" var="list2">
+	<option value="${list2.programNo}" >${list2.programName}</option>
 </c:forEach>
 </select>
 

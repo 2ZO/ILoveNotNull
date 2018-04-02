@@ -146,6 +146,10 @@ programName,
 programDetail
 ) values(prgNo_seq.nextval,'Vinyasa','김민석과 함께하는 즐거운요가');
 
+select * from yoga_program
+
+
+
 --프로그램 추가
 insert into yoga_program(
 programNo,
