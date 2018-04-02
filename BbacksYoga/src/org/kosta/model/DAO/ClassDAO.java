@@ -35,5 +35,22 @@ public class ClassDAO {
 		if(con!=null)
 			con.close();
 	}
+	public void createClass(String teacherId, String programId, String day, String time, String capacity) throws SQLException {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=dataSource.getConnection();
+			String sql="insert into yoga_class values(class_seq.nextval,?,?,?,?,?)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, programId);
+			pstmt.setString(2, teacherId);
+			pstmt.setString(3, capacity);
+			pstmt.setString(4, time);
+			pstmt.setString(5, day);
+			pstmt.executeUpdate();			
+		}finally {
+			closeAll(pstmt, con);
+		}			
+	}
 
 }

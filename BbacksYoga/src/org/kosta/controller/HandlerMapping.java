@@ -71,7 +71,7 @@ public class HandlerMapping {
 			c = new Create_TeacherController();
 		} else if (command.equals("createProgram")) {
 			c = new Create_ProgramController();
-		} else if (command.equals("강좌등록")) {
+		} else if (command.equals("addclass")) {
 			c = new Create_ClassController();
 		}else if(command.equals("addClassView")) { //강좌등록시 강사, 프로그램 데이터를 불러옴
 			c = new Read_AddClassViewController();
