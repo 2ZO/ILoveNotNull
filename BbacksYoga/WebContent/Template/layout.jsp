@@ -5,26 +5,30 @@
 <html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/CSS/nav.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/footer.css">  
+<!-- <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<%-- <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/CSS/nav.css"> --%>
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/footer.css">   --%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/TeacherList.css"> <!-- 선생님 리스트 css추가 -->
-<script src="${pageContext.request.contextPath}/js/TeacherProfile.jsp"></script> <!-- 선생님 프로필 자바스크립트 -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/TeacherProfile.jsp"></script> <!-- 선생님 프로필 자바스크립트 -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<c:import url="header.jsp"></c:import>
 <title>BbacksYoga</title>
 <body>
+<!-- header -->
+<c:import url="header.jsp"></c:import>
+<!-- E:header -->
 <c:if test="${empty url}">
 	<c:import url="/Member/Idcheck.jsp"></c:import>
 </c:if>
 <c:if test="${!empty url}">
 	<c:import url="${url}"></c:import>
 </c:if>
+<!-- footer -->
 <c:import url="footer.jsp"></c:import>
-</body>
+<!-- E:footer -->
+	</body>
 </html>

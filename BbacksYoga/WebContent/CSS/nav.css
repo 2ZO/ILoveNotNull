@@ -21,8 +21,8 @@ margin: 10px auto;
 /*로그인 , 회원가입*/
 #rightWrap {
 position: absolute;
- top: 10;
-right: 100;
+ top: 10px;
+right: 100px;
 }
 
 #headerRight>li {
@@ -118,10 +118,10 @@ li>a:only-child:after {
 }
 
 /* hwangMA added */
-.setDiv {
+/*  .setDiv {
  padding-top: 100px;
  text-align: center;
-}
+}  */
 
 .mask {
  position: absolute;

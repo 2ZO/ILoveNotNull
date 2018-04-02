@@ -1,42 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/nav.css"> --%>
 
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script>
-	function wrapWindowByMask() {
-		// 화면의 높이와 너비를 변수로 만듭니다.
-		var maskHeight = $(document).height();
-		var maskWidth = $(window).width();
-
-		// 마스크의 높이와 너비를 화면의 높이와 너비 변수로 설정합니다.
-		$('.mask').css({
-			'width' : maskWidth,
-			'height' : maskHeight
-		});
-
-		// fade 애니메이션 : 1초 동안 검게 됐다가 80%의 불투명으로 변합니다.
-		/* $('.mask').fadeIn(1000);  */
-		$('.mask').fadeTo("fast", 0.6);
-
-		// 레이어 팝업을 가운데로 띄우기 위해 화면의 높이와 너비의 가운데 값과 스크롤 값을 더하여 변수로 만듭니다.
-		var left = ($(window).scrollLeft() + ($(window).width() - $('.window').width()) / 2);
-		var top = ($(window).scrollTop() + ($(window).height() - $('.window').height()) / 2);
-
-		// css 스타일을 변경합니다.
-		$('.window').css({
-			'left' : left,
-			'top' : top,
-			'position' : 'absolute'
-		});
-
-		// 레이어 팝업을 띄웁니다.
-		$('.window').show();
-	}
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+    <meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/nav.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
 	$(document).ready(function() {
 		// showMask를 클릭시 작동하며 검은 마스크 배경과 레이어 팝업을 띄웁니다.
 		$('.showMask').click(function(e) {
@@ -56,6 +34,36 @@
 			$(this).hide();
 			$('.window').hide();
 		});
+		
+		function wrapWindowByMask() {
+			// 화면의 높이와 너비를 변수로 만듭니다.
+			var maskHeight = $(document).height();
+			var maskWidth = $(window).width();
+
+			// 마스크의 높이와 너비를 화면의 높이와 너비 변수로 설정합니다.
+			$('.mask').css({
+				'width' : maskWidth,
+				'height' : maskHeight
+			});
+
+			// fade 애니메이션 : 1초 동안 검게 됐다가 80%의 불투명으로 변합니다.
+			/* $('.mask').fadeIn(1000);  */
+			$('.mask').fadeTo("fast", 0.6);
+
+			// 레이어 팝업을 가운데로 띄우기 위해 화면의 높이와 너비의 가운데 값과 스크롤 값을 더하여 변수로 만듭니다.
+			var left = ($(window).scrollLeft() + ($(window).width() - $('.window').width()) / 2);
+			var top = ($(window).scrollTop() + ($(window).height() - $('.window').height()) / 2);
+
+			// css 스타일을 변경합니다.
+			$('.window').css({
+				'left' : left,
+				'top' : top,
+				'position' : 'absolute'
+			});
+
+			// 레이어 팝업을 띄웁니다.
+			$('.window').show();
+		}
 	});
 </script>
 <!-- header -->
@@ -89,7 +97,7 @@
 				</c:when>
 				<c:otherwise>
 					<li><span>${memberVO.name}님 환영합니다.</span>
-					<li><span><a href="????">My Page</a></span>
+					<li><span><a href="#">My Page</a></span>
 					<li><span><a href="${pageContext.request.contextPath}/Member/Logout.jsp">LogOut</a></span>
 				</c:otherwise>
 			</c:choose>
