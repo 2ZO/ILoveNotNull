@@ -11,7 +11,7 @@ regDate date not null,
 member_status varchar2(10) not null,
 class_package varchar2(10) not null --3회 or 5회
 )
-
+select * from yoga_member 
 -- 요가 강사 테이블 생성
 create table yoga_teacher(
 teacherId NUMBER primary key,
@@ -72,7 +72,6 @@ select * from post
 insert into post values(post_seq.nextval,'안녕','반가워요 테스트 중이예여','visitor',sysdate);
 
 
-
 drop table registerStatus;
 drop table yoga_member;
 drop table POST;
@@ -113,7 +112,7 @@ id,password,name,phone_number,address,email,password_question,password_answer,re
 --관리자
 insert into yoga_member(
 id,password,name,phone_number,address,email,password_question,password_answer,regDate,member_status,class_package
-) values('sys','1234','hwang',3434,'판교','naver.com','test','test',sysdate,'true','3');
+) values('visitor','1234','hwang',3434,'판교','naver.com','test','test',sysdate,'true','3');
 
 
 --멤버 정보 수정
