@@ -16,7 +16,12 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <!-- Respond.js 으로 IE8 에서 반응형 기능을 활성화하세요 (https://github.com/scottjehl/Respond) -->
         <script src="/resources/bootstrap/js/respond.js"></script>
-        
+        <style type="text/css">
+        	h2{
+        		width: 120px;
+        		margin: 0 auto;
+        	}
+        </style>
 </head>
 <body>
 	 <div class="container"><!-- 좌우측의 공간 확보 -->
@@ -47,8 +52,11 @@
 
             <div class="form-group" id="divId">
                 <label for="inputId" class="col-lg-2 control-label">아이디</label>
-                <div class="col-lg-10">
-                    <input type="text" class="form-control onlyAlphabetAndNumber" id="id" data-rule-required="true" placeholder="30자이내의 알파벳, 언더스코어(_), 숫자만 입력 가능합니다." maxlength="30">
+                <div class="col-lg-8">
+                    <input type="text" class="form-control onlyAlphabetAndNumber" id="id" data-rule-required="true" placeholder="30자이내의 알파벳, 언더스코어(_), 숫자만 입력 가능합니다." maxlength="30">	
+                </div>
+                <div class="col-lg-2">
+                	<input type="button" value="중복확인" onclick="checkId()">
                 </div>
             </div>
             <div class="form-group" id="divPassword">
@@ -95,8 +103,11 @@
              
             <div class="form-group" id="divEmail">
                 <label for="inputEmail" class="col-lg-2 control-label">이메일</label>
-                <div class="col-lg-10">
+                <div class="col-lg-8">
                     <input type="email" class="form-control" id="email" data-rule-required="true" placeholder="이메일" maxlength="40">
+                </div>
+                <div class="col-lg-2">
+                	<input type="button" value="중복확인" onclick="checkEmail()">
                 </div>
             </div>
             <div class="form-group" id="divPhoneNumber">

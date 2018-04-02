@@ -1,4 +1,3 @@
-
 /* CSS Document */
 @import url(https://fonts.googleapis.com/css?family=OpenSans);
 @import url(https://fonts.googleapis.com/css?family=BreeSerif);
@@ -117,11 +116,11 @@ li>a:only-child:after {
  content: '';
 }
 
-/* hwangMA added */
-/*  .setDiv {
+/* hwangMA added 
+.setDiv {
  padding-top: 100px;
  text-align: center;
-}  */
+} */
 
 .mask {
  position: absolute;
@@ -163,5 +162,3 @@ label,#loginBtn{
  font: bold;
  font-size:12pt;
 }
-
-
