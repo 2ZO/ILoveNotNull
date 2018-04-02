@@ -28,7 +28,7 @@ public class Read_LoginController implements Controller {
 		} else {
 			json= new JSONObject().put("flag", "true");
 			session.setAttribute("memberVO", vo);
-			session.setAttribute("url", "/Template/center.jsp");
+			request.setAttribute("url", "/Template/center.jsp");
 		}
 		request.setAttribute("responseBody", json);
 		return "AjaxView";

@@ -117,7 +117,7 @@ li>a:only-child:after {
 }
 
 /* hwangMA added 
-.setDiv {
+/* .setDiv {
  padding-top: 100px;
  text-align: center;
 } */
@@ -140,10 +140,10 @@ li>a:only-child:after {
 }
 
 .loginForm {
- /* Just to center the form on the page */
+ Just to center the form on the page
  margin: 0 auto;
  width: 400px;
- /* To see the outline of the form */
+ To see the outline of the form
  
  padding: 1em;
  border: 1px solid #CCC;
@@ -155,10 +155,10 @@ form div  div {
 }
 
 label,#loginBtn{
- /* To make sure that all label have the same size and are properly align */
+ To make sure that all label have the same size and are properly align
  display: inline-block;
  width: 90px;
  text-align: right;
  font: bold;
  font-size:12pt;
-}
+} */

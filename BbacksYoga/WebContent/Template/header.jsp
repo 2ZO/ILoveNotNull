@@ -32,22 +32,6 @@ $("#logInBtn").click(function(){
 });
 </script>
 <!-- header -->
-<div class="mask"></div>
-	<!-- modal형 로그인 페이지 -->
-	<form class="loginForm window" id="logInForm"
-		action="${pageContext.request.contextPath}/DispatcherServlet" method="post">
-		<input type="hidden" value="LogIn" name="command">
-		<div>
-			<label for="id">ID:</label> <input type="text" name="userId" required="required" />
-		</div>
-		<div>
-			<label for="password">PASSWORD:</label> <input type="password" required="required" name="userPassword" />
-		</div>
-		<div id="loginBtn">
-			<input type="button" value="LogIn" id="logInBtn"class="btn btn-dark" />
-			<label id="loginFail"></label>
-		</div>
-	</form>
 	<!-- header 쪽 로고 -->	
 	
 	<div class="row">
@@ -62,7 +46,7 @@ $("#logInBtn").click(function(){
 				<ul id="headerRight">
 					<c:choose>
 						<c:when test="${empty memberVO}">
-							<li><span class="showMask">Login</span>
+							<li><a href="${pageContext.request.contextPath}/Member/Login.Jsp">Login</a></li>
 							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=RegisterView">Join</a></li>
 							<!-- "	-->
 						</c:when>
