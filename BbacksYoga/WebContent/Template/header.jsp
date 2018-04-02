@@ -53,7 +53,7 @@
 				<ul class="nav navbar-nav">
 					<li class="dropdown"><a class="dropdown-toggle"	data-toggle="dropdown" href="#">Lesson</a>
 						<ul class="dropdown-menu">
-							<li><a href="#">프로그램 소개</a></li>
+							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=programList">프로그램 소개</a></li>
 							<li><a href="#">강좌시간표</a></li>
 							<li><a href="#">강좌 신청</a></li>
 						</ul></li>
