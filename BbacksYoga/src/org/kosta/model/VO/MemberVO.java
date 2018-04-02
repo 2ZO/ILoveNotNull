@@ -101,6 +101,13 @@ public class MemberVO {
 		this.class_package = class_package;
 	}
 
+	/*로그인 시 전부다 받으면 정보가 너무 많아서 id와 이름을 넣기위해 만듬*/
+		public MemberVO(String id,String name) {
+			super();
+			this.id=id;
+			this.name= name;
+		}
+	
 	public MemberVO(String id, String password, String name, String phone_number, String address, String email,
 			String password_question, String password_answer, String regDate, String member_status,
 			String class_package) {

@@ -40,20 +40,23 @@ teacherId NUMBER not null,
 capacity NUMBER not null,
 classTime NUMBER not null,
 classDay varchar2(10) not null,
-constraint fk_teacherId foreign key(teacherId) references YOGA_TEACHER,
-constraint fk_programNo foreign key(programNo) references yoga_program
+constraint fk_teacherId foreign key(teacherId) references YOGA_TEACHER(teacherId),
+constraint fk_programNo foreign key(programNo) references yoga_program(programNo),
+constraint uk_class unique(programNo, teacherId, classTime, classDay)            // 추가     
 )
 -- classNo 시퀀스 생성
 create sequence class_seq;
 
 create table registerStatus(
+rsNo NUMBER PRIMARY KEY,                      //추가  
 classNo NUMBER not null,
 id VARCHAR2(100) not null,
 regDate date not null,
 constraint fk_class foreign key(classNo) references yoga_class(classNo),
-constraint fk_yoga_member foreign key(id) references yoga_member(id),
-constraint pk_registerStatus primary key(classNo,id)
+constraint fk_yoga_member foreign key(id) references yoga_member(id)
 )
+
+create sequence rs_seq;                         //추가 
 
 create sequence post_seq; //postNo 생성
 create table POST(
@@ -64,9 +67,9 @@ id varchar2(50) not null,
 regDate date not null,
 constraint fk_post2 foreign key(id) references yoga_member(id)
 )
-drop table registerStatus
-drop table yoga_member
-drop table POST
+drop table registerStatus;
+drop table yoga_member;
+drop table POST;
 drop table yoga_class;
 drop table yoga_teacher;
 drop table yoga_program;
@@ -164,3 +167,14 @@ capacity,
 classTime,
 classDay
 ) values(class_seq.nextval,1,2,10,2,'fri');
+
+
+------------------------------------------------------------
+create table registerStatus(
+classNo NUMBER not null,
+id VARCHAR2(100) not null,
+regDate date not null,
+constraint fk_class foreign key(classNo) references yoga_class(classNo),
+constraint fk_yoga_member foreign key(id) references yoga_member(id),
+constraint pk_registerStatus primary key(classNo,id)
+)

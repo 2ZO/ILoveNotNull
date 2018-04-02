@@ -1,12 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="row profile_detail">
+  <img class="profile-img" src=${pageContext.request.contextPath}/Image/teacher/${requestScope.teacherInfo.img_url} >
+  <div class="profile-text">
+		<div class="profile-description">
+			<span id="name">${requestScope.teacherInfo.teacherName}</span>&nbsp;
+	    	<span id="nick">${requestScope.teacherInfo.teacherNick}</span><br>
+	    	<span class="profile-title">"${requestScope.teacherInfo.teacherProfile}"</span>
+        </div>
+        <div class="profile-description2">
+			<div class="profile-des">수강중인 프로그램</div>
+			<div class="profile-des">나중에 데이터 받아올 곳</div>
+        </div>
+        <div class="back_button"> 
+        <input id="back_page" type="button" value="목록으로" onclick="history.back()">
+        </div>
+  </div>
+</div>

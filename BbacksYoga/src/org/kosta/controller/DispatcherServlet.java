@@ -30,16 +30,7 @@ public class DispatcherServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		requestProcess(request, response);
 	}
-	/**
-	 * client?˜ commandë¥? ë°˜í™˜ë°›ëŠ”?‹¤
-	 * HandlerMapping?„ ?´?š©?•´ ì»¨íŠ¸ë¡¤ëŸ¬ êµ¬í˜„ì²´ë?? ë°˜í™˜ë°›ëŠ”?‹¤ 
-	 * ì»¨íŠ¸ë¡¤ëŸ¬ êµ¬í˜„ì²´ì˜ ?‘œì¤??™”?œ ë©”ì„œ?“œë¥? ?‹¤?–‰?•œ ?›„ 
-	 * ë°˜í™˜?˜?Š” url ? •ë³´ë?? ë°›ëŠ”?‹¤. 
-	 * ì»¨íŠ¸ë¡¤ëŸ¬ êµ¬í˜„ì²´ê? ëª…ì‹œ?•œ ?´?™ë°©ì‹ê³? url ?— ?˜ê±°í•´ 
-	 * Viewë¡? ?´?™?•œ?‹¤ ( redirect or forward ) 
-	 * ì»¨íŠ¸ë¡¤ëŸ¬ êµ¬í˜„ì²´ê? ?‹¤?–‰?˜?Š” ?„ì¤‘ì— ë°œìƒ?˜?Š” ëª¨ë“  Exception?—
-	 * ???•´ error.jspë¡? redirect ?•˜?„ë¡? ì²˜ë¦¬?•œ?‹¤. 
-	 */  
+
 	public void requestProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try{
 			String command=request.getParameter("command");
