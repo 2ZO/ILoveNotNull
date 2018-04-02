@@ -8,10 +8,10 @@
     <meta name="author" content="">
     <link rel="icon" href="../bootstrap-4.0.0/favicon.ico">
     <!-- Bootstrap core CSS -->
-<%--     <link href="${pageContext.request.contextPath}/bootstrap-4.0.0-dist/css/bootstrap.min.css" rel="stylesheet"> --%>
+    <link href="${pageContext.request.contextPath}/CSS/min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <%-- <link href="${pageContext.request.contextPath}/CSS/carousel.css" rel="stylesheet"> --%>
+    <link href="${pageContext.request.contextPath}/CSS/carousel.css" rel="stylesheet">
   </head>
   <body>
     <div class="container-fluid center">
