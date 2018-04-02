@@ -15,8 +15,16 @@ public class Read_ProgramListController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ArrayList<ProgramVO> list = ProgramDAO.getInstance().getProgramList();
+		System.out.println(list.get(0));
+		PagingBean pb = null;
+		String pno = request.getParameter("programNo");
 		int count = ProgramDAO.getInstance().getProgramListTotal();
-		PagingBean pb = new PagingBean(count);
+		if(pno==null) {
+			pb = new PagingBean(count);
+		}
+		else {
+			pb = new PagingBean(count, Integer.parseInt(pno));
+		}
 		request.setAttribute("pb", pb);
 		request.setAttribute("list", list);
 		request.setAttribute("url", "/Class/ProgramList.jsp");
