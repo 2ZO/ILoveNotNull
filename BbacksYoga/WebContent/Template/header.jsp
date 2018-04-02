@@ -68,7 +68,7 @@ $("#logInBtn").click(function(){
 						</c:when>
 						<c:otherwise>
 							<li><span>${memberVO.name}님 환영합니다.</span>
-							<li><span><a href="????">My Page</a></span>
+							<li><span><a href="#">My Page</a></span>
 							<li><span><a href="${pageContext.request.contextPath}/Member/Logout.jsp">LogOut</a></span>
 						</c:otherwise>
 					</c:choose>
@@ -76,11 +76,6 @@ $("#logInBtn").click(function(){
 			</div>	    
 	    </div>
  	</div>
-	
-	
-
-	
-	
 	<!-- 메뉴  -->
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
