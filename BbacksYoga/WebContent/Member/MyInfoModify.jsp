@@ -12,12 +12,19 @@
         	}
         </style>
         <script type="text/javascript">
-			var num ; 
-			/* var num="question2"; */
-        	$(document).ready(function() {     		
-				$("#passwordQuestion").val(num).prop("selected", true); 
-			})
-        </script>
+ 	var num ; 
+	/* var num="question2"; */
+    $(document).ready(function() {     		
+    	$("#passwordQuestion").val(num).prop("selected", true); 
+	});
+	function checkModify() {
+		var check_submit = confirm("개인정보를 변경 하시겠습니까?")
+			return check_submit;
+	}
+	function gobackMain() {
+		location.href="${pageContext.request.contextPath}/index.jsp";
+	}
+ </script>
 	<div class="container">
 	<div class="col-md-12 contents"><!-- 좌우측의 공간 확보 -->
             <!-- 헤더 들어가는 부분 -->

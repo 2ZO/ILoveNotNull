@@ -152,7 +152,7 @@ $("#password").change(function(){
                 <!-- 본문 들어가는 부분 -->
         <form class="form-horizontal" role="form" id="registerForm" method="post" action="${pageContext.request.contextPath}/DispatcherServlet">
         	<input type="hidden" name="command" value="register"> 	
-        	<input type="hidden" id=idFlag" value="false">
+        	<input type="hidden" id="idFlag" value="false">
         	<input type="hidden" id="pwdFlag" value="false">
         	<input type="hidden" id="emailFlag" value="false">
             <div class="form-group" id="divId">
