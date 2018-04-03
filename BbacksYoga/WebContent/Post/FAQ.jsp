@@ -1,28 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
-<html>
-<head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- <link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <link rel="stylesheet"	href="${pageContext.request.contextPath}/CSS/faq.css">
-<title>FAQ</title>
-</head>
-<body>
+
 <div class="container">
   <div class="col-md-12">
     <div class="tab-content panels-faq">
       <div class="tab-pane active" id="tab1">
         <div class="panel-group" id="help-accordion-1">
+        <h3>FAQ <br>(자주 묻는 질문)</h3>
           <div class="panel panel-default panel-help">
             <a href="#opret-produkt" data-toggle="collapse" data-parent="#help-accordion-1">
               <div class="panel-heading">
-                <h2>수강료는 어떻게 되나요?</h2>
+                <h4>수강료는 어떻게 되나요?</h4>
               </div>
             </a>
             <div id="opret-produkt" class="collapse in">
@@ -35,7 +30,7 @@
           <div class="panel panel-default panel-help">
             <a href="#rediger-produkt" data-toggle="collapse" data-parent="#help-accordion-1">
               <div class="panel-heading">
-                <h2>요가가 처음인데 수강할 수 있나요?</h2>
+                <h4>요가가 처음인데 수강할 수 있나요?</h4>
               </div>
             </a>
             <div id="rediger-produkt" class="collapse">
@@ -48,7 +43,7 @@
           <div class="panel panel-default panel-help">
             <a href="#ret-pris" data-toggle="collapse" data-parent="#help-accordion-1">
               <div class="panel-heading">
-                <h2>Question01</h2>
+                <h4>Question01</h4>
               </div>
             </a>
             <div id="ret-pris" class="collapse">
@@ -61,7 +56,7 @@
           <div class="panel panel-default panel-help">
             <a href="#slet-produkt" data-toggle="collapse" data-parent="#help-accordion-1">
               <div class="panel-heading">
-                <h2>Question02</h2>
+                <h4>Question02</h4>
               </div>
             </a>
             <div id="slet-produkt" class="collapse">
@@ -74,7 +69,7 @@
           <div class="panel panel-default panel-help">
             <a href="#opret-kampagne" data-toggle="collapse" data-parent="#help-accordion-1">
               <div class="panel-heading">
-                <h2>Question03</h2>
+                <h4>Question03</h4>
               </div>
             </a>
             <div id="opret-kampagne" class="collapse">
@@ -106,5 +101,3 @@
     </div>    
   </div>
 </div>
-</body>
-</html>

@@ -5,6 +5,12 @@ body {
   background-color: #eee;
  
 }
+/*설희 추가 css*/
+.container h3{
+	text-align: center;
+	margin-bottom: 45px;
+}
+
 
 .list-group.help-group {
   margin-bottom: 20px;
@@ -55,6 +61,8 @@ body {
 .tab-content.panels-faq {
   padding: 0;
   border: 0;
+  width: 70%;
+  margin: 40px auto 0;
 }
 
 .panel.panel-help {

@@ -51,7 +51,17 @@ body {
 	padding:0;
 }
 
+.marketing{
+	width: 80%;
+	margin: 0 auto;
+}
 
+.float-right{
+	display: inline;
+	float: right;
+	margin-top: 20px;
+	margin-right: 35px;
+}
 /* Sticky footer styles
 -------------------------------------------------- */
 .footer {

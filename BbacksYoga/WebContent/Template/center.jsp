@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../bootstrap-4.0.0/favicon.ico">
     <!-- Bootstrap core CSS -->
-    <link href="${pageContext.request.contextPath}/CSS/min.css" rel="stylesheet">
+   <link href="${pageContext.request.contextPath}/CSS/min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/CSS/carousel.css" rel="stylesheet">
@@ -70,7 +69,7 @@
       ================================================== -->
       <!-- Wrap the rest of the page in another container to center all the content. -->
 
-      <div class="container marketing">
+      <div class="marketing">
 
         <!-- Three columns of text below the carousel -->
         <div class="row">
@@ -99,7 +98,6 @@
       <!-- FOOTER -->
       <footer class="container">
         <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
     </main>
 
@@ -109,7 +107,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <!-- <script src="bootstrap-4.0.0-dist/js/vendor/popper.min.js"></script> -->
-    <script src="${pageContext.request.contextPath}/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <!-- <script src="bootstrap-4.0.0-dist/js/holder.min.js"></script> -->
   </div>

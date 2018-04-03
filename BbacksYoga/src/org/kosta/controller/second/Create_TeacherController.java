@@ -1,5 +1,6 @@
 package org.kosta.controller.second;
 
+import javax.mail.Multipart;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
