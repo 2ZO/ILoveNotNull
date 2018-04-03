@@ -11,15 +11,16 @@
         	}
         </style>
         <script type="text/javascript">
-			var num="${requestScope.MemberVO.password_question}"; 
+			var num ; 
 			/* var num="question2"; */
         	$(document).ready(function() {     		
 				$("#passwordQuestion").val(num).prop("selected", true); 
 			})
         </script>
-	 <div class="container"><!-- 좌우측의 공간 확보 -->
+	<div class="container">
+	<div class="col-md-12 contents"><!-- 좌우측의 공간 확보 -->
             <!-- 헤더 들어가는 부분 -->
-             <h2>회원가입</h2>
+             <h2>회원 정보 수정</h2>
             <!--// 헤더 들어가는 부분 -->
             <!-- 모달창 -->
             <div class="modal fade" id="defaultModal">
@@ -39,7 +40,7 @@
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
             <!--// 모달창 -->
-            <hr/>
+
                 <!-- 본문 들어가는 부분 -->
         <form class="form-horizontal" role="form" method="post" action="javascript:alert( 'success!' );">
 
@@ -123,5 +124,5 @@
             </div>
         </form>
         </div>
-</body>
+</div>
     

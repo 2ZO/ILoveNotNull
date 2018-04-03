@@ -5,6 +5,11 @@
 
 
 /*선생님 리스트 css*/
+	.contents{
+		margin-left:auto;
+		margin-right: auto;
+		margin-top: 20px;
+	}
 
 	/*강사 사진*/
 	.teacher-list img{

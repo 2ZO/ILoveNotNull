@@ -4,7 +4,7 @@
 <script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/postEditor.js"></script>
 <div class="container">
 	<div class="row text">
-		<div class="col-sm-12">
+		<div class="col-sm-12 contents">
 			<form action="DispatcherServlet" method="post" name="form" class="editorform">
 				<input type="hidden" name="command" value="postWrite"> 
 				<!-- 제목 -->
