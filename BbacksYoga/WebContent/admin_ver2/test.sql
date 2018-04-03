@@ -26,6 +26,9 @@ teacherProfile varchar2(600),
 imgUrl varchar2(100)
 )
 
+delete yoga_teacher where teacherId>20
+select * from yoga_teacher
+
 -- teacherId 시퀀스 생성
 create sequence tchNo_seq;
 
