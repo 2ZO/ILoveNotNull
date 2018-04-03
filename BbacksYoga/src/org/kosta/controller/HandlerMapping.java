@@ -53,8 +53,9 @@ public class HandlerMapping {
 			c = new Create_PostController();
 		} else if(command.equals("writePostView")) { //임시 글쓰기 확인하려고
 			c = new Create_PostControllerView();
-		}		
-		else if (command.equals("게시글수정")) {
+		} else if(command.equals("modifyPostView")) { // 게시글 수정시 기존 데이터 불러오기
+			c = new Read_ModifyPostView();
+		}else if (command.equals("postModify")) {
 			c = new Update_PostController();
 		} else if (command.equals("getDetailPost")) {
 			c = new Read_PostDetailController();
