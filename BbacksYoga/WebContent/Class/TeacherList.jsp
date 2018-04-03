@@ -5,7 +5,7 @@
 
 <!-- 선생님 리스트  -->
 <div class="container">
-	<div class="col-md-12">
+	<div class="col-md-12 contents">
 	      <div class="row teacher-list">
 	      	<c:forEach items="${requestScope.teacherList}" var="list">
 		      <!-- 선생님 박스  -->

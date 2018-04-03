@@ -53,11 +53,13 @@ constraint fk_programNo foreign key(programNo) references yoga_program(programNo
 constraint uk_class unique(programNo, teacherId, classTime, classDay)            // 추가     
 )
 
+
+
 select * from yoga_class;
 select p.programName from yoga_class c, YOGA_PROGRAM p where c.programno=p.programno and teacherid='1';
 -- classNo 시퀀스 생성
 create sequence class_seq;
-
+select * from post
 create table registerStatus(
 rsNo NUMBER PRIMARY KEY,                      
 classNo NUMBER not null,
@@ -66,6 +68,9 @@ regDate date not null,
 constraint fk_class foreign key(classNo) references yoga_class(classNo),
 constraint fk_yoga_member foreign key(id) references yoga_member(id)
 )
+
+
+
 
 create sequence rs_seq;                         //추가 
 

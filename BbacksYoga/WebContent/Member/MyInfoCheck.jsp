@@ -8,9 +8,12 @@
 		location.href="index.jsp";
 	</script>
 </c:if>
-
+<div class="container">
+	<div class="col-md-12 contents">
 <form action="DispatcherServlet" method="post"> <!-- 단순한 정보체크지만 패스워드를 넣기 때문에 post처리 -->
 <input type="hidden" name="command" value="passwordCheck">
 패스워드를 입력하세요 <input type="password" name="memberPassword" required="required">
 <input type="submit" value="비밀번호 확인">
 </form>
+</div>
+</div>
