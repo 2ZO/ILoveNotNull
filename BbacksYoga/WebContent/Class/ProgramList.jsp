@@ -1,7 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<table class="table table-hover">
+<!-- table css 추가 / QNA.jsp와 동일 css 적용 -->
+<style type="text/css">
+	table {
+    border-collapse: collapse;
+    width: 60%;
+	margin: 40px auto 0;
+}
+
+	th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+	tr:nth-child(even){background-color: #f2f2f2}
+
+	th {
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+<table >
 	<tr>
 		<th>프로그램 번호</th><th>프로그램 이름</th>
 	</tr>

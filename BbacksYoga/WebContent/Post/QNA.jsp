@@ -1,15 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style type="text/css">
+	table {
+    border-collapse: collapse;
+    width: 60%;
+	margin: 40px auto 0;
+}
 
-<!-- <style type="text/css">
-	th,td{
-		border:1px solid #000;
+	th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+	tr:nth-child(even){background-color: #f2f2f2}
+
+	th {
+    background-color: #4CAF50;
+    color: white;
+}
+	h3{
 		text-align: center;
 	}
-	/*테이블 디자인 다 똑같이 넣어요..*/
-</style> -->
-<script>
+</style>
+<script type="text/javascript">
 function getDetailPost(postNo){
 	location.href="${pageContext.request.contextPath}/DispatcherServlet?command=getDetailPost&postNo="+postNo;
 }
@@ -18,7 +32,8 @@ function createPost() {
 }
 </script>
 <input type="button" value="글쓰기" onclick="return createPost()">
-<table class="table table-bordered  table-hover boardlist">
+<h3>Q&amp;A</h3>
+<table>
   <thead>
   	<tr class="success">
     	<th>번호</th>
