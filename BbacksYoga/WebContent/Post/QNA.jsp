@@ -16,7 +16,7 @@ function getDetailPost(postNo){
 </script>
 <table class="table table-bordered  table-hover boardlist">
   <thead>
-  	<tr>
+  	<tr class="success">
     	<th>번호</th>
     	<th>제목</th>
     	<th>작성자</th>
@@ -41,7 +41,6 @@ function getDetailPost(postNo){
 	<c:if test="${pb.previousPageGroup}">
 		<li><a href="DispatcherServlet?command=postList&nowPage=${pb.startPageOfPageGroup-1}">&laquo;</a></li>
 	</c:if>
-	
 	<c:forEach var="paging" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}"> 
 		<c:choose>
 			<c:when test="${pb.nowPage!=paging}">

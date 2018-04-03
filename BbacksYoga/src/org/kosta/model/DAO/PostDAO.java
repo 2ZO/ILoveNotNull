@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 
 import org.kosta.model.VO.PostVO;
 import org.kosta.model.etc.DataSourceManager;
+import org.kosta.model.etc.PagingBean;
 
 public class PostDAO {
 	/*선화쨩을 위한 싱글톤과 커넥션풀*/
@@ -50,15 +51,21 @@ public class PostDAO {
 			closeAll(pstmt, con);
 		}		
 	}
-	public ArrayList<PostVO> getPostingList() throws SQLException {
+	public ArrayList<PostVO> getPostingList(PagingBean pb) throws SQLException {
 		ArrayList<PostVO> list=new ArrayList<PostVO>();
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
 			con=dataSource.getConnection();
-			String sql="select postNo,title,id,to_char(regdate,'YYYY.MM.DD') from POST order by postNo desc";
-			pstmt=con.prepareStatement(sql);
+			StringBuilder sql=new StringBuilder();
+			sql.append("select postNo,title,id,to_char(regDate,'YYYY.MM.DD') from ( ");
+			sql.append("select  row_number() over(order by postNo asc) ");
+			sql.append("as rnum,postNo,title,id,regDate from post)");
+			sql.append("where rnum between ? and ?");
+			pstmt=con.prepareStatement(sql.toString());
+			pstmt.setInt(1, pb.getStartRowNumber());
+			pstmt.setInt(2, pb.getEndRowNumber());
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				PostVO pvo=new PostVO();
