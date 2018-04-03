@@ -53,13 +53,16 @@ public class HandlerMapping {
 			c = new Create_PostController();
 		} else if(command.equals("writePostView")) { //임시 글쓰기 확인하려고
 			c = new Create_PostControllerView();
-		}		
-		else if (command.equals("게시글수정")) {
+		} else if(command.equals("modifyPostView")) { // 게시글 수정시 기존 데이터 불러오기
+			c = new Read_ModifyPostView();
+		}else if (command.equals("postModify")) {
 			c = new Update_PostController();
 		} else if (command.equals("getDetailPost")) {
 			c = new Read_PostDetailController();
 		} else if (command.equals("postList")) {
 			c = new Read_BoardController();
+		}else if(command.equals("deletePost")) { // 글쓰기 삭제
+			c = new Delete_BoardController();
 					//2조~
 		} else if (command.equals("teacherList")) {
 			c = new Read_TeacherListController();
@@ -71,7 +74,7 @@ public class HandlerMapping {
 			c = new Read_ProgramDetailController();
 		} else if (command.equals("passwordCheck")) {
 			c = new Read_MyInfoCheckController();
-		} else if (command.equals("내정보 수정")) {
+		} else if (command.equals("updateMyInfo")) {
 			c = new Update_MyInfoController();
 		} else if (command.equals("addTeacher")) { //강사등록
 			c = new Create_TeacherController();

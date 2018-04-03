@@ -22,7 +22,7 @@ public class Read_MyInfoCheckController implements Controller {
 			String password=request.getParameter("memberPassword");
 			mvo=MemberDAO.getInstance().checkMyinfoById(id, password);
 			if(mvo==null)
-				return "Member/password_fail.jsp";
+				return "Member/MyInfoCheck_fail.jsp";
 			else {
 				request.setAttribute("MemberVO", mvo);
 				request.setAttribute("url","/Member/MyInfoModify.jsp");
@@ -30,5 +30,4 @@ public class Read_MyInfoCheckController implements Controller {
 			}
 		}
 	}
-
 }

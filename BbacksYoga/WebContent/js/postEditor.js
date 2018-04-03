@@ -17,8 +17,10 @@
 	}
 	
 	//iframe 내용을 textarea로 전송
-    function datasubmit()
-    {
-            form.content.value = dhtmlframe.document.body.innerHTML;
-    }
+
+
+
+
+    
+
 

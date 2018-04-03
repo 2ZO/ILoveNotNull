@@ -19,10 +19,11 @@ public class Read_PostDetailController implements Controller {
 		if(session==null || session.getAttribute("memberVO")==null) {
 			return "redirect:index.jsp";
 		}else {
-			PostVO post = PostDAO.getInstance().getPostDetail(postNo);
+			PostVO post = PostDAO.getInstance().getPostDetailByPostNo(postNo);
 			request.setAttribute("postVO", post);
+			request.setAttribute("url", "/Post/PostDetail.jsp");
 		}
-		return "/Post/PostDeatil.jsp";
+		return "index.jsp";
 	}
 
 }

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <head>
         <meta charset="utf-8">
         <!-- meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0"/ -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,17 +11,20 @@
         <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요한) -->
         <script src="//code.jquery.com/jquery.js"></script>
         <!-- 모든 합쳐진 플러그인을 포함하거나 (아래) 필요한 각각의 파일들을 포함하세요 -->
-        <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <!-- Respond.js 으로 IE8 에서 반응형 기능을 활성화하세요 (https://github.com/scottjehl/Respond) -->
         <script src="/resources/bootstrap/js/respond.js"></script>
         <style type="text/css">
         	h2{
-        		width: 120px;
-        		margin: 0 auto;
+        		text-align: center;
+        		margin-top: 40px;
+        		margin-bottom: 10px;
         	}
         	span{
         		color:red;
+        	}
+        	label{
+        		margin-top: 13px;
         	}
         </style>
         
@@ -46,6 +48,9 @@ function flagTest(){
 }
 $(document).ready(function(){
 $("#checkId").click(function(){
+	if($("#id").val().length<8){
+		alert("8자 이상 입력해주세요");
+	}else{
 		$.ajax({
 		type:"get",
 		dataType:"json",
@@ -61,7 +66,8 @@ $("#checkId").click(function(){
 			}
 			//(info);
 		}//success
-	});//ajax
+	});//ajax	
+	}
 	});
 $("#id").change(function(){
 	$("#idCheck").html("");
@@ -77,6 +83,9 @@ $("#password").change(function(){
 });
 	//이메일중복체크
 	$("#checkEmail").click(function(){
+		if(!$("#email").val().match("@")){
+			alert("이메일 형식이 아닙니다");
+		}else{
 		$.ajax({
 		type:"get",
 		dataType:"json",
@@ -93,6 +102,7 @@ $("#password").change(function(){
 			//(info);
 		}//success
 	});//ajax
+		}
 	});
 	//패스워드 자릿수 제한
 	$("#password").on('keyup', function(){
@@ -104,8 +114,9 @@ $("#password").change(function(){
 	});
 	//비번 중복체크
 	$("#passwordCheck").keyup(function(){
-		console.log($(this).val());
-		if($("#password").val()==$(this).val()){ 
+		if($("#password").val().length<8){
+			$("#warnPasswordCheck").html("");
+		}else if($("#password").val()==$(this).val()){ 
 			$("#warnPasswordCheck").html("일치합니다.");
 		}else{
 			$("#warnPasswordCheck").html("일치하지 않습니다.");
@@ -115,8 +126,6 @@ $("#password").change(function(){
 	
 });
 </script>
-</head>
-<body>
 	 <div class="container"><!-- 좌우측의 공간 확보 -->
             <!-- 헤더 들어가는 부분 -->
              <h2>회원가입</h2>
@@ -139,17 +148,17 @@ $("#password").change(function(){
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
             <!--// 모달창 -->
-            <hr/>
+            <hr>
                 <!-- 본문 들어가는 부분 -->
         <form class="form-horizontal" role="form" id="registerForm" method="post" action="${pageContext.request.contextPath}/DispatcherServlet">
         	<input type="hidden" name="command" value="register"> 	
-        	<input type="hidden" id=idFlag" value="false">
+        	<input type="hidden" id="idFlag" value="false">
         	<input type="hidden" id="pwdFlag" value="false">
         	<input type="hidden" id="emailFlag" value="false">
             <div class="form-group" id="divId">
                 <label for="inputId" class="col-lg-3 control-label">아이디</label>
                 <div class="col-lg-4">
-                    <input type="text" class="form-control onlyAlphabetAndNumber" id="id" name="id" data-rule-required="true" placeholder="20자이내의 알파벳, 언더스코어(_), 숫자만 입력 가능합니다." maxlength="20" required="required">	
+                    <input type="text" class="form-control onlyAlphabetAndNumber" id="id" name="id" data-rule-required="true" placeholder="5자이상 20자 이하 알파벳과 숫자만 입력 가능합니다." maxlength="20" required="required">	
                 </div>
                 <div class="col-lg-4">
                 	<input type="button" value="중복확인" id="checkId">      
@@ -232,5 +241,4 @@ $("#password").change(function(){
             </div>
         </form>
         </div>
-</body>
     

@@ -148,5 +148,27 @@ public class MemberDAO {
 			closeAll(rs, pstmt,con);
 		}
 	}
+	public void updateMyInfo(MemberVO vo) throws SQLException {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=dataSource.getConnection();
+			StringBuilder sb = new StringBuilder();
+			sb.append("update yoga_member set password=?, phone_number=?, address=? ,email=?, password_question=?,");
+			sb.append("password_answer=?, name=? where id=?");
+			pstmt=con.prepareStatement(sb.toString());
+			pstmt.setString(1, vo.getPassword());
+			pstmt.setString(2, vo.getPhone_number());
+			pstmt.setString(3, vo.getAddress());
+			pstmt.setString(4, vo.getEmail());
+			pstmt.setString(5, vo.getPassword_question());
+			pstmt.setString(6, vo.getPassword_answer());
+			pstmt.setString(7, vo.getName());
+			pstmt.setString(8, vo.getId());
+			pstmt.executeUpdate();
+		}finally {
+			closeAll(pstmt, con);
+		}
+	}
 
 }
