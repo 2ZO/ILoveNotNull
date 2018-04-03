@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 
 import org.kosta.model.VO.PostVO;
 import org.kosta.model.etc.DataSourceManager;
+import org.kosta.model.etc.PagingBean;
 
 public class PostDAO {
 	/*선화쨩을 위한 싱글톤과 커넥션풀*/
@@ -50,15 +51,21 @@ public class PostDAO {
 			closeAll(pstmt, con);
 		}		
 	}
-	public ArrayList<PostVO> getPostingList() throws SQLException {
+	public ArrayList<PostVO> getPostingList(PagingBean pb) throws SQLException {
 		ArrayList<PostVO> list=new ArrayList<PostVO>();
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
 			con=dataSource.getConnection();
-			String sql="select postNo,title,id,to_char(regdate,'YYYY.MM.DD') from POST order by postNo desc";
-			pstmt=con.prepareStatement(sql);
+			StringBuilder sql=new StringBuilder();
+			sql.append("select postNo,title,id,to_char(regDate,'YYYY.MM.DD') from ( ");
+			sql.append("select  row_number() over(order by postNo asc) ");
+			sql.append("as rnum,postNo,title,id,regDate from post)");
+			sql.append("where rnum between ? and ?");
+			pstmt=con.prepareStatement(sql.toString());
+			pstmt.setInt(1, pb.getStartRowNumber());
+			pstmt.setInt(2, pb.getEndRowNumber());
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				PostVO pvo=new PostVO();
@@ -90,7 +97,7 @@ public class PostDAO {
 		}
 		return count;
 	}
-	public PostVO getPostDetail(String postNo) throws SQLException {
+	public PostVO getPostDetailByPostNo(String postNo) throws SQLException {
 		// TODO Auto-generated method stub
 		PostVO post = null;
 		Connection con=null;
@@ -98,7 +105,7 @@ public class PostDAO {
 		ResultSet rs=null;
 		try {
 			con=dataSource.getConnection();
-			String sql="select title,content,id,regDate from post where postNo=?;";
+			String sql="select title,content,id,regDate from post where postNo=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, Integer.parseInt(postNo));
 			rs=pstmt.executeQuery();
@@ -109,5 +116,34 @@ public class PostDAO {
 			closeAll(rs, pstmt, con);
 		}
 		return post;
+	}
+	public void UpdatePost(String postNo, String postTitle, String postContent) throws NumberFormatException, SQLException {
+				Connection con=null;
+				PreparedStatement pstmt=null;
+				try {
+					con=dataSource.getConnection();
+					String sql="update post set title=?, content=? where postno=?";
+					pstmt=con.prepareStatement(sql);
+					pstmt.setString(1, postTitle);
+					pstmt.setString(2, postContent);
+					pstmt.setString(3, postNo);
+					pstmt.executeUpdate();
+				}finally {
+					closeAll( pstmt, con);
+				}
+		
+	}
+	public void deletePost(String postNo) throws SQLException {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=dataSource.getConnection();
+			String sql="delete post where postno=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, postNo);
+			pstmt.executeUpdate();
+		}finally {
+			closeAll( pstmt, con);
+		}		
 	}
 }
