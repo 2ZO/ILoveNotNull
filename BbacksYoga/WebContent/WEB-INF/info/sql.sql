@@ -53,9 +53,10 @@ constraint fk_programNo foreign key(programNo) references yoga_program(programNo
 constraint uk_class unique(programNo, teacherId, classTime, classDay)          //추가     
 )
 
-
-
-select * from yoga_class;
+delete from yoga_class where programNo=2;
+select class_seq.currval from dual;
+select c.programNo, c.teacherid, c.classtime,c.classDay from yoga_class c where classId=133;
+select c.programNo, c.teacherid, c.classtime,c.classDay from yoga_class c;
 select p.programName from yoga_class c, YOGA_PROGRAM p where c.programno=p.programno and teacherid='1';
 -- classNo 시퀀스 생성
 create sequence class_seq;
@@ -103,6 +104,7 @@ drop sequence tch_seq;
 select * from yoga_member;
 select * from yoga_class;
 select * from yoga_teacher;
+delete from yoga_teacher where teacherid=1;
 select * from yoga_program;
 select * from POST;
 select * from registerStatus
@@ -205,3 +207,6 @@ regDate date not null,
 constraint fk_class foreign key(classNo) references yoga_class(classNo),
 constraint fk_yoga_member foreign key(id) references yoga_member(id)
 )
+
+delete from yoga_class where teacherid=22;
+delete from yoga_teacher where teacherid=21;

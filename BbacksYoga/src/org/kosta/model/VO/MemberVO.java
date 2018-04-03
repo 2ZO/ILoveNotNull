@@ -107,7 +107,6 @@ public class MemberVO {
 			this.id=id;
 			this.name= name;
 		}
-	
 	public MemberVO(String id, String password, String name, String phone_number, String address, String email,
 			String password_question, String password_answer, String regDate, String member_status,
 			String class_package) {
