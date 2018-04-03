@@ -6,7 +6,7 @@
   <img class="profile-img" src=${pageContext.request.contextPath}/Image/teacher/${requestScope.teacherInfo.img_url} >
   <div class="profile-text">
 		<div class="profile-description">
-			<span id="name">${requestScope.teacherInfo.teacherName}</span>&nbsp;
+			<span id="tName">${requestScope.teacherInfo.teacherName}</span>&nbsp;
 	    	<span id="nick">${requestScope.teacherInfo.teacherNick}</span><br>
 	    	<span class="profile-title">"${requestScope.teacherInfo.teacherProfile}"</span>
         </div>

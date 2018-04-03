@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
-
         <style type="text/css">
         	h2{
-        		width: 120px;
-        		margin: 0 auto;
+        		text-align: center;
+        		margin-top: 40px;
+        		margin-bottom: 10px;
+        	}
+        	label{
+        		margin-top: 13px;
         	}
         </style>
         <script type="text/javascript">
