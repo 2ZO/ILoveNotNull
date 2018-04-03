@@ -40,7 +40,10 @@ function postModify() {
 				<!-- </textarea> -->
 				<!-- 글 등록 & 취소-->
 				<div class="post_button">
+								<!--글쓴이와 현재 접속자와 아이디 비교, 수정가능여부 판단  -->
+				<c:if test="${memberVO.id== postVO.id}">
 					<input id="post_button_bt" type="submit" value="수정" onsubmit="return postModify()">
+								</c:if>
 					<input id="post_button_bt" type="button" value="확인"
 						Onclick="history.back()">
 				</div>
