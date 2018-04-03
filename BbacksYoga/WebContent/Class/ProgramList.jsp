@@ -16,10 +16,12 @@
 <div class="pagingInfo">
 	<c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
 	<ul class="pagination">
+	
 	<c:if test="${pb.previousPageGroup}">	
 		<li><a href="DispatcherServlet?command=programList&pageNo=${pb.startPageOfPageGroup-1}">&laquo;</a></li>
 	</c:if>
 	<c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
+	
 	<c:choose>
 	<c:when test="${pb.nowPage!=i}">
 		<li><a href="DispatcherServlet?command=programList&pageNo=${i}">${i}</a></li> 
@@ -28,6 +30,7 @@
 		<li class="active"><a href="#" >${i}</a></li>
 	</c:otherwise>
 	</c:choose>
+	
 		&nbsp;
 	</c:forEach>
 	<c:if test="${pb.nextPageGroup}">	
