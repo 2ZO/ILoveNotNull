@@ -30,7 +30,6 @@ public class Update_MyInfoController implements Controller {
 				String phone_number = request.getParameter("phoneNumber");
 				MemberVO vo = new MemberVO(id, password, name, phone_number, address, email, password_question, password_answer, null, null, null );
 				MemberDAO.getInstance().updateMyInfo(vo);
-				MemberDAO.getInstance().LogIn(id, password);
 				session.setAttribute("memberVO", vo);
 				return "DispatcherServlet?command=updateMyInfoPreview";
 			}

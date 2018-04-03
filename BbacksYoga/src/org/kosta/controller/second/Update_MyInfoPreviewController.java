@@ -1,5 +1,7 @@
 package org.kosta.controller.second;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,9 +22,12 @@ public class Update_MyInfoPreviewController implements Controller {
 			if(mvo==null) {
 				return "Member/MyInfoCheck_fail.jsp";
 			} else {
-				request.setAttribute("url", "/Member/MyInfoModify.jsp");
-				return "redirect:Template/layout.jsp";
+				MemberVO mvo1  =(MemberVO)session.getAttribute("memberVO");
+				ArrayList<MemberVO> list = MemberDAO.getInstance().getPasswordById(mvo1.getId());
+				request.setAttribute("list", list);
+				MemberDAO.getInstance().checkMyinfoById(list.get(0).getId(), list.get(0).getPassword());
 			}
 		}
+		return "DispatcherServlet?command=passwordCheck";
 	}
 }

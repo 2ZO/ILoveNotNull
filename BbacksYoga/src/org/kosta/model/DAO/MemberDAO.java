@@ -4,10 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 import javax.sql.DataSource;
 
 import org.kosta.model.VO.MemberVO;
 import org.kosta.model.etc.DataSourceManager;
+
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 	 
 public class MemberDAO {
 	private static MemberDAO dao=new MemberDAO();
@@ -169,5 +173,25 @@ public class MemberDAO {
 		}finally {
 			closeAll(pstmt, con);
 		}
+	}
+	public ArrayList<MemberVO> getPasswordById(String id) throws SQLException {
+		// TODO Auto-generated method stub
+		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;	
+		try{
+			con=dataSource.getConnection();
+			String sql="select password from yoga_member where id=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				list.add(new MemberVO(id, rs.getString(1), null, null, null, null, null, null, null, null, null));
+			}
+		}finally{
+			closeAll(rs, pstmt,con);
+		}
+		return list;
 	}
 }
