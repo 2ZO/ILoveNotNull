@@ -195,5 +195,7 @@ regDate date not null,
 constraint fk_class foreign key(classNo) references yoga_class(classNo),
 constraint fk_yoga_member foreign key(id) references yoga_member(id)
 )
+select p.programno, c.teacherid from yoga_class c, YOGA_PROGRAM p where c.programno=p.programno and teacherid=1;
 
+select c.classno, p.programname, c.classday,c.capacity from yoga_class c, YOGA_PROGRAM p where c.programno=p.programno and teacherid=1;
 create sequence rs_seq;    

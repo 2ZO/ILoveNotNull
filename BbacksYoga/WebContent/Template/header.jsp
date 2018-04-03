@@ -107,7 +107,8 @@
                   </ul></li>
             </ul>
           
-            <c:if test="${empty memberVO || !memberVO.id eq 'sys'} ">
+             <c:if test="${empty sessionScope.memberVO || !empty sessionScope.memberVO.id  }"> 
+				<c:if test="${sessionScope.memberVO.id ne 'sys'}">
 				<ul class="nav navbar-nav">
 				<li class="dropdownn">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#">My Page</a>
@@ -117,13 +118,14 @@
                   </ul>
                   </li>
                    </ul>
+                   </c:if>
             </c:if>
             <c:if test="${memberVO.id eq 'sys'}">
 				<ul class="nav navbar-nav">
 				<li class="dropdownn">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#">관리자</a>
 				<ul class="dropdown-menu">
-                     <li><a href="DispatcherServlet?command=page&url=/admin_ver2/Create_AddClass.jsp">강좌 등록</a></li>
+                     <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=addClassView">강좌 등록</a></li>
                      <li><a href="DispatcherServlet?command=page&url=/admin_ver2/Create_AddTeacher.jsp">강사 등록</a></li>
                      <li><a href="DispatcherServlet?command=page&url=/admin_ver2/Create_Program.jsp">과목 등록</a></li>
                   </ul>
