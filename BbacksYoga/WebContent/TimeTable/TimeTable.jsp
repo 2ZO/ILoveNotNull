@@ -4,20 +4,26 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-   $(".regLink").click(function(){
-	   if(${sessionScope.memberVO.id==null}){
-		   alert("로그인을 하세요.");
-		   return false;
-	   }
-	      if(${requestScope.userPackage>0}){
-	          return confirm($(this).text()+"를 수강하시겠습니까?");
-	       }else{
-	          alert("수강신청 가능 횟수를 모두 소모하셨습니다.");
-	          return false;
-	       }
-	    }); //click
-	 });//ready
-</script>
+	$("#timetable td").hover(function(){
+		$(this).css("background","rgba(153, 153, 153, 0.8)");
+	},function(){
+		$(this).css("background","rgba(224, 224, 209, 0.5)");
+	});
+	   $(".regLink").click(function(){
+		   if(${sessionScope.memberVO.id==null}){
+			   alert("로그인을 하세요.");
+			   return false;
+		   }
+		      if(${requestScope.userPackage>0}){
+		    	 var info=$(this).html().split("<br>");
+		         return confirm(info+"를 수강하시겠습니까?");
+		       }else{
+		          alert("수강신청 가능 횟수를 모두 소모하셨습니다.");
+		          return false;
+		       }
+		    }); //click
+		 });//ready
+	</script>
 
 <style type="text/css">
 table {
@@ -37,6 +43,8 @@ body {
 }
 
 th, td {
+	background-color: rgba(224, 224, 209, 0.5);
+	text-align: center;
  	border-style: solid; 
 	border-width: 1px;
     padding: 8px;
@@ -48,7 +56,7 @@ a{
 	
 }
 a:hover{
-	color: pink;
+	color: white;
 	text-decoration: none;
 }
 .fullClass{
@@ -70,7 +78,7 @@ a:hover{
 				<th>SAT</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody id="timetable">
 			<c:forEach begin="1" end="8" varStatus="countOfClassTime">
 				<tr>
 					<td>${countOfClassTime.count }</td>
@@ -94,3 +102,6 @@ a:hover{
 		</tbody>
 	</table>
 </div>
+<audio id="myAudio" controls autoplay="autoplay" loop="loop" hidden="">
+  <source src="TimeTable/dumb_dumb.mp3" type="audio/mpeg" >
+</audio>

@@ -18,6 +18,7 @@ table {
 }
 
 th, td {
+	text-align: center;
 	border-style: solid;
 	border-width: 1px;
     padding: 8px;
@@ -27,7 +28,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 
 </style>
 <div class="container">
-<a href="index.jsp">Back</a>
+ <input id="back_page" type="button" value="Back" onclick="history.back()">
 	<table>
 		<thead>
 			<tr>
@@ -66,7 +67,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 							</c:when>
 						</c:choose>
 					</td>
-					<td>${list.classTime }</td>
+					<td>${list.classTime }교시</td>
 					<td>${list.regDate }</td>
 					<td><input type="button" value="수강취소" onclick="delete_register(${list.classNo})"></td>
 				</tr>
