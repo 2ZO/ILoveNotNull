@@ -46,6 +46,9 @@ function flagTest(){
 }
 $(document).ready(function(){
 $("#checkId").click(function(){
+	if($("#id").val().length<8){
+		alert("8자 이상 입력해주세요");
+	}else{
 		$.ajax({
 		type:"get",
 		dataType:"json",
@@ -61,7 +64,8 @@ $("#checkId").click(function(){
 			}
 			//(info);
 		}//success
-	});//ajax
+	});//ajax	
+	}
 	});
 $("#id").change(function(){
 	$("#idCheck").html("");
@@ -77,6 +81,9 @@ $("#password").change(function(){
 });
 	//이메일중복체크
 	$("#checkEmail").click(function(){
+		if(!$("#email").val().match("@")){
+			alert("이메일 형식이 아닙니다");
+		}else{
 		$.ajax({
 		type:"get",
 		dataType:"json",
@@ -93,6 +100,7 @@ $("#password").change(function(){
 			//(info);
 		}//success
 	});//ajax
+		}
 	});
 	//패스워드 자릿수 제한
 	$("#password").on('keyup', function(){
@@ -104,8 +112,9 @@ $("#password").change(function(){
 	});
 	//비번 중복체크
 	$("#passwordCheck").keyup(function(){
-		console.log($(this).val());
-		if($("#password").val()==$(this).val()){ 
+		if($("#password").val().length<8){
+			$("#warnPasswordCheck").html("");
+		}else if($("#password").val()==$(this).val()){ 
 			$("#warnPasswordCheck").html("일치합니다.");
 		}else{
 			$("#warnPasswordCheck").html("일치하지 않습니다.");
@@ -149,7 +158,7 @@ $("#password").change(function(){
             <div class="form-group" id="divId">
                 <label for="inputId" class="col-lg-3 control-label">아이디</label>
                 <div class="col-lg-4">
-                    <input type="text" class="form-control onlyAlphabetAndNumber" id="id" name="id" data-rule-required="true" placeholder="20자이내의 알파벳, 언더스코어(_), 숫자만 입력 가능합니다." maxlength="20" required="required">	
+                    <input type="text" class="form-control onlyAlphabetAndNumber" id="id" name="id" data-rule-required="true" placeholder="5자이상 20자 이하 알파벳과 숫자만 입력 가능합니다." maxlength="20" required="required">	
                 </div>
                 <div class="col-lg-4">
                 	<input type="button" value="중복확인" id="checkId">      
