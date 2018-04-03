@@ -15,6 +15,6 @@ public class Delete_RegisterClassController implements Controller {
 		HttpSession session=request.getSession(false);
 		MemberVO vo=(MemberVO) session.getAttribute("memberVO");
 		RSDAO.getInstance().Delete_RegisterClass(vo.getId(),Integer.parseInt(request.getParameter("classNo")));
-		return "/DispatcherServlet?command=Read_Register";
+		return "redirect:DispatcherServlet?command=Read_Register";
 	}
 }

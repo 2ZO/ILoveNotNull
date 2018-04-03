@@ -4,6 +4,7 @@
 <!Doctype html>
 <html>
 <head>
+<title>*빽스요가*</title>
 <meta charset="utf-8">
 
 <!--  내부 CSS -->
@@ -19,7 +20,7 @@
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <!-- script url test -->
-
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
 
 <!-- 팝업창 js -->

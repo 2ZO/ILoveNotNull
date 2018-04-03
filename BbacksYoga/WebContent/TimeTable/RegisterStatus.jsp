@@ -3,12 +3,15 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript">
+	//수강 취소
 	function delete_register(classNo){
 		if(confirm("해당 강좌를 취소하시겠습니까?")){
 			location.href="DispatcherServlet?command=Delete_Register&classNo="+classNo;
 		}
 	}
 </script>
+
+<!-- CSS -->
 <style type="text/css">
 
 table {
@@ -26,9 +29,17 @@ th, td {
 
 tr:nth-child(even){background-color: #f2f2f2}
 
+#back_page{
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
 </style>
-<div class="container">
- <input id="back_page" type="button" value="Back" onclick="history.back()">
+
+<div class="col-sm-1"></div>
+<div class="col-sm-10">
+<!-- timetable 링크 -->
+ <a href="${pageContext.request.contextPath}/DispatcherServlet?command=Read_Timetable"><input id="back_page" type="button" value="TimeTable" ></a>
 	<table>
 		<thead>
 			<tr>
@@ -41,6 +52,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 			</tr>
 		</thead>
 		<tbody>
+			<!-- 수강내역 뿌리기 -->
 			<c:forEach items="${registerStatus_list }" var="list">
 				<tr>
 					<td>${list.programName }</td>
@@ -75,3 +87,4 @@ tr:nth-child(even){background-color: #f2f2f2}
 		</tbody>
 	</table>
 </div>
+<div class="col-sm-1"></div>
