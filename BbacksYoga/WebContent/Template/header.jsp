@@ -103,7 +103,6 @@
                   <ul class="dropdown-menu">
                      <li><a href="DispatcherServlet?command=page&url=/Post/FAQ.jsp">FAQ</a></li>
                      <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=postList&nowPage=1">Q&amp;A</a></li>
-                     <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=writePostView">(임시) 글쓰기</a></li>
                   </ul></li>
             </ul>
           

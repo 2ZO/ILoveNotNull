@@ -117,4 +117,33 @@ public class PostDAO {
 		}
 		return post;
 	}
+	public void UpdatePost(String postNo, String postTitle, String postContent) throws NumberFormatException, SQLException {
+				Connection con=null;
+				PreparedStatement pstmt=null;
+				try {
+					con=dataSource.getConnection();
+					String sql="update post set title=?, content=? where postno=?";
+					pstmt=con.prepareStatement(sql);
+					pstmt.setString(1, postTitle);
+					pstmt.setString(2, postContent);
+					pstmt.setString(3, postNo);
+					pstmt.executeUpdate();
+				}finally {
+					closeAll( pstmt, con);
+				}
+		
+	}
+	public void deletePost(String postNo) throws SQLException {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=dataSource.getConnection();
+			String sql="delete post where postno=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, postNo);
+			pstmt.executeUpdate();
+		}finally {
+			closeAll( pstmt, con);
+		}		
+	}
 }

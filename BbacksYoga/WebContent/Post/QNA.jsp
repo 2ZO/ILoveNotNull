@@ -13,7 +13,11 @@
 function getDetailPost(postNo){
 	location.href="${pageContext.request.contextPath}/DispatcherServlet?command=getDetailPost&postNo="+postNo;
 }
+function createPost() {
+	location.href="${pageContext.request.contextPath}/DispatcherServlet?command=writePostView";
+}
 </script>
+<input type="button" value="글쓰기" onclick="return createPost()">
 <table class="table table-bordered  table-hover boardlist">
   <thead>
   	<tr class="success">
