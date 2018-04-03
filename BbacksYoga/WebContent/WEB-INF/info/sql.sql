@@ -208,5 +208,5 @@ constraint fk_class foreign key(classNo) references yoga_class(classNo),
 constraint fk_yoga_member foreign key(id) references yoga_member(id)
 )
 
-delete from yoga_class where teacherid=1;
+delete from yoga_class where teacherid=22;
 delete from yoga_teacher where teacherid=21;
