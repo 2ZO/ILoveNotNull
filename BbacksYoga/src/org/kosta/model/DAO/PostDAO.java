@@ -133,4 +133,17 @@ public class PostDAO {
 				}
 		
 	}
+	public void deletePost(String postNo) throws SQLException {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=dataSource.getConnection();
+			String sql="delete post where postno=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, postNo);
+			pstmt.executeUpdate();
+		}finally {
+			closeAll( pstmt, con);
+		}		
+	}
 }

@@ -17,13 +17,18 @@ function postModify() {
 	else
 		return false
 }
-
+function postRemove(){
+	var flag=confirm("삭제하시겠습니까?");
+	if(flag)
+		location.href="DispatcherServlet?command=deletePost&postNo=${postVO.postNo}";
+	else
+		return false
+}
 </script>
 <div class="container">
 	<div class="row text">
 		<div class="col-sm-12">
-			<form action="DispatcherServlet" method="post" name="form"
-				class="editorform">
+			<form action="DispatcherServlet" method="post" name="form" class="editorform" onsubmit="return postModify()">
 				<input type="hidden" name="command" value="modifyPostView">
 				<input type="hidden" name="postNo" value="${postVO.postNo}">
 				<!-- 제목 -->
@@ -42,10 +47,10 @@ function postModify() {
 				<div class="post_button">
 								<!--글쓴이와 현재 접속자와 아이디 비교, 수정가능여부 판단  -->
 				<c:if test="${memberVO.id== postVO.id}">
-					<input id="post_button_bt" type="submit" value="수정" onsubmit="return postModify()">
-								</c:if>
-					<input id="post_button_bt" type="button" value="확인"
-						Onclick="history.back()">
+					<input id="post_button_bt" type="submit" value="수정" >
+					<input id="post_button_bt" type="button" value="삭제" onclick="return postRemove()">
+				</c:if>
+					<input id="post_button_bt" type="button" value="확인" Onclick="history.back()">
 				</div>
 			</form>
 		</div>
