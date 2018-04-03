@@ -26,9 +26,15 @@ th, td {
 
 tr:nth-child(even){background-color: #f2f2f2}
 
+#back_page{
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
 </style>
-<div class="container">
- <input id="back_page" type="button" value="Back" onclick="history.back()">
+<div class="col-sm-1"></div>
+<div class="col-sm-10">
+ <a href="${pageContext.request.contextPath}/DispatcherServlet?command=Read_Timetable"><input id="back_page" type="button" value="TimeTable" ></a>
 	<table>
 		<thead>
 			<tr>
@@ -75,3 +81,4 @@ tr:nth-child(even){background-color: #f2f2f2}
 		</tbody>
 	</table>
 </div>
+<div class="col-sm-1"></div>

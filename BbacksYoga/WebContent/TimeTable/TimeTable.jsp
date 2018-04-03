@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.Date"%>
+<%@page import="org.kosta.model.etc.classDay"%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#timetable td").hover(function(){
+/* 	$("#timetable td").hover(function(){	//<td> 호버 색상 변화 기능
 		$(this).css("background","rgba(153, 153, 153, 0.8)");
 	},function(){
 		$(this).css("background","rgba(224, 224, 209, 0.5)");
-	});
+	}); */
 	   $(".regLink").click(function(){
 		   if(${sessionScope.memberVO.id==null}){
 			   alert("로그인을 하세요.");
@@ -34,6 +37,8 @@ table {
 	background-size: cover;
 	font-weight: bold;
 	opacity: 0.8;
+	padding-left: 150px;
+	padding-right: 150px;
 }
 
 body {
@@ -62,12 +67,33 @@ a:hover{
 .fullClass{
 	color:red;
 }
-
+#back_page{
+		margin-top: 10px;
+	margin-bottom: 5px;
+}
+#table_head{
+	background-color: black;
+	color: white;
+}
+#today{
+	background-color: rgba(255,204,0,0.5);
+}
 </style>
-<div class="container">
-<!-- <a href="DispatcherServlet?command=Read_Register">수강내역확인</a>&emsp; -->신청 가능 횟수: <span id="userPackage">${requestScope.userPackage}</span>
-	<table>
-		<thead>
+<%
+	pageContext.setAttribute("today", new Date().getDay()-1);	
+%>
+<div class="col-sm-1" ></div>
+<div class="col-sm-10">
+	<c:choose>
+	<c:when test="${sessionScope.memberVO.id!=null }">
+	<input id="back_page" type="button" value="신청 가능 횟수: ${requestScope.userPackage}" >
+	</c:when>
+	<c:otherwise>
+	<input id="back_page" type="button" value="로그인을 하세요." >
+	</c:otherwise>
+</c:choose>
+	<table id="maintable">
+		<thead id="table_head">
 			<tr>
 				<th>TIME</th>
 				<th>MON</th>
@@ -83,7 +109,15 @@ a:hover{
 				<tr>
 					<td>${countOfClassTime.count }</td>
 					<c:forEach begin="0" end="5" varStatus="week">
-					<td><c:forEach items="${timetable_list }" var="list" varStatus="tdNo">
+					<c:choose>
+						<c:when test="${week.index eq pageScope.today }">
+							<td id="today">
+						</c:when>
+						<c:otherwise>
+							<td>
+						</c:otherwise>
+					</c:choose>
+					<c:forEach items="${timetable_list }" var="list" varStatus="tdNo">
 							<c:if test="${list.classTime==countOfClassTime.count&&list.classDay==week.index }">
 								<c:choose>
 									<c:when test="${list.capacity==list.count_reg }">
@@ -102,6 +136,4 @@ a:hover{
 		</tbody>
 	</table>
 </div>
-<audio id="myAudio" controls autoplay="autoplay" loop="loop" hidden="">
-  <source src="TimeTable/dumb_dumb.mp3" type="audio/mpeg" >
-</audio>
+<div class="col-sm-1" ></div>

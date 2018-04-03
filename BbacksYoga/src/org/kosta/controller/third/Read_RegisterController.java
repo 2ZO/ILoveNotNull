@@ -18,7 +18,7 @@ public class Read_RegisterController implements Controller {
 		HttpSession session=request.getSession(false);
 		MemberVO vo=(MemberVO) session.getAttribute("memberVO");//session값 받기
 		if(session==null||vo==null) {
-			return "/DispatcherServlet?command=page&url=/Member/MyInfoCheck.jsp";
+			return "/DispatcherServlet?command=page&url=/Member/Login.jsp";
 		}
 		ArrayList<RSVO> list=RSDAO.getInstance().Read_RegisteRStatus(vo.getId());
 		request.setAttribute("registerStatus_list", list);

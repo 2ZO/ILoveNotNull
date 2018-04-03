@@ -50,8 +50,22 @@ body {
 	width: 100%;
 	padding:0;
 }
+/* 로그인창 여백 중앙정렬*/
+.login_col{
+	margin: auto 0 !important;
+}
 
+.marketing{
+	width: 80%;
+	margin: 0 auto;
+}
 
+.float-right{
+	display: inline;
+	float: right;
+	margin-top: 20px;
+	margin-right: 35px;
+}
 /* Sticky footer styles
 -------------------------------------------------- */
 .footer {

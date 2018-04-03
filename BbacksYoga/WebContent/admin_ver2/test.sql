@@ -10,7 +10,7 @@ password_answer varchar2(100) not null,
 regDate date not null,
 member_status varchar2(10) not null,
 class_package varchar2(10) not null --3회 or 5회
-)
+) 
 select count(*) from yoga_program;
 select programNo, programName
 from(
@@ -197,5 +197,14 @@ constraint fk_yoga_member foreign key(id) references yoga_member(id)
 )
 select p.programno, c.teacherid from yoga_class c, YOGA_PROGRAM p where c.programno=p.programno and teacherid=1;
 
+<<<<<<< HEAD
 select c.classno, p.programname, c.classday,c.capacity from yoga_class c, YOGA_PROGRAM p where c.programno=p.programno and teacherid=1;
 create sequence rs_seq;    
+=======
+create sequence rs_seq;    
+
+--멤버 업데이트
+select * from yoga_member;
+update yoga_member set password='1234', phone_number='1', address='1' ,email='1@2', password_answer='1', name='1'  where id='html';
+update yoga_member set password=?, phone_number=?, address=? ,email=?, password_question=?, password_answer=?, name=? where id=? 
+>>>>>>> branch 'master' of https://github.com/2ZO/ILoveNotNull.git

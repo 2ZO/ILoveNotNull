@@ -18,13 +18,17 @@ public class Read_BoardController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int total=PostDAO.getInstance().getTotalPostCount();
-		int nowpage=Integer.parseInt(request.getParameter("nowPage"));
-		PagingBean pb=new PagingBean(nowpage,total);
-		ArrayList<PostVO> list=PostDAO.getInstance().getPostingList();
-		request.setAttribute("url", "/Post/QNA.jsp");
+		String nowpage=request.getParameter("nowPage");
+		PagingBean pb=null;
+		if(nowpage==null) {
+			pb=new PagingBean(total);
+		}else {
+			pb=new PagingBean(total,Integer.parseInt(nowpage));
+		}
+		ArrayList<PostVO> list=PostDAO.getInstance().getPostingList(pb);
 		PostListVO lvo=new PostListVO(list,pb);
 		request.setAttribute("lvo", lvo);
-
+		request.setAttribute("url", "/Post/QNA.jsp");
 		return "Template/layout.jsp";
 	}
 }

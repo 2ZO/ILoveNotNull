@@ -2,10 +2,19 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/postEditor.js"></script>
+<script type="text/javascript">
+function datasubmit()
+{
+	form.content.value = dhtmlframe.document.body.innerHTML;
+	return confirm('글을 등록하겠음?');
+	
+}
+
+</script>
 <div class="container">
 	<div class="row text">
 		<div class="col-sm-12 contents">
-			<form action="DispatcherServlet" method="post" name="form" class="editorform">
+			<form action="DispatcherServlet" method="post" name="form" class="editorform" onsubmit="return datasubmit()">
 				<input type="hidden" name="command" value="postWrite"> 
 				<!-- 제목 -->
 				글제목 <input type="text" class="title" name="title" required="required"><br> 
@@ -81,7 +90,7 @@
 				<textarea rows="10" cols="40" class="postContents" name="content">	</textarea>
 				<!-- 글 등록 & 취소-->
 				<div class="post_button">
-					<input id="post_button_bt" type="submit" value="등록" Onclick="datasubmit()">
+					<input id="post_button_bt" type="submit" value="등록">
 					<input id="post_button_bt" type="button" value="취소" Onclick="history.back()">
 				</div>
 			</form>

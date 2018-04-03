@@ -50,7 +50,7 @@ classTime NUMBER not null,
 classDay varchar2(10) not null,
 constraint fk_teacherId foreign key(teacherId) references YOGA_TEACHER(teacherId),
 constraint fk_programNo foreign key(programNo) references yoga_program(programNo),
-constraint uk_class unique(programNo, teacherId, classTime, classDay)            // 추가     
+constraint uk_class unique(programNo, teacherId, classTime, classDay)          //추가     
 )
 
 delete from yoga_class where programNo=2;

@@ -1,5 +1,7 @@
 package org.kosta.controller.second;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,16 +15,23 @@ public class Read_MyInfoCheckController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session=request.getSession(false);
+		String password = null;
 		System.out.println((session==null));
 		if(session==null) {
 			return "Member/noSession.jsp";
 		}else{
 			MemberVO mvo=(MemberVO)session.getAttribute("memberVO");
 			String id=mvo.getId();
-			String password=request.getParameter("memberPassword");
+			if(request.getParameter("memberPassword")==null){
+				@SuppressWarnings("unchecked")
+				ArrayList<MemberVO> list =  (ArrayList<MemberVO>) request.getAttribute("list");
+				password = list.get(0).getPassword();
+			}
+			else	
+				password=request.getParameter("memberPassword");
 			mvo=MemberDAO.getInstance().checkMyinfoById(id, password);
 			if(mvo==null)
-				return "Member/password_fail.jsp";
+				return "Member/MyInfoCheck_fail.jsp";
 			else {
 				request.setAttribute("MemberVO", mvo);
 				request.setAttribute("url","/Member/MyInfoModify.jsp");
@@ -30,5 +39,4 @@ public class Read_MyInfoCheckController implements Controller {
 			}
 		}
 	}
-
 }
