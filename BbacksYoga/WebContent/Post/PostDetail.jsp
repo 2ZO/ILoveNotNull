@@ -13,17 +13,17 @@
 			<form action="DispatcherServlet" method="post" name="form" class="editorform">
 				<input type="hidden" name="command" value="postWrite"> 
 				<!-- 제목 -->
-				번호: 
-				제목: 
-				글쓴이:
-				작성 날짜:
+				번호: ${postVO.postNo}
+				제목: ${postVO.title}
+				글쓴이: ${postVO.id}
+				작성 날짜:${postVO.regDate}
 				<!-- 쓰기영역 -->
 				<br>
 				<!-- <IFRAME NAME=dhtmlframe></IFRAME><br>			 -->	
 				<!-- 쓰기영역 html -->
 				<!-- <textarea rows="10" cols="40" class="postContents" name="content" readonly="readonly"> -->	
 				<div id="contentDiv">
-				<pre>adwjiawjdpi</pre>
+				<pre>${postVO.content}</pre>
 				</div>
 				<!-- </textarea> -->
 				<!-- 글 등록 & 취소-->

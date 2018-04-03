@@ -89,5 +89,25 @@ public class PostDAO {
 			closeAll(rs, pstmt, con);
 		}
 		return count;
-	}	
+	}
+	public PostVO getPostDetail(String postNo) throws SQLException {
+		// TODO Auto-generated method stub
+		PostVO post = null;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dataSource.getConnection();
+			String sql="select title,content,id,regDate from post where postNo=?;";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(postNo));
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				post = new PostVO(postNo, rs.getString(1), rs.getString(2),rs.getString(3), rs.getString(4));
+			}
+		}finally {
+			closeAll(rs, pstmt, con);
+		}
+		return post;
+	}
 }

@@ -39,9 +39,6 @@ function flagTest(){
 	}else if($("#pwdFlag").val()=="false"){
 		alert("패스워드가 일치하지 않습니다.");
 		return false;
-	}else if($("#pwdEqFlag").val()=="false"){
-		alert("패스워드 체크 해주세요.");
-		return false;
 	}else{
 		return true;
 	}
@@ -148,7 +145,6 @@ $("#password").change(function(){
         	<input type="hidden" name="command" value="register"> 	
         	<input type="hidden" id=idFlag" value="false">
         	<input type="hidden" id="pwdFlag" value="false">
-        	<input type="hidden" id="pwdEqFlag" value="false">
         	<input type="hidden" id="emailFlag" value="false">
             <div class="form-group" id="divId">
                 <label for="inputId" class="col-lg-3 control-label">아이디</label>

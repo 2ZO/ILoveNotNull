@@ -79,7 +79,7 @@ regDate date not null,
 constraint fk_post2 foreign key(id) references yoga_member(id)
 )
 
-select * from post 
+select title,content,id,regDate from post where postNo=1;
 insert into post values(post_seq.nextval,'안녕','반가워요 테스트 중이예여','visitor',sysdate);
 
 
