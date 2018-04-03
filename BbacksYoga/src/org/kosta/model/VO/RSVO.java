@@ -22,6 +22,7 @@ public class RSVO {
 		this.programName = programName;
 		this.teacherNick = teacherNick;
 		this.classTime = classTime;
+		 //enum class인 classDay에서 매개변수 classDay와 일치하는 데이터(ex_"mon")의 숫자형 데이터("0")를 int형으로 형변화한다.
 		this.classDay = Integer.parseInt(classDay_enum.valueOf(classDay).getName());
 		this.regDate = regDate;
 		this.classNo = classNo;
