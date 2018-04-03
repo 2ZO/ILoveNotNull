@@ -71,7 +71,7 @@ public class HandlerMapping {
 			c = new Read_ProgramDetailController();
 		} else if (command.equals("passwordCheck")) {
 			c = new Read_MyInfoCheckController();
-		} else if (command.equals("내정보 수정")) {
+		} else if (command.equals("updateMyInfo")) {
 			c = new Update_MyInfoController();
 		} else if (command.equals("addTeacher")) { //강사등록
 			c = new Create_TeacherController();
