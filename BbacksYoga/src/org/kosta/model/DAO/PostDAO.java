@@ -90,7 +90,7 @@ public class PostDAO {
 		}
 		return count;
 	}
-	public PostVO getPostDetail(String postNo) throws SQLException {
+	public PostVO getPostDetailByPostNo(String postNo) throws SQLException {
 		// TODO Auto-generated method stub
 		PostVO post = null;
 		Connection con=null;
@@ -98,7 +98,7 @@ public class PostDAO {
 		ResultSet rs=null;
 		try {
 			con=dataSource.getConnection();
-			String sql="select title,content,id,regDate from post where postNo=?;";
+			String sql="select title,content,id,regDate from post where postNo=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, Integer.parseInt(postNo));
 			rs=pstmt.executeQuery();
