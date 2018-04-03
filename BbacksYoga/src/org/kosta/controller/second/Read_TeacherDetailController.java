@@ -17,7 +17,6 @@ public class Read_TeacherDetailController implements Controller {
 		String teacherId=request.getParameter("teacherId");
 		TeacherVO tvo=TeacherDAO.getInstance().getTeacherInfobyId(teacherId);
 		ArrayList<String> classList=ClassDAO.getInstance().getClassListById(teacherId);
-		System.out.println(classList.get(0));
 		request.setAttribute("classList", classList);
 		request.setAttribute("teacherInfo", tvo);
 		request.setAttribute("url", "/Class/TeacherDetail.jsp");

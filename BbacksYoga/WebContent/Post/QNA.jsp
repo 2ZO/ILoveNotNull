@@ -9,6 +9,11 @@
 	}
 	/*테이블 디자인 다 똑같이 넣어요..*/
 </style> -->
+<script>
+function getDetailPost(postNo){
+	location.href="${pageContext.request.contextPath}/DispatcherServlet?command=getDetailPost&postNo="+postNo;
+}
+</script>
 <table class="table table-bordered  table-hover boardlist">
   <thead>
   	<tr>
@@ -20,7 +25,7 @@
   </thead>
   <tbody>
   	<c:forEach items="${requestScope.lvo.list}" var="post">
-  		<tr>
+  		<tr onclick="getDetailPost(${post.postNo})">
   			<td>${post.postNo}</td>
   			<td>${post.title}</td>
   			<td>${post.id}</td>

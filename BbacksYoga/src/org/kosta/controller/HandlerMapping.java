@@ -56,7 +56,7 @@ public class HandlerMapping {
 		}		
 		else if (command.equals("게시글수정")) {
 			c = new Update_PostController();
-		} else if (command.equals("게시글 상세보기")) {
+		} else if (command.equals("getDetailPost")) {
 			c = new Read_PostDetailController();
 		} else if (command.equals("postList")) {
 			c = new Read_BoardController();

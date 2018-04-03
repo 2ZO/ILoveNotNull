@@ -37,8 +37,10 @@
 			</div>	    
 	    </div>
  	</div>
+ 	
+ 	
 	<!-- 메뉴  -->
-	<nav class="navbar navbar-inverse">
+	<%-- <nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navWrap">
 				<ul class="nav navbar-nav">
@@ -63,10 +65,48 @@
 							<li><a href="#">FAQ</a></li>
 							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=postList&nowPage=1">Q&amp;A</a></li>
 							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=writePostView">(임시) 글쓰기</a></li>
+							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=page&url=/Post/PostDetail.jsp">(임시테스트) 글보기</a></li>
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav">
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">My Page</a>
+						<ul class="dropdown-menu">
+							<li><a href="DispatcherServlet?command=page&url=/Member/MyInfoCheck.jsp">내정보 수정</a></li>
+							<li><a href="DispatcherServlet?command=Read_Register">수강내역 확인</a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</div>
+	</nav> --%>
+ <nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navWrap">
+				<ul class="nav navbar-nav">
+					<li class="dropdown "><a class="dropdown-toggle"	data-toggle="dropdown" href="#">Bbak's</a>
+						<ul class="dropdown-menu ">
+							<li><a href="#">Bbak's 요가소개</a></li>
+							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=teacherList">강사진소개</a></li>
+							<li><a href="#">시설소개</a></li>
+						</ul></li>
+				</ul>
+				<ul class="nav navbar-nav">
+					<li class="dropdown"><a class="dropdown-toggle"	data-toggle="dropdown" href="#">Lesson</a>
+						<ul class="dropdown-menu">
+							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=programList">프로그램 소개</a></li>
+							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=Read_Timetable">강좌시간표</a></li>
+							<li><a href="#">강좌 신청</a></li>
+						</ul></li>
+				</ul>
+				<ul class="nav navbar-nav">
+					<li class="dropdown"><a class="dropdown-toggle"	data-toggle="dropdown" href="#">Community</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">FAQ</a></li>
+							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=postList&nowPage=1">Q&amp;A</a></li>
+							<li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=writePostView">(임시) 글쓰기</a></li>
+						</ul></li>
+				</ul>
+				<ul class="nav navbar-nav">
+					<li class="dropdownn"><a class="dropdown-toggle" data-toggle="dropdown" href="#">My Page</a>
 						<ul class="dropdown-menu">
 							<li><a href="DispatcherServlet?command=page&url=/Member/MyInfoCheck.jsp">내정보 수정</a></li>
 							<li><a href="DispatcherServlet?command=Read_Register">수강내역 확인</a></li>

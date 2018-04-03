@@ -3,7 +3,7 @@
 .text{
 	margin:auto;
 	height:auto;
-	border:1px solid;
+	
 	padding-bottom: 20px;
 }
 
@@ -25,7 +25,13 @@
 
 /* 전체 폼 영역*/
 .editorform{
-	padding-top: 20px;	
+	padding-top: 20px;
+	padding-right:20px;
+	padding-left:20px;
+	margin-left:auto;
+	margin-right:auto;
+	width: 80%;
+	border:1px solid;	
 	
 }
 
@@ -79,6 +85,7 @@ iframe{
 /*포스트 용 버튼*/
 .post_button{
 	text-align: center;
+	margin-bottom: 20px;
 }
 
 #post_button_bt {
@@ -93,3 +100,5 @@ iframe{
 	display: inline-block;
     font-size: 16px;
 }
+
+	
