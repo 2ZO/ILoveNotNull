@@ -106,7 +106,7 @@
                   </ul></li>
             </ul>
           
-            <c:if test="${empty memberVO || !memberVO.id eq 'sys'} ">
+			<c:if test="${empty memberVO || !memberVO.id eq 'sys'}">
 				<ul class="nav navbar-nav">
 				<li class="dropdownn">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#">My Page</a>

@@ -16,6 +16,7 @@ h2{
 	function checkModify() {
 		var check_submit = confirm("개인정보를 변경 하시겠습니까?")
 			return check_submit;
+		
 	}
 	function gobackMain() {
 		location.href="${pageContext.request.contextPath}/index.jsp";
