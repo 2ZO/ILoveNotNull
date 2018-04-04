@@ -7,7 +7,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	<!-- 수강 희망 시간표 클릭 시 -->
+	// 수강 희망 시간표 클릭 시 
 	   $(".regLink").click(function(){
 		   // visitor의 경우 로그인 alert
 		   if(${sessionScope.memberVO.id==null}){
@@ -92,8 +92,8 @@ a:hover{
 %>
 <div class="col-sm-1" ></div>
 <div class="col-sm-10">
-	<c:choose>
 	<!-- 로그인 시 회원의 package수 출력 -->
+	<c:choose>
 	<c:when test="${sessionScope.memberVO.id!=null }">
 	<input id="back_page" type="button" value="신청 가능 횟수: ${requestScope.userPackage}" >
 	</c:when>
@@ -125,8 +125,8 @@ a:hover{
 					<td>${countOfClassTime.count }</td>
 					<!-- 요일 데이터변수 week에 0~5 지정 -->
 					<c:forEach begin="0" end="5" varStatus="week">
+					<!-- week과 today 데이터 값이 같을 때 해당 <td>에 id를 주어 색을 입힌다.(오늘에 해당하는 테이블열) -->
 					<c:choose>
-						<!-- week과 today 데이터 값이 같을 때 해당 <td>에 id를 주어 색을 입힌다.(오늘에 해당하는 테이블열) -->
 						<c:when test="${week.index eq pageScope.today }">
 							<td id="today">
 						</c:when>
@@ -138,8 +138,8 @@ a:hover{
 					<c:forEach items="${timetable_list }" var="list" varStatus="tdNo">
 							<!-- 클래스의 시간, 클래스에 맞는 위치에 클래스 정보 출력 -->
 							<c:if test="${list.classTime==countOfClassTime.count&&list.classDay==week.index }">
+								<!-- 정원와 등록인원이 같을 때 link를 해제한다. -->
 								<c:choose>
-									<!-- 정원와 등록인원이 같을 때 link를 해제한다. -->
 									<c:when test="${list.capacity==list.count_reg }">
 										<span class="fullClass">${list.programName }<br>${list.teacherNick }<br>${list.count_reg }/ ${list.capacity }</span>
 									</c:when>
