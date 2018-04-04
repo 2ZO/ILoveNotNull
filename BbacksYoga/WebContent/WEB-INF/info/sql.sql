@@ -121,7 +121,7 @@ password_answer,
 regDate,
 member_status,
 class_package
-) values('java','1234','hwang',5152,'판교','naver.com','test','test',sysdate,'true','3');
+) values('sys','1234','hwang',5152,'판교','naver.com','test','test',sysdate,'true','3');
 
 insert into yoga_member(
 id,password,name,phone_number,address,email,password_question,password_answer,regDate,member_status,class_package

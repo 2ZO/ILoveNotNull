@@ -7,10 +7,14 @@
 <script src="${pageContext.servletContext.contextPath}/CSS/logIn.css"></script>
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
 span{
 	color:red;
+}
+.container{
+	margin: 35px auto 0 !important;
 }
 </style>
 <link
