@@ -122,7 +122,7 @@ public class PostDAO {
 				PreparedStatement pstmt=null;
 				try {
 					con=dataSource.getConnection();
-					String sql="update post set title=?, content=? where postno=?";
+					String sql="update post set title=?, content=?, regDate=sysdate where postno=?";
 					pstmt=con.prepareStatement(sql);
 					pstmt.setString(1, postTitle);
 					pstmt.setString(2, postContent);
