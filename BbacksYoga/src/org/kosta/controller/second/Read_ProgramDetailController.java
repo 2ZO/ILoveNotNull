@@ -23,7 +23,6 @@ public class Read_ProgramDetailController implements Controller {
 		JSONObject json=null;	// return 값을 넣을 jsonObject 선언
 		// 각각의 값을 jsonObject에 넣음
 		json=new JSONObject().put("programList", vo);
-		json.put("programNo", vo.getProgramNo());
 		json.put("programName", vo.getProgramName());
 		json.put("programDetail", vo.getProgramDetail());
 		//ajaxview에 값을 넣은 josn을 반환

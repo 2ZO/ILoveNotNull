@@ -40,7 +40,6 @@
 					dataType : "json",
 					data : "command=programDetail&programNo=" + pno,
 					success : function(data) { 
-						$("#programNo").html(data.programNo);
 						$("#prgramName").html(data.programName); 
 						$("#programDetail").html(data.programDetail); 
 					}//success
@@ -57,9 +56,10 @@
 	<tr>
 		<th>프로그램 번호</th><th>프로그램 이름</th>
 	</tr>
-	<c:forEach items="${requestScope.lvo.list}" var="plist">
+	<c:forEach items="${requestScope.lvo.list}" var="plist" varStatus="py">
 	<tr id="${plist.programNo}" data-toggle="modal"  data-target="#myModal" >
-		<td class="programNo">${plist.programNo}</td>
+		<c:set var= "sum" value="${(requestScope.lvo.pagingBean.nowPage-1)*5}"/>
+		<td class="programNo">${py.index+sum+1}</td>
 		<td class="programName">${plist.programName }</td>
 	</tr>
 	</c:forEach>
@@ -97,7 +97,6 @@
 			<!-- Modal Header -->
 			<div class="modal-header">
 				<h4 class="modal-title">프로그램 소개</h4><hr>
-				프로그램 번호: <span id="programNo"></span>&nbsp;&nbsp;&nbsp;
 				프로그램 이름: <span id="prgramName"></span><br>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
