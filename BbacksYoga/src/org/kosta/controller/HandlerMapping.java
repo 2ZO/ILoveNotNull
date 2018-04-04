@@ -19,6 +19,7 @@ import org.kosta.controller.second.Read_ProgramListController;
 import org.kosta.controller.second.Read_TeacherDetailController;
 import org.kosta.controller.second.Read_TeacherListController;
 import org.kosta.controller.second.Update_MyInfoController;
+import org.kosta.controller.second.Update_MyInfoPreviewController;
 import org.kosta.controller.third.Create_RegisterClassController;
 import org.kosta.controller.third.Create_TimeTableController;
 import org.kosta.controller.third.Delete_RegisterClassController;
@@ -76,6 +77,8 @@ public class HandlerMapping {
 			c = new Read_MyInfoCheckController();
 		} else if (command.equals("updateMyInfo")) {
 			c = new Update_MyInfoController();
+		} else if (command.equals("updateMyInfoPreview")) {
+			c = new Update_MyInfoPreviewController();
 		} else if (command.equals("addTeacher")) { //강사등록
 			c = new Create_TeacherController();
 		} else if (command.equals("createProgram")) {

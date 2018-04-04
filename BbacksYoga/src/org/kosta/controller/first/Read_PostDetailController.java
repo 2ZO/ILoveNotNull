@@ -15,9 +15,9 @@ public class Read_PostDetailController implements Controller {
 		// TODO Auto-generated method stub
 		String postNo= request.getParameter("postNo");
 		HttpSession session = request.getSession();
-		//로그인 안한사람 out
+		//나중에 비공개글 할 때 쓸생각임
 		if(session==null || session.getAttribute("memberVO")==null) {
-			return "redirect:index.jsp";
+			return "redirect:/Post/QNA.jsp";
 		}else {
 			PostVO post = PostDAO.getInstance().getPostDetailByPostNo(postNo);
 			request.setAttribute("postVO", post);

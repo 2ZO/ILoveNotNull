@@ -51,8 +51,11 @@ public class RSDAO {
 		
 		try {
 			con=getConnection();
-			String sql="select prg.programName, tch.teacherNick, cls.classNo, cls.classTime, cls.classDay, cls.capacity from yoga_program prg, yoga_teacher tch, yoga_class cls where cls.programNo=prg.programNo and cls.teacherId=tch.teacherId order by cls.classNo asc";
-			ps=con.prepareStatement(sql);
+			StringBuilder sql=new StringBuilder();
+			sql.append("select prg.programName, tch.teacherNick, cls.classNo, cls.classTime, cls.classDay, cls.capacity ");
+			sql.append(" from yoga_program prg, yoga_teacher tch, yoga_class cls ");
+			sql.append(" where cls.programNo=prg.programNo and cls.teacherId=tch.teacherId order by cls.classNo asc");
+			ps=con.prepareStatement(sql.toString());
 			RS=ps.executeQuery();
 			while(RS.next()) {
 				list.add(new RSVO(RS.getString(1), RS.getString(2), RS.getInt(3), RS.getInt(4), RS.getString(5), RS.getInt(6)));
@@ -60,8 +63,10 @@ public class RSDAO {
 			ps.close();
 			RS.close();
 			
-			sql="select cls.classNo, count(reg.classNo) from registeRStatus reg, YOGA_CLASS cls, YOGA_MEMBER mem where reg.classNo=cls.classNo and reg.id=mem.id group by cls.classNo";
-			ps=con.prepareStatement(sql);
+			StringBuilder sql2=new StringBuilder();
+			sql2.append("select cls.classNo, count(reg.classNo) from registeRStatus reg, YOGA_CLASS cls, YOGA_MEMBER mem ");
+			sql2.append(" where reg.classNo=cls.classNo and reg.id=mem.id group by cls.classNo");
+			ps=con.prepareStatement(sql2.toString());
 			RS=ps.executeQuery();
 			while(RS.next()) {
 				for(int i=0; i<list.size(); i++) {
@@ -144,8 +149,11 @@ public class RSDAO {
 		
 		try {
 			con=getConnection();
-			String sql="select prg.programName, tch.teacherNick, cls.classTime, cls.classDay, to_char(reg.regDate,'YY/MM/DD'), reg.classNo from YOGA_PROGRAM prg, YOGA_TEACHER tch, YOGA_CLASS cls, REGISTERSTATUS reg where reg.id=? and reg.classNo=cls.classNo and prg.programNo=cls.programNo and tch.teacherId=cls.teacherId ";
-			ps=con.prepareStatement(sql);
+			StringBuilder sql=new StringBuilder();
+			sql.append("select prg.programName, tch.teacherNick, cls.classTime, cls.classDay, to_char(reg.regDate,'YY/MM/DD'), reg.classNo ");
+			sql.append(" from YOGA_PROGRAM prg, YOGA_TEACHER tch, YOGA_CLASS cls, REGISTERSTATUS reg ");
+			sql.append(" where reg.id=? and reg.classNo=cls.classNo and prg.programNo=cls.programNo and tch.teacherId=cls.teacherId ");
+			ps=con.prepareStatement(sql.toString());
 			ps.setString(1, userId);
 			RS=ps.executeQuery();
 			while(RS.next()) {

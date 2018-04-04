@@ -28,19 +28,10 @@ public class Update_MyInfoController implements Controller {
 				String address = request.getParameter("address");
 				String email = request.getParameter("email");
 				String phone_number = request.getParameter("phoneNumber");
-				MemberVO vo = new MemberVO();
-				vo.setId(id);
-				vo.setPassword(password);
-				vo.setPassword_question(password_question);
-				vo.setPassword_answer(password_answer);
-				vo.setName(name);
-				vo.setAddress(address);
-				vo.setEmail(email);
-				vo.setPhone_number(phone_number);
+				MemberVO vo = new MemberVO(id, password, name, phone_number, address, email, password_question, password_answer, null, null, null );
 				MemberDAO.getInstance().updateMyInfo(vo);
-				session.setAttribute("MemberVO", vo);
-				request.setAttribute("url","/Member/MyInfoModify.jsp");
-				return "Template/layout.jsp";
+				session.setAttribute("memberVO", vo);
+				return "DispatcherServlet?command=updateMyInfoPreview";
 			}
 		}
 	}
