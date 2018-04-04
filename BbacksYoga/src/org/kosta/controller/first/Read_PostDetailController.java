@@ -17,7 +17,7 @@ public class Read_PostDetailController implements Controller {
 		HttpSession session = request.getSession();
 		//나중에 비공개글 할 때 쓸생각임
 		if(session==null || session.getAttribute("memberVO")==null) {
-			return "redirect:/Post/QNA.jsp";
+			return "redirect:Post/QNA.jsp";
 		}else {
 			PostVO post = PostDAO.getInstance().getPostDetailByPostNo(postNo);
 			request.setAttribute("postVO", post);

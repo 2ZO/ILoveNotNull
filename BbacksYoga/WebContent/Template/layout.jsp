@@ -37,9 +37,10 @@ $(document).ready(function(){
 			}
 		}
 		if(flag==true){%>
-	var popUrl = "${pageContext.servletContext.contextPath}/Template/adPopup.jsp"; //팝업창에 출력될 페이지 URL
+	 var popUrl = "${pageContext.servletContext.contextPath}/Template/adPopup.jsp"; //팝업창에 출력될 페이지 URL
+	 console.log(popUrl);
 	var popOption = "width=320, height=370, resizable=no, scrollbars=no, status=no;"; //팝업창 옵션(optoin)
-	window.open(popUrl, "", popOption);
+	window.open(popUrl, "", popOption);  
 	<%}%>
 });
 </script>

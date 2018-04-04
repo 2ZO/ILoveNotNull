@@ -23,10 +23,6 @@ $("#addClass").click(function(){
 							"<td>"+data.teacherName+"</td>"+
 							"<td>"+data.classDay+"</td>"+
 							"<td>"+data.classTime+"</td></tr>");
-				/* 	$("#table_body").append("<td>"+data.teacherName+"</td>"); 
-				    $("#table_body").append("<td>"+data.classTime+"</td>");
-					$("#table_body").append("<td>"+data.classDay+"</td>"); */
-					/* $("#table_body").append("</tr>");  */
 				}
 			}
 			//$("#membody").html(info);
