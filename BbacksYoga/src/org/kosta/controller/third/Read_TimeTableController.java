@@ -28,6 +28,6 @@ public class Read_TimeTableController implements Controller {
 		}
 		request.setAttribute("url", "/TimeTable/TimeTable.jsp");
 		request.setAttribute("timetable_list", list);
-		return "/Template/layout.jsp";
+		return "Template/layout.jsp";
 	}
 }
