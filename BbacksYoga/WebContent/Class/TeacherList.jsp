@@ -87,7 +87,7 @@
 </div>
 
 
-<c:forEach items="${requestScope.teacherList}" var="list" varStatus="vs">
+
 <div class="modal fade" id="myModal">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
@@ -128,5 +128,5 @@
 		</div>
 	</div>
 </div>
-</c:forEach>
+
 				
