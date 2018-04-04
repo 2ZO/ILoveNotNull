@@ -27,8 +27,8 @@
             <img class="first-slide" src="${pageContext.request.contextPath}/Image/center/main02.jpg" alt="First slide">
             <div class="container">
               <div class="carousel-caption text-left">
-                <h1>Example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <h1>Bbak's Yoga</h1>
+                <p>Yoga is like music. The Rhythm of the body, the melody of the mind and the harmony of the soul creates the symphony of life.</p>
                 <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
               </div>
             </div>
@@ -37,8 +37,8 @@
             <img class="second-slide" src="${pageContext.request.contextPath}/Image/center/main01.jpg" alt="Second slide">
             <div class="container">
               <div class="carousel-caption">
-                <h1>Another example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <h1>Yoga is my life.</h1>
+                <p>Those who practice yoga have joy within, delight within and radiance within. </p>
                 <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
               </div>
             </div>
@@ -48,7 +48,7 @@
             <div class="container">
               <div class="carousel-caption text-right">
                 <h1>One more for good measure.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <p>The superior man is modest in his speech, but exceeds in his action.</p>
                 <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
               </div>
             </div>
