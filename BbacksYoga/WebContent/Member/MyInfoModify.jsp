@@ -8,11 +8,75 @@ h2{
 }
 </style>
  <script type="text/javascript">
+ function flagTest(){
+	 	if($("#emailFlag").val()=="false"){
+			alert("이메일 중복체크 해주세요.");
+			return false;
+		}else if($("#pwdFlag").val()=="false"){
+			alert("패스워드가 일치하지 않습니다.");
+			return false;
+		}else{
+			return true;
+		}
+	}
     var num ; 
    /* var num="question2"; */
-    $(document).ready(function() {           
+    $(document).ready(function() { 
+    	
        $("#passwordQuestion").val(num).prop("selected", true); 
+      
+       $("#email").change(function(){
+    		$("#emailCheck").html("");
+    		$("#emailFlag").val("false");
+    	});
+    	$("#password").change(function(){
+    		$("#passwordCheck").html("");
+    		$("#pwdFlag").val("false");
+    	});
+    	//이메일중복체크
+    	$("#checkEmail").click(function(){
+    		if(!$("#email").val().match("@")){
+    			alert("이메일 형식이 아닙니다");
+    		}else{
+    		$.ajax({
+    		type:"get",
+    		dataType:"json",
+    		url:"${pageContext.request.contextPath}/DispatcherServlet?command=getMemberByEmail",
+    		data:$("#updateForm").serialize(),
+    		success:function(data){
+    			//alert(data.length);
+    			if(data.flag=="false"){
+    				$("#emailCheck").html("중복된 이메일 입니다.");
+    			}else{
+    				$("#emailCheck").html("사용가능한 이메일 입니다.");
+    				$("#emailFlag").val("true");
+    			}
+    			//(info);
+    		}//success
+    	});//ajax
+    		}
+    	});	
+   	//패스워드 자릿수 제한
+   	$("#password").on('keyup', function(){
+   		if($("#password").val().length<8){
+   			$("#warn").html("8자이상 입력해주세요.");
+   		}else{
+   			$("#warn").html("");
+   		}
+   	});
+   	//비번 중복체크
+   	$("#passwordCheck").keyup(function(){
+   		if($("#password").val().length<8){
+   			$("#warnPasswordCheck").html("");
+   		}else if($("#password").val()==$(this).val()){ 
+   			$("#warnPasswordCheck").html("일치합니다.");
+   		}else{
+   			$("#warnPasswordCheck").html("일치하지 않습니다.");
+   			$("#pwdFlag").val("true");
+   		}
    });
+});
+
    function checkModify() {
       var check_submit = confirm("개인정보를 변경 하시겠습니까?")
          return check_submit;
@@ -45,32 +109,36 @@ h2{
             </div><!-- /.modal -->
             <!--// 모달창 -->
                 <!-- 본문 들어가는 부분 -->
-        <form class="form-horizontal" role="form" method="post" action="DispatcherServlet" onsubmit="return checkModify()">
-      	<input type="hidden" name="command" value="updateMyInfo">    
+        <form class="form-horizontal" role="form" id="updateForm" method="post" action="DispatcherServlet" onsubmit="return checkModify()">
+      	<input type="hidden" name="command" value="updateMyInfo">
+      	<input type="hidden" id="pwdFlag" value="false">
+        <input type="hidden" id="emailFlag" value="false">
             <div class="form-group" id="divId">
-                <label for="inputId" class="col-lg-2 control-label">아이디</label>
-                <div class="col-lg-8">
+                <label for="inputId" class="col-lg-3 control-label">아이디</label>
+                <div class="col-lg-4">
                      <input type="text" readonly="readonly" name="id" value="${requestScope.MemberVO.id}">
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-4">
                    
                 </div>
             </div>
             <div class="form-group" id="divPassword">
-                <label for="inputPassword" class="col-lg-2 control-label">패스워드</label>
-                <div class="col-lg-10">
+                <label for="inputPassword" class="col-lg-3 control-label">패스워드</label>
+                <div class="col-lg-6">
                     <input type="password" class="form-control" name="password" id="password" name="excludeHangul" data-rule-required="true" placeholder="패스워드" maxlength="30">
+                    <span id="warn"></span>
                 </div>
             </div>
             <div class="form-group" id="divPasswordCheck">
-                <label for="inputPasswordCheck" class="col-lg-2 control-label">패스워드 확인</label>
-                <div class="col-lg-10">
+                <label for="inputPasswordCheck" class="col-lg-3 control-label">패스워드 확인</label>
+                <div class="col-lg-6">
                     <input type="password" class="form-control" id="passwordCheck" data-rule-required="true" placeholder="패스워드 확인" maxlength="30">
+					<span id="warnPasswordCheck"></span>               
                 </div>
             </div>
             <div class="form-group">
-                <label for="passwordHint" class="col-lg-2 control-label">패스워드 힌트</label>
-                <div class="col-lg-10">
+                <label for="passwordHint" class="col-lg-3 control-label">패스워드 힌트</label>
+                <div class="col-lg-6">
                     <select class="form-control" id="passwordQuestion" name="password_question">
                         <option value="question1" >나의 고향은?</option>
                         <option value="question2" >나의 초등학교는?</option>
@@ -79,49 +147,50 @@ h2{
                 </div>
             </div>
             <div class="form-group" id="passwordHintCheck">
-                <label for="inputPasswordCheck" class="col-lg-2 control-label">패스워드 힌트 답변</label>
-                <div class="col-lg-10">
+                <label for="inputPasswordCheck" class="col-lg-3 control-label">패스워드 힌트 답변</label>
+                <div class="col-lg-6">
                     <input type="text" class="form-control" name="password_answer" id="hintCheck" data-rule-required="true" value="${requestScope.MemberVO.password_answer}" maxlength="30">
                 </div>
             </div>
             <div class="form-group" id="divName">
-                <label for="inputName" class="col-lg-2 control-label">이름</label>
-                <div class="col-lg-10">
+                <label for="inputName" class="col-lg-3 control-label">이름</label>
+                <div class="col-lg-6">
                     <input type="text" class="form-control onlyHangul" name="name" id="name" data-rule-required="true" value="${requestScope.MemberVO.name}" maxlength="15">
                 </div>
             </div>
              
             <div class="form-group" id="address">
-                <label for="inputNickname" class="col-lg-2 control-label">주소</label>
-                <div class="col-lg-10">
+                <label for="inputNickname" class="col-lg-3 control-label">주소</label>
+                <div class="col-lg-6">
                     <input type="text" class="form-control" name="address" id="address" data-rule-required="true" value="${requestScope.MemberVO.address}" maxlength="15">
                 </div>
             </div>
              
             <div class="form-group" id="divEmail">
-                <label for="inputEmail" class="col-lg-2 control-label">이메일</label>
-                <div class="col-lg-8">
+                <label for="inputEmail" class="col-lg-3 control-label">이메일</label>
+                <div class="col-lg-4">
                     <input type="email" class="form-control" name="email" id="email" data-rule-required="true" value="${requestScope.MemberVO.email}" maxlength="40">
                 </div>
-                <div class="col-lg-2">
-                   <input type="button" value="중복확인" onclick="checkEmail()">
+                <div class="col-lg-4">
+                   <input type="button" value="중복확인" id="checkEmail">
+                   <span id="emailCheck"></span>
                 </div>
             </div>
             <div class="form-group" id="divPhoneNumber">
-                <label for="inputPhoneNumber" class="col-lg-2 control-label">휴대폰 번호</label>
-                <div class="col-lg-10">
+                <label for="inputPhoneNumber" class="col-lg-3 control-label">휴대폰 번호</label>
+                <div class="col-lg-6">
                     <input type="tel" class="form-control onlyNumber" name="phoneNumber" id="phoneNumber" data-rule-required="true" value="${requestScope.MemberVO.phone_number}" maxlength="11">
                 </div>
             </div>
             <div class="form-group">
-                <label for="weekCount" class="col-lg-2 control-label"> 1주일 당 신청 횟수</label>
-                <div class="col-lg-10">
+                <label for="weekCount" class="col-lg-3 control-label"> 1주일 당 신청 횟수</label>
+                <div class="col-lg-6">
                    <input type="text" readonly="readonly" name="" value="${requestScope.MemberVO.class_package}">
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-lg-offset-2 col-lg-10">
-                      <input type="submit" value="수정">
+                <div class="col-lg-offset-8 col-lg-10">
+                      <input type="submit" value="수정" onclick="return flagTest()">
                       <input type="button" value="취소" onclick="gobackMain()">
                 </div>
             </div>
