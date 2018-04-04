@@ -125,9 +125,9 @@
 				<li class="dropdownn">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#">관리자</a>
 				<ul class="dropdown-menu">
-                     <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=addClassView">강좌 등록</a></li>
-                     <li><a href="DispatcherServlet?command=page&url=/admin_ver2/Create_AddTeacher.jsp">강사 등록</a></li>
-                     <li><a href="DispatcherServlet?command=page&url=/admin_ver2/Create_Program.jsp">과목 등록</a></li>
+                     <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=addClassView&option=class">강좌 등록</a></li>
+                     <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=addClassView&option=teacher">강사 등록</a></li>
+                     <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=addClassView&option=program">과목 등록</a></li>
                   </ul>
                   </li>
                    </ul>

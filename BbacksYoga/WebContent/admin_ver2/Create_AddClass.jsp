@@ -6,7 +6,6 @@
 <script type="text/javascript">
 /*클래스 입력, 받아오기 ajax로 처리하기~*/
 $(document).ready(function(){
-	var vo;
 $("#addClass").click(function(){
 		$.ajax({
 		type:"post",
@@ -14,7 +13,6 @@ $("#addClass").click(function(){
 		url:"${pageContext.request.contextPath}/DispatcherServlet",
 		data:$("#addClassForm").serialize(),
 		success:function(data){
-			vo=data.classVo;
 			if(data.flag=="false"){
 				alert("뭔가 에러")
 			}else{
