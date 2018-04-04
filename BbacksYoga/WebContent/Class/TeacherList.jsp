@@ -14,8 +14,7 @@
 	$(function() {
 		
 		$('a').click(function() {
-			var bbsreplll = $(this).attr('id'); 
-			var teacherId=Number(bbsreplll)+1;
+			var teacherId = $(this).attr('id'); 
 			$('#myModal').on('show.bs.modal', function () {
 				$.ajax({
 					type : "get",
@@ -60,13 +59,13 @@
 								href="${pageContext.request.contextPath}/DispatcherServlet?command=teacherDetail&teacherId=${list.teacherId}"
 								
 								> --%>
-								<a href="#" data-toggle="modal"  data-target="#myModal" id="${vs.index}">								
+								<a href="#" data-toggle="modal"  data-target="#myModal" id="${list.teacherId}">								
 								<img src="${pageContext.request.contextPath}/Image/teacher/${list.img_url}" alt="${list.img_url}">
 							</a> <%-- <a
 								href="${pageContext.request.contextPath}/DispatcherServlet?command=teacherDetail&teacherId=${list.teacherId}"
 								class="detail"> --%>
 								<%-- <a href="#" data-toggle="modal"  class="detail" id="${vs.index}"> --%>
-								<a href="#" class="detail" data-toggle="modal"  data-target="#myModal" id="${vs.index}">
+								<a href="#" class="detail" data-toggle="modal"  data-target="#myModal" id="${list.teacherId}">
 								 <i class="fa teacherDetail"> <!-- 강사 아이콘박스를 누르면 디테일 페이지로 이동  -->
 									<img src="${pageContext.request.contextPath}/Image/teacher/yoga_teacher_icon.png">
 								</i>
