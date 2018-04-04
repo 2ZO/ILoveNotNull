@@ -12,9 +12,10 @@
 
 <script>
 	$(function() {
-		
+
 		$('a').click(function() {
 			var bbsreplll = $(this).attr('id'); 
+			alert(bbsreplll);
 			var teacherId=Number(bbsreplll)+1;
 			$('#myModal').on('show.bs.modal', function () {
 				$.ajax({
