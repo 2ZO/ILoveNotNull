@@ -16,7 +16,6 @@ public class Read_MyInfoCheckController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session=request.getSession(false);
 		String password = null;
-		System.out.println((session==null));
 		if(session==null) {
 			return "Member/noSession.jsp";
 		}else{

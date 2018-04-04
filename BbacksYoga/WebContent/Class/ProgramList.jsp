@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <!-- table css 추가 / QNA.jsp와 동일 css 적용 -->
 <style type="text/css">
 	table {
@@ -36,12 +40,9 @@
 					dataType : "json",
 					data : "command=programDetail&programNo=" + pno,
 					success : function(data) { 
-						alert(data.programNo);
-						alert(data.programName);
-						alert(data.program)
 						$("#programNo").html(data.programNo);
 						$("#prgramName").html(data.programName); 
-						$("#prgramDetail").html(); 
+						$("#programDetail").html(data.programDetail); 
 					}//success
 				})//ajax 				 
 			})//show modal
@@ -93,31 +94,27 @@
 <div class="modal fade" id="myModal">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
-
 			<!-- Modal Header -->
 			<div class="modal-header">
-				<h4 class="modal-title">프로그램 소개</h4>
+				<h4 class="modal-title">프로그램 소개</h4><hr>
+				프로그램 번호: <span id="programNo"></span>&nbsp;&nbsp;&nbsp;
+				프로그램 이름: <span id="prgramName"></span><br>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
-
 			<!-- Modal body -->
 			<div class="modal-body">
 				<div class="row program_detail">
 					<div class="profile-text">
 						<div class="profile-description">
-							<span id="programNo"></span>&nbsp;
-							<span id="prgramName"></span><br>
-							<span id="prgramDetail"></span>
+							<span id="programDetail"></span>
 						</div>
 					</div>
 				</div>
 			</div>
-
 			<!-- Modal footer -->
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 			</div>
-
 		</div>
 	</div>
 </div>

@@ -58,7 +58,6 @@ public class ClassDAO {
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				classNo=rs.getString(1);
-				System.out.println(classNo);
 			}	
 		}finally {
 			closeAll(pstmt, con);
