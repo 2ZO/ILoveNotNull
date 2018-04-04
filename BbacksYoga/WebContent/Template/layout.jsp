@@ -42,8 +42,8 @@
 	var popOption = "width=320, height=370, resizable=no, scrollbars=no, status=no;"; //팝업창 옵션(optoin)
 	window.open(popUrl, "", popOption);
 	<%}%>
-}); --%>
-</script>
+});</script> --%>
+
 
 <title>BbacksYoga</title>
 </head>

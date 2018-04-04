@@ -24,6 +24,10 @@ public class Read_AddClassViewController implements Controller {
 		//옵션을 파라미터로 받아서
 		//클래스/티쳐/프로그램 리스트를 여기서 골라서 뽑아간다
 		if(option.equals("class")) {
+			plist=ProgramDAO.getInstance().getProgramList();
+			request.setAttribute("programList", plist);
+			tlist=TeacherDAO.getInstance().getTeacherList();
+			request.setAttribute("teacherList", tlist);
 			classList= ClassDAO.getInstance().getClassList();
 			request.setAttribute("classList", classList);
 			request.setAttribute("url", "/admin_ver2/Create_AddClass.jsp");
@@ -33,7 +37,6 @@ public class Read_AddClassViewController implements Controller {
 			request.setAttribute("url", "/admin_ver2/Create_AddTeacher.jsp");
 		}else if(option.equals("program")){
 			plist=ProgramDAO.getInstance().getProgramList();
-			System.out.println(plist.get(0).getProgramDetail());
 			request.setAttribute("programList", plist);
 			request.setAttribute("url", "/admin_ver2/Create_AddProgram.jsp");
 		}else {

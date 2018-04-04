@@ -10,8 +10,9 @@ $(document).ready(function(){
 	// 수강 희망 시간표 클릭 시 
 	   $(".regLink").click(function(){
 		   // visitor의 경우 로그인 alert
-		   if(${sessionScope.memberVO.id==null}){
+		   if(${empty memberVO}){
 			   alert("로그인을 하세요.");
+			   location.href="${pageContext.request.contextPath}/DispatcherServlet?command=page&url=/Member/Login.jsp";
 			   return false;
 		   }
 		   // 회원 package가 0보다 클 때, 선택한 과목의 정보를 보여주며 confirm
