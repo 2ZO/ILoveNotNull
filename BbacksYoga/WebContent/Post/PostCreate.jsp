@@ -10,6 +10,27 @@ function datasubmit()
 	
 }
 
+function handlePaste () {
+    var clipboardData, pastedData;
+ 
+    // Stop data actually being pasted into div
+    e.stopPropagation();
+    e.preventDefault();
+ 
+    // Get pasted data via clipboard API
+    clipboardData = e.clipboardData || window.clipboardData;
+    pastedData = clipboardData.getData('Text');
+    
+    dhtmlframe.document.open(); 
+	dhtmlframe.document.write(clipboardData); 
+	dhtmlframe.document.close();
+    
+    // Do whatever with pasteddata
+    alert(pastedData);
+}
+
+
+
 </script>
 <div class="container">
 	<div class="row text">
@@ -26,7 +47,7 @@ function datasubmit()
 					<a href="javascript:htmledit('copy');">
 						<img alt="복사" src="${pageContext.request.contextPath}/Image/editor/copy.png">
 					</a>
-					<a href="javascript:htmledit('paste');">
+					<a href="javascript:handlePaste();">
 						<img alt="붙여넣기" src="${pageContext.request.contextPath}/Image/editor/paste.png">
 					</a> 
 					<a href="javascript:htmledit('justifyleft');">
@@ -85,7 +106,7 @@ function datasubmit()
 				
 				<!-- 쓰기영역 -->
 				<br>
-				<IFRAME NAME=dhtmlframe></IFRAME><br>				
+				<IFRAME NAME=dhtmlframe id="dhtmlframe"></IFRAME><br>				
 				<!-- 쓰기영역 html -->
 				<textarea rows="10" cols="40" class="postContents" name="content">	</textarea>
 				<!-- 글 등록 & 취소-->

@@ -131,3 +131,23 @@
     font-size: 16px;
 }
 
+/* 모달 설정 */
+
+.modal-header {
+    padding: 15px;
+    border-bottom: 0 !important;
+    text-align: center;
+}
+
+.modal-header .h4, h4 {
+    font-size: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.modal-footer {
+    padding: 15px;
+    text-align: center !important;
+    border-top: 0 !important;
+
+}
