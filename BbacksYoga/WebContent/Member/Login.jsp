@@ -12,6 +12,9 @@
 span{
 	color:red;
 }
+.container{
+	margin: 35px auto 0 !important;
+}
 </style>
 <link
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
