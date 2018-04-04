@@ -33,9 +33,11 @@ public class ProgramDAO {
 		if(con!=null)
 			con.close();
 	}
-	public void addProgram(String programName, String programDetail) throws SQLException { 
+	public String addProgram(String programName, String programDetail) throws SQLException { 
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs=null;
+		String progNo= null;
 		try {
 			con = datasource.getConnection();
 			String sql ="insert into yoga_program(programNo, programName, programDetail) values(prgNo_seq.nextval,?,?)";
@@ -43,9 +45,18 @@ public class ProgramDAO {
 			pstmt.setString(1, programName);
 			pstmt.setString(2, programDetail);
 			pstmt.executeUpdate();
+			pstmt.close();
+			sql="select prgNo_seq.currval from dual";
+			pstmt=con.prepareStatement(sql);
+			pstmt.executeQuery();
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				progNo=rs.getString(1);
+			}	
 		}finally {
 			closeAll(pstmt, con);
 		}
+		return progNo;
 	}
 	// 강좌 추가 할 때 사용하는 프로그램 리스트
 	public ArrayList<ProgramVO> getProgramList() throws SQLException {
@@ -55,13 +66,14 @@ public class ProgramDAO {
 		ResultSet rs = null;
 		try {
 			con = datasource.getConnection();
-			String sql = "select programNo,programName from yoga_program";
+			String sql = "select programNo,programName,programDetail from yoga_program";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				ProgramVO vo=new ProgramVO();
 				vo.setProgramNo(rs.getString(1));
 				vo.setProgramName(rs.getString(2));
+				vo.setProgramDetail(rs.getString(3));
 				list.add(vo);
 			}
 		}finally {
