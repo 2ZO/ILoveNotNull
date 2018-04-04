@@ -11,15 +11,13 @@ regDate date not null,
 member_status varchar2(10) not null,
 class_package varchar2(10) not null --3회 or 5회
 )
-<<<<<<< HEAD
 
 select *from YOGA_MEMBER
 update yoga_member set password_question='question2' where id='java'
 select * from POST
 
-=======
 select * from yoga_member 
->>>>>>> branch 'master' of https://github.com/2ZO/ILoveNotNull.git
+
 -- 요가 강사 테이블 생성
 create table yoga_teacher(
 teacherId NUMBER primary key,
@@ -88,6 +86,10 @@ constraint fk_post2 foreign key(id) references yoga_member(id)
 select title,content,id,regDate from post where postNo=1;
 insert into post values(post_seq.nextval,'안녕','반가워요 테스트 중이예여','visitor',sysdate);
 
+--QNA 검색하는 SQL
+SELECT * FROM POST WHERE title LIKE '%안녕%'
+
+select * from post
 
 drop table registerStatus;
 drop table yoga_member;
@@ -210,3 +212,13 @@ constraint fk_yoga_member foreign key(id) references yoga_member(id)
 insert into registerStatus(rsNo, classNo,id,regDate) values(rs_seq.nextval,210,'java',sysdate);
 delete from yoga_class where teacherid=22;
 delete from yoga_teacher where teacherid=21;
+
+SELECT postNo,title,id,regDate FROM POST WHERE title LIKE '%안%'
+
+select postNo,title,id,to_char(regDate,'YYYY.MM.DD') 
+from ( select  row_number() over(order by postNo desc) 
+			as rnum,postNo,title,id,regDate from (SELECT * 
+			FROM POST WHERE title LIKE '%test%'))
+			where rnum between 1 and 5
+			
+SELECT postNo,title,id,to_char(regDate,'YYYY.MM.DD') FROM POST WHERE title LIKE '%test%';

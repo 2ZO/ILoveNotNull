@@ -38,7 +38,7 @@ function createPost() {
 	location.href="${pageContext.request.contextPath}/DispatcherServlet?command=writePostView";
 }
 </script>
-<h3>Q&amp;A</h3>
+<h3>Q&amp;A 검색 결과</h3>
 <div class="writePost">
 	<input type="button" value="글쓰기" onclick="return createPost()">
 </div>
@@ -77,18 +77,17 @@ function createPost() {
 		</div>
 	</fieldset>
 </form>
-
 <!-- 페이징 처리 -->
 <div class="pagingInfo">
 	<c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
 	<ul class="pagination">
 	<c:if test="${pb.previousPageGroup}">
-		<li><a href="DispatcherServlet?command=postList&nowPage=${pb.startPageOfPageGroup-1}">&laquo;</a></li>
+		<li><a href="DispatcherServlet?command=searchPost&nowPage=${pb.startPageOfPageGroup-1}&opt=${opt}&keyword=${keyword}">&laquo;</a></li>
 	</c:if>
 	<c:forEach var="paging" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}"> 
 		<c:choose>
 			<c:when test="${pb.nowPage!=paging}">
-				<li><a href="DispatcherServlet?command=postList&nowPage=${paging}">${paging}</a></li>
+				<li><a href="DispatcherServlet?command=searchPost&nowPage=${paging}&opt=${opt}&keyword=${keyword}">${paging}</a></li>
 			</c:when>
 			<c:otherwise>
 				<li class="active"><a href="#">${paging}</a></li>
@@ -97,7 +96,7 @@ function createPost() {
 	&nbsp;
 	</c:forEach>
 	<c:if test="${pb.nextPageGroup}">
-		<li><a href="DispatcherServlet?command=postList&nowPage=${pb.endPageOfPageGroup+1}">&raquo;</a></li>
+		<li><a href="DispatcherServlet?command=searchPost&nowPage=${pb.endPageOfPageGroup+1}&opt=${opt}&keyword=${keyword}">&raquo;</a></li>
 	</c:if>
  </ul>
 </div>

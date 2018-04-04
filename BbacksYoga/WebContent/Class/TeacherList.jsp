@@ -14,7 +14,7 @@
 	$(function() {
 		
 		$('a').click(function() {
-			var teacherId = $(this).attr('id'); 
+			 var teacherId = $(this).attr('id'); 
 			$('#myModal').on('show.bs.modal', function () {
 				$.ajax({
 					type : "get",

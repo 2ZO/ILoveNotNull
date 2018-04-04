@@ -6,6 +6,7 @@
 <script type="text/javascript">
 /*클래스 입력, 받아오기 ajax로 처리하기~*/
 $(document).ready(function(){
+	var vo;
 $("#addClass").click(function(){
 		$.ajax({
 		type:"post",
@@ -13,6 +14,7 @@ $("#addClass").click(function(){
 		url:"${pageContext.request.contextPath}/DispatcherServlet",
 		data:$("#addClassForm").serialize(),
 		success:function(data){
+			vo=data.classVo;
 			if(data.flag=="false"){
 				alert("뭔가 에러")
 			}else{
@@ -21,10 +23,6 @@ $("#addClass").click(function(){
 							"<td>"+data.teacherName+"</td>"+
 							"<td>"+data.classDay+"</td>"+
 							"<td>"+data.classTime+"</td></tr>");
-				/* 	$("#table_body").append("<td>"+data.teacherName+"</td>"); 
-				    $("#table_body").append("<td>"+data.classTime+"</td>");
-					$("#table_body").append("<td>"+data.classDay+"</td>"); */
-					/* $("#table_body").append("</tr>");  */
 				}
 			}
 			//$("#membody").html(info);
@@ -82,7 +80,6 @@ $("#addClass").click(function(){
 
 <div class="container">
 <form>
-	<button name="deleteClass" id="deleteClassBtn">전체 삭제하기</button>
 	<table id="table" class="table table-hover">
 		<thead id="table_head">
 			<tr>

@@ -21,7 +21,7 @@ public class Create_RegisterClassController implements Controller {
 		if(!flag)
 			return "TimeTable/RegisterClass_fail.jsp";
 		else {
-			return "redirect:/DispatcherServlet?command=Read_Timetable";
+			return "redirect:DispatcherServlet?command=Read_Timetable";
 		}
 	}
 }

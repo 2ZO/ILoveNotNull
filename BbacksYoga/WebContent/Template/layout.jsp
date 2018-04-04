@@ -19,7 +19,6 @@
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
 <!-- script url test -->
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
@@ -38,9 +37,10 @@
 			}
 		}
 		if(flag==true){%>
-	var popUrl = "${pageContext.servletContext.contextPath}/Template/adPopup.jsp"; //팝업창에 출력될 페이지 URL
+	 var popUrl = "${pageContext.servletContext.contextPath}/Template/adPopup.jsp"; //팝업창에 출력될 페이지 URL
+	 console.log(popUrl);
 	var popOption = "width=320, height=370, resizable=no, scrollbars=no, status=no;"; //팝업창 옵션(optoin)
-	window.open(popUrl, "", popOption);
+	window.open(popUrl, "", popOption);  
 	<%}%>
 });</script> --%>
 
