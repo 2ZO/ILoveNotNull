@@ -13,16 +13,16 @@ public class Read_PostDetailController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		String postNo= request.getParameter("postNo");
+		String postNo = request.getParameter("postNo");
 		HttpSession session = request.getSession();
-		//나중에 비공개글 할 때 쓸생각임
-		if(session==null || session.getAttribute("memberVO")==null) {
-			return "redirect:Post/QNA.jsp";
-		}else {
-			PostVO post = PostDAO.getInstance().getPostDetailByPostNo(postNo);
-			request.setAttribute("postVO", post);
-			request.setAttribute("url", "/Post/PostDetail.jsp");
-		}
+		// 나중에 비공개글 할 때 쓸생각임
+		/*
+		 * if(session==null || session.getAttribute("memberVO")==null) { return
+		 * "redirect:Post/QNA.jsp"; }else
+		 */
+		PostVO post = PostDAO.getInstance().getPostDetailByPostNo(postNo);
+		request.setAttribute("postVO", post);
+		request.setAttribute("url", "/Post/PostDetail.jsp");
 		return "index.jsp";
 	}
 

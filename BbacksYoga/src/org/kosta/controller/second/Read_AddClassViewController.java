@@ -14,18 +14,34 @@ import org.kosta.model.VO.ProgramVO;
 import org.kosta.model.VO.TeacherVO;
 
 public class Read_AddClassViewController implements Controller {
-
+//관리자용 뷰 컨트롤러
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ArrayList<ProgramVO> plist=ProgramDAO.getInstance().getProgramList();
-		//강사 리스트를 arraylist형태로 불러옴 (선생님id, 이름, 닉네임까지만 불러옴)
-		request.setAttribute("programList", plist);
-		ArrayList<TeacherVO> tlist=TeacherDAO.getInstance().getTeacherList();
-		//프로그램 리스트가 완료되면 classVO에 담아서 보내면 됨
-		ArrayList<ClassVO> classList = ClassDAO.getInstance().getClassList();
-		request.setAttribute("teacherList", tlist);
-		request.setAttribute("classList", classList);
-		request.setAttribute("url", "/admin_ver2/Create_AddClass.jsp");
+		String option=request.getParameter("option");
+		ArrayList<TeacherVO> tlist=null;
+		ArrayList<ClassVO> classList =null;
+		ArrayList<ProgramVO> plist= null;
+		//옵션을 파라미터로 받아서
+		//클래스/티쳐/프로그램 리스트를 여기서 골라서 뽑아간다
+		if(option.equals("class")) {
+			plist=ProgramDAO.getInstance().getProgramList();
+			request.setAttribute("programList", plist);
+			tlist=TeacherDAO.getInstance().getTeacherList();
+			request.setAttribute("teacherList", tlist);
+			classList= ClassDAO.getInstance().getClassList();
+			request.setAttribute("classList", classList);
+			request.setAttribute("url", "/admin_ver2/Create_AddClass.jsp");
+		}else if(option.equals("teacher")) {
+			tlist=TeacherDAO.getInstance().getTeacherList();
+			request.setAttribute("teacherList", tlist);
+			request.setAttribute("url", "/admin_ver2/Create_AddTeacher.jsp");
+		}else if(option.equals("program")){
+			plist=ProgramDAO.getInstance().getProgramList();
+			request.setAttribute("programList", plist);
+			request.setAttribute("url", "/admin_ver2/Create_AddProgram.jsp");
+		}else {
+			System.out.println("스펠링체크");
+		}
 		return "index.jsp";
 	}
 

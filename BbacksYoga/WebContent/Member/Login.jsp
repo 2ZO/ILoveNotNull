@@ -5,12 +5,14 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript"></script>
 <script src="${pageContext.servletContext.contextPath}/CSS/logIn.css"></script>
-<html>
-<head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
 span{
 	color:red;
+}
+.container{
+	margin: 35px auto 0 !important;
 }
 </style>
 <link
@@ -48,8 +50,6 @@ $("#logInBtn").click(function(){
 <title>LogIn</title>
 <style type="text/css">
 </style>
-</head>
-<body>
 	<div class="container">
 		<div class="row login_contents">
 		<div class="col-md-4 login_col"></div>
@@ -84,5 +84,3 @@ $("#logInBtn").click(function(){
 			<div class="col-md-4 login_col"></div>
 		</div>
 	</div>
-</body>
-</html>

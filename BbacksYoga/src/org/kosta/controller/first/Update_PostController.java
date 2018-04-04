@@ -10,6 +10,9 @@ public class Update_PostController implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		HttpSession session=request.getSession(false);
+		if(session==null)
+			return "member/noSession.jsp";
 		String postNo=request.getParameter("postNo");
 		String postTitle=request.getParameter("title");
 		String postContent=request.getParameter("content");

@@ -103,7 +103,6 @@ table a {
 	color: black;
 	text-decoration: none;
 }
-
 table a:hover {
 	color: #007D12;
 	text-decoration: none;
@@ -228,7 +227,7 @@ td {
 										<c:otherwise>
 											<!-- 클래스 내용을 누르면 수강 신청으로 연결되는 링크 삽입 -->
 											<a class="regLink"
-												href="DispatcherServlet?command=Create_RegisterClass&classNo=${list.classNo }">${list.programName }<br>${list.teacherNick }<br>
+												href="${pageContext.request.contextPath}/DispatcherServlet?command=Create_RegisterClass&classNo=${list.classNo }">${list.programName }<br>${list.teacherNick }<br>
 												${list.count_reg }/ ${list.capacity }
 											</a>
 										</c:otherwise>

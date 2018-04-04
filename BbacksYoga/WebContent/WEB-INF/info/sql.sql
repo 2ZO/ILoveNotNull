@@ -11,15 +11,13 @@ regDate date not null,
 member_status varchar2(10) not null,
 class_package varchar2(10) not null --3회 or 5회
 )
-<<<<<<< HEAD
 
 select *from YOGA_MEMBER
 update yoga_member set password_question='question2' where id='java'
 select * from POST
 
-=======
 select * from yoga_member 
->>>>>>> branch 'master' of https://github.com/2ZO/ILoveNotNull.git
+
 -- 요가 강사 테이블 생성
 create table yoga_teacher(
 teacherId NUMBER primary key,
@@ -207,6 +205,6 @@ regDate date not null,
 constraint fk_class foreign key(classNo) references yoga_class(classNo),
 constraint fk_yoga_member foreign key(id) references yoga_member(id)
 )
-
+insert into registerStatus(rsNo, classNo,id,regDate) values(rs_seq.nextval,210,'java',sysdate);
 delete from yoga_class where teacherid=22;
 delete from yoga_teacher where teacherid=21;

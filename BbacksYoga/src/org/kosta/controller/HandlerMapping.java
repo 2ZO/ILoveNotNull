@@ -81,7 +81,7 @@ public class HandlerMapping {
 			c = new Update_MyInfoPreviewController();
 		} else if (command.equals("addTeacher")) { //강사등록
 			c = new Create_TeacherController();
-		} else if (command.equals("createProgram")) {
+		} else if (command.equals("addProgram")) {
 			c = new Create_ProgramController();
 		} else if (command.equals("addclass")) {
 			c = new Create_ClassController();
