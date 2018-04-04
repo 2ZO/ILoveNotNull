@@ -43,7 +43,7 @@
 	window.open(popUrl, "", popOption);
 	<%}%>
 }); --%>
-</script> --%>
+</script>
 
 <title>BbacksYoga</title>
 </head>
