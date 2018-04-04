@@ -19,13 +19,14 @@
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
 <!-- script url test -->
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
 
 <!-- 팝업창 js -->
 <!-- 이거 js폴더로 옮기고 싶은데 이상하게 옮기면 팝업창 404뜸 -_- 경로문제인듯 제가 내일고칠께욤 -->
-<script type="text/javascript">
+<%-- <script type="text/javascript">
 $(document).ready(function(){
 	<%/*팝업 띄울지 말지 쿠키체크  */
 		boolean flag= true;
@@ -42,7 +43,7 @@ $(document).ready(function(){
 	window.open(popUrl, "", popOption);
 	<%}%>
 });
-</script>
+</script> --%>
 
 <title>BbacksYoga</title>
 </head>
