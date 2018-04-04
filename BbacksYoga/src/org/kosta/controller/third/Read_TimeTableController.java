@@ -17,9 +17,10 @@ public class Read_TimeTableController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session=request.getSession(false);
 		MemberVO vo=(MemberVO) session.getAttribute("memberVO");//session값 받기
-		ArrayList<RSVO> list=null;
+		ArrayList<RSVO> list=new ArrayList<RSVO>();
 		if(session==null||vo==null) {
 			list=RSDAO.getInstance().readTimetableInfo();
+			System.out.println("hi");
 		}else {
 			String user_package = RSDAO.getInstance().readUserPackage(vo.getId());
 			request.setAttribute("userPackage", user_package);
@@ -27,6 +28,6 @@ public class Read_TimeTableController implements Controller {
 		}
 		request.setAttribute("url", "/TimeTable/TimeTable.jsp");
 		request.setAttribute("timetable_list", list);
-		return "/Template/layout.jsp";
+		return "Template/layout.jsp";
 	}
 }

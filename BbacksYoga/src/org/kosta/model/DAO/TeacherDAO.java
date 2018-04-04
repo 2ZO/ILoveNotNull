@@ -33,9 +33,13 @@ public class TeacherDAO {
 		public void closeAll(PreparedStatement pstmt, Connection con) throws SQLException {
 			closeAll(null, pstmt, con);
 		}
-		public void AddTeacher(String name, String nick, String profile, String imgURL) throws SQLException {
+		
+		//추가 후 시퀸스 돌려줌
+		public String AddTeacher(String name, String nick, String profile, String imgURL) throws SQLException {
 			Connection con=null;
 			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			String id=null;
 			try {
 				con=dataSource.getConnection();
 				String sql="insert into yoga_teacher(teacherId,teacherName,teacherNick,teacherProfile,imgUrl) values(tchNo_seq.nextval,?,?,?,?)";
@@ -45,10 +49,20 @@ public class TeacherDAO {
 				pstmt.setString(3, profile);
 				pstmt.setString(4, imgURL);
 				pstmt.executeUpdate();			
+				pstmt.close();
+				sql="select tchNo_seq.currval from dual";
+				pstmt=con.prepareStatement(sql);
+				pstmt.executeQuery();
+				rs=pstmt.executeQuery();
+				if(rs.next()) {
+					id=rs.getString(1);
+				}			
 			}finally {
 				closeAll(pstmt, con);
-			}		
+			}	
+			return id;
 		}
+		
 		public ArrayList<TeacherVO> getTeacherList() throws SQLException {
 			Connection con=null;		
 			PreparedStatement pstmt=null;

@@ -77,19 +77,19 @@
             <img class="rounded-circle" src="${pageContext.request.contextPath}/Image/center/con01.png" alt="Generic placeholder image" width="140" height="140">
             <h2>Ashtanga Yoga</h2>
             <p>아쉬탕가 요가는 빈야사라고 불리우는 호흡과 움직임의 독특한 조화입니다.가까운 층에 쌓인 독소를 제거하여, 정화시키는 역할을 합니다.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-secondary" href="${pageContext.request.contextPath}/DispatcherServlet?command=programList" role="button">View details &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="rounded-circle" src="${pageContext.request.contextPath}/Image/center/con02.png" alt="Generic placeholder image" width="140" height="140">
             <h2>Pilates</h2>
             <p>필라테스는 스트레칭을 좀더 체계적으로 하여 몸을 건강하게 단련시키고 아름답게 가꿔가는데 좋은 운동법입니다.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-secondary" href="${pageContext.request.contextPath}/DispatcherServlet?command=programList"" role="button">View details &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="rounded-circle" src="${pageContext.request.contextPath}/Image/center/con03.png" alt="Generic placeholder image" width="140" height="140">
             <h2>Vinyasa Yoga</h2>
             <p>빈야사 요가란 호흡의 리듬을 따라 그 기운을 놓치지 않고 자연스럽게 자세를 연결시키는 독특한 아사나 수련법입니다.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-secondary" href="${pageContext.request.contextPath}/DispatcherServlet?command=programList"" role="button">View details &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
       </div><!-- /.container -->
@@ -112,6 +112,4 @@
     <!-- <script src="bootstrap-4.0.0-dist/js/holder.min.js"></script> -->
   </div>
   </body>
-  <audio id="myAudio" controls autoplay="autoplay" loop="loop" hidden="">
-  <source src="TimeTable/main.mp3" type="audio/mpeg" >
-</audio>
+

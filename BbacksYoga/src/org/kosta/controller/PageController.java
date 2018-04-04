@@ -10,7 +10,6 @@ public class PageController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String url=request.getParameter("url");
 		HttpSession session = request.getSession();
-		System.out.println(url);
 		if(url.contains("MyInfoCheck")&&session.getAttribute("memberVO")==null) {
 			request.setAttribute("url", "/Member/Login.jsp");
 		}else{
