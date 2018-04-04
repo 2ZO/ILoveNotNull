@@ -82,6 +82,7 @@ $("#addClass").click(function(){
 
 <div class="container">
 <form>
+	<button name="deleteClass" id="deleteClassBtn">전체 삭제하기</button>
 	<table id="table" class="table table-hover">
 		<thead id="table_head">
 			<tr>
