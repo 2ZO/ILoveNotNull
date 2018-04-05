@@ -150,4 +150,21 @@ public class ProgramDAO {
 		}
 		return count;
 	}
+	public void addProgramImg(String programHit, String imgURL1, String imgURL2, String imgURL3, String imgURL4) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = datasource.getConnection();
+			String sql ="insert into yoga_programImg(programImg, hitCount, imgUrl1, imgUrl2, imgUrl3, imgUrl4) values(programImg_seq.nextval, ?, ?, ?, ?, ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, programHit);
+			pstmt.setString(2, imgURL1);
+			pstmt.setString(3, imgURL2);
+			pstmt.setString(4, imgURL3);
+			pstmt.setString(5, imgURL4);
+			pstmt.executeUpdate();
+		}finally {
+			closeAll(pstmt, con);
+		}
+	}
 }

@@ -28,14 +28,11 @@ $("#addClass").click(function(){
 							"<td>"+data.teacherName+"</td>"+
 							"<td>"+data.classDay+"</td>"+
 							"<td>"+data.classTime+"</td></tr>");
-<<<<<<< HEAD
 					$('#teacherSelect option:eq(0)').prop("selected", true);
 					$('#programSelect option:eq(0)').prop("selected", true);
 					$('#daySelect option:eq(0)').prop("selected", true);
 					$('#timeSelect option:eq(0)').prop("selected", true);
 					$('#capacity option:eq(0)').val('');
-=======
->>>>>>> branch 'master' of https://github.com/2ZO/ILoveNotNull.git
 				}
 			}
 			//$("#membody").html(info);
