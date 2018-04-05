@@ -25,6 +25,40 @@ teacherNick varchar2(50) not null,
 teacherProfile varchar2(600),
 imgUrl varchar2(100)
 )
+-- 요가 프로그램 이미지 테이블 생성
+create table yoga_programImg(
+programImg number primary key,
+hitCount varchar2(100),
+imgUrl1 varchar2(100),
+imgUrl2 varchar2(100),
+imgUrl3 varchar2(100),
+imgUrl4 varchar2(100),
+constraint fk_programNo1 foreign key(programImg) references yoga_program
+)
+drop sequence programImg_seq;
+drop table yoga_programImg
+-- 요가 프로그램 이미지 시퀀스 생성
+create sequence programImg_seq;
+-- 요가 프로그램 이지지 추가
+insert into yoga_programImg(
+programImg, 
+hitCount, 
+imgUrl1, 
+imgUrl2, 
+imgUrl3, 
+imgUrl4) 
+values(28, '1', 'con01.png', 'con02.png', 'con03.png', 'con01.png');
+
+select * from yoga_programImg;
+
+select *
+from yoga_programImg pi, yoga_program p 
+where pi.programImg=p.programno and programno=1;
+
+select p.programName, p.programDetail, pi.hitCount, pi.imgUrl1, pi.imgUrl2, pi.imgUrl3, pi.imgUrl4
+from yoga_programImg pi, yoga_program p 
+where pi.programImg=p.programno and programno=1;
+
 
 delete yoga_teacher where teacherId>20
 select * from yoga_teacher
@@ -200,14 +234,10 @@ constraint fk_yoga_member foreign key(id) references yoga_member(id)
 )
 select p.programno, c.teacherid from yoga_class c, YOGA_PROGRAM p where c.programno=p.programno and teacherid=1;
 
-<<<<<<< HEAD
 select c.classno, p.programname, c.classday,c.capacity from yoga_class c, YOGA_PROGRAM p where c.programno=p.programno and teacherid=1;
-create sequence rs_seq;    
-=======
 create sequence rs_seq;    
 
 --멤버 업데이트
 select * from yoga_member;
 update yoga_member set password='1234', phone_number='1', address='1' ,email='1@2', password_answer='1', name='1'  where id='html';
 update yoga_member set password=?, phone_number=?, address=? ,email=?, password_question=?, password_answer=?, name=? where id=? 
->>>>>>> branch 'master' of https://github.com/2ZO/ILoveNotNull.git

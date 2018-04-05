@@ -11,6 +11,7 @@
 <script type="text/javascript">
 /*클래스 입력, 받아오기 ajax로 처리하기~*/
 $(document).ready(function(){
+	var vo;
 $("#addClass").click(function(){
 		$.ajax({
 		type:"post",
@@ -18,6 +19,7 @@ $("#addClass").click(function(){
 		url:"${pageContext.request.contextPath}/DispatcherServlet",
 		data:$("#addClassForm").serialize(),
 		success:function(data){
+			vo=data.classVo;
 			if(data.flag=="false"){
 				alert("뭔가 에러")
 			}else{
@@ -26,11 +28,14 @@ $("#addClass").click(function(){
 							"<td>"+data.teacherName+"</td>"+
 							"<td>"+data.classDay+"</td>"+
 							"<td>"+data.classTime+"</td></tr>");
+<<<<<<< HEAD
 					$('#teacherSelect option:eq(0)').prop("selected", true);
 					$('#programSelect option:eq(0)').prop("selected", true);
 					$('#daySelect option:eq(0)').prop("selected", true);
 					$('#timeSelect option:eq(0)').prop("selected", true);
 					$('#capacity option:eq(0)').val('');
+=======
+>>>>>>> branch 'master' of https://github.com/2ZO/ILoveNotNull.git
 				}
 			}
 			//$("#membody").html(info);

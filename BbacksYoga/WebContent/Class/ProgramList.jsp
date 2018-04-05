@@ -12,36 +12,37 @@
     width: 60%;
 	margin: 40px auto 0;
 }
-
 	th, td {
     text-align: left;
     padding: 8px;
 }
-
 	tr:nth-child(even){background-color: #f2f2f2}
-
 	th {
-    background-color: #4CAF50;
+    background-color: #7c8864;
     color: white;
 }
 </style>
 <script>
-/* 	var pno;
-	function gotoDetail(pno) {
-		location.href="${pageContext.request.contextPath}/DispatcherServlet?command=programDetail&programNo="+pno;
-	} */
 	$(document).ready(function() {
 		$('tr').click(function() {
-			var pno = $(this).attr('id'); 
+			var pno = $(this).attr('id');
 			$('#myModal').on('show.bs.modal', function () {
 				$.ajax({
 					type : "get",
 					url : "${pageContext.request.contextPath}/DispatcherServlet",
 					dataType : "json",
-					data : "command=programDetail&programNo=" + pno,
-					success : function(data) { 
-						$("#prgramName").html(data.programName); 
-						$("#programDetail").html(data.programDetail); 
+					data : "command=programDetail&programNo="+pno,
+					success : function(data) {
+						$("#programName").html(data.programName); 
+						$("#programDetail").html(data.programDetail);
+						var img1 ="${pageContext.request.contextPath}/Image/program/"+ data.programImg1;
+						var img2 ="${pageContext.request.contextPath}/Image/program/"+ data.programImg2;
+						var img3 ="${pageContext.request.contextPath}/Image/program/"+ data.programImg3;
+						var img4 ="${pageContext.request.contextPath}/Image/program/"+ data.programImg4;
+						$("#pImg1").attr("src", img1);
+						$("#pImg2").attr("src", img2);
+						$("#pImg3").attr("src", img3);
+						$("#pImg4").attr("src", img4);
 					}//success
 				})//ajax 				 
 			})//show modal
@@ -93,21 +94,29 @@
 
 <div class="modal fade" id="myModal">
 	<div class="modal-dialog modal-dialog-centered">
-		<div class="modal-content">
+		<div class="modal-content" >
 			<!-- Modal Header -->
 			<div class="modal-header">
-				<h4 class="modal-title">프로그램 소개</h4><hr>
-				프로그램 이름: <span id="prgramName"></span><br>
+				<h4 class="modal-title">프로그램 소개 : <span id="programName"></span></h4>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<br><br><br>
+				<img class="profile-img" id="pImg1">
 			</div>
 			<!-- Modal body -->
 			<div class="modal-body">
 				<div class="row program_detail">
-					<div class="profile-text">
-						<div class="profile-description">
+					<div class="profile-description">
+						<div class="profile-des">
 							<span id="programDetail"></span>
-						</div>
+						</div>			
 					</div>
+					<table>
+						<tr>
+							<td><img class="profile-img" id="pImg2"></td>
+							<td><img class="profile-img" id="pImg3"></td>
+							<td><img class="profile-img" id="pImg4"></td>
+						</tr>
+					</table>
 				</div>
 			</div>
 			<!-- Modal footer -->

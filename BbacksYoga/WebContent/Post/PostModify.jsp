@@ -102,7 +102,7 @@
 				<!-- 글 등록 & 취소-->
 				<div class="post_button">
 					<input id="post_button_bt" type="submit" value="등록" id="submit_button" >
-					<<input id="post_button_bt" type="button" value="취소" Onclick="history.back()">
+					<input id="post_button_bt" type="button" value="취소" Onclick="history.back()">
 				</div>
 			</form>
 		</div>

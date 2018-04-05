@@ -5,17 +5,19 @@
 <script type="text/javascript">
 function datasubmit()
 {
+	alert(window.clipboardData);
 	form.content.value = dhtmlframe.document.body.innerHTML;
 	return confirm('글을 등록하겠음?');
 	
 }
 
-function handlePaste () {
-    var clipboardData, pastedData;
+function handlePaste (e) {
+    console.log();
+	var clipboardData, pastedData;
  
     // Stop data actually being pasted into div
-    e.stopPropagation();
-    e.preventDefault();
+   // e.stopPropagation();
+  //  e.preventDefault();
  
     // Get pasted data via clipboard API
     clipboardData = e.clipboardData || window.clipboardData;
@@ -106,7 +108,7 @@ function handlePaste () {
 				
 				<!-- 쓰기영역 -->
 				<br>
-				<IFRAME NAME=dhtmlframe id="dhtmlframe"></IFRAME><br>				
+				<IFRAME NAME=dhtmlframe id="dhtmlframe" ></IFRAME><br>				
 				<!-- 쓰기영역 html -->
 				<textarea rows="10" cols="40" class="postContents" name="content">	</textarea>
 				<!-- 글 등록 & 취소-->
