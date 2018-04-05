@@ -8,28 +8,6 @@ function datasubmit()
 	return confirm('글을 등록하겠음?');
 	
 }
-
-function handlePaste () {
-    var clipboardData, pastedData;
- 
-    // Stop data actually being pasted into div
-    e.stopPropagation();
-    e.preventDefault();
- 
-    // Get pasted data via clipboard API
-    clipboardData = e.clipboardData || window.clipboardData;
-    pastedData = clipboardData.getData('Text');
-    
-    dhtmlframe.document.open(); 
-	dhtmlframe.document.write(clipboardData); 
-	dhtmlframe.document.close();
-    
-    // Do whatever with pasteddata
-    alert(pastedData);
-}
-
-
-
 </script>
 
 <div class="container">
@@ -54,6 +32,7 @@ function handlePaste () {
 				</div>
 			</form>
 			<!-- 사진올리기 -->
+			
 			<form method="post" enctype="multipart/form-data" id="postImg">
 				   <input type="hidden" name="test" value="hidden">
 				    <div>
@@ -63,6 +42,7 @@ function handlePaste () {
 				    </div>				 
 				    <div>
 				        <div class="imgs_wrap">
+				        	이미지 첨부시 미리보기로 확인하시고, 사진을 클릭하면 본문에 추가됩니다
 				            <img id="img" />
 				        </div>
 				    </div>
