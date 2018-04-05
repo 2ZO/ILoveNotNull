@@ -9,24 +9,52 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	// 수강 희망 시간표 클릭 시 
-	   $(".regLink").click(function(){
-		   // visitor의 경우 로그인 alert
-		   if(${empty memberVO}){
-			   alert("로그인을 하세요.");
-			   return true;
-		   }
-		   // 회원 package가 0보다 클 때, 선택한 과목의 정보를 보여주며 confirm
-		   // 확인 시 링크가 실행되어 Create_RegisterClassController로 이동
-		      if(${requestScope.userPackage>0}){
-		    	  // 클릭한 <td> 값의 html 문에서 split을 이용하여 <br>을 기준으로 끊어 출력
-		    	 var info=$(this).html().split("<br>");
-		         return confirm(info+"를 수강하시겠습니까?");
-		       }else{
-		    	   // 회원 package가 0일 시 alert
-		          alert("수강신청 가능 횟수를 모두 소모하셨습니다.");
-		          return false;
-		       }
-		    }); //click
+		    var regList=[];
+		    var overlapFlag=true;
+		    var up=${requestScope.userPackage};
+		    $('td').click(function(){
+		    	var td=$(this); //현재 <td> 위치값 저장
+		    	if($(this).css("background-color")=="rgb(255, 255, 255)"||$(this).css("background-color")=="rgb(165, 255, 177)"){
+		    		if($(this).find(".classNo").val()!=null){
+		    			if(up>0){
+		    				//ajax 중복체크
+		    				$.ajax({
+								type:"post",
+								dataType:"json",
+								url:"${pageContext.request.contextPath}/DispatcherServlet",
+								data: "command=checkOverlapClass&classNo="+$(this).find(".classNo").val(),
+								success:function(data){
+									overlapFlag=data.flag;
+									if(overlapFlag){
+			    						td.css("background","rgb(142, 255, 128)");
+		    							regList.push(td.find(".classNo").val());
+		    							console.log('after push regList: '+regList);
+		    							up-=1;
+		    							$("#back_page").val("신청 가능 횟수: "+up);
+									}else{
+										alert("이미 신청한 강좌입니다!");
+										overlapFlag=true;
+									}//else class.val=null
+								}//success
+							});//ajax
+		    			}else{
+		    				alert("수강신청 가능 횟수를 모두 소모하셨습니다.");
+		    			}// else userPackage=0
+		    		}// if class.val!=null
+		    	}else{
+			    	$(this).css("background","white");
+		    		regList.splice(regList.indexOf(""), 1);
+		    		up+=1;
+		    		$("#back_page").val("신청 가능 횟수: "+up);
+		    	}//else bgcolor=black
+		    	console.log('package: '+up+', regList: '+regList);
+		    });//click <td>
+		    $("#regStart").click(function(){
+		    	var flag=confirm("수강 신청을 하시겠습니까?");
+		    	if(flag){
+		    		location.href="${pageContext.request.contextPath}/DispatcherServlet?command=Create_NewRegisterClass&classNo="+regList;
+		    	}
+		    });
 		 });//ready
 	</script>
 
@@ -116,6 +144,8 @@ td {
 
 .fullClass {
 	color: red;
+	font-style: italic;
+	text-decoration: line-through;
 }
 
 #back_page {
@@ -127,7 +157,9 @@ td {
 	background-color: #A5FFB1;
 }
 .past{
-	color: yellow;
+	color: #E6E6E6;
+	font-style: italic;
+	text-decoration: line-through;
 }
 </style>
 
@@ -143,8 +175,8 @@ td {
 	<!-- 로그인 시 회원의 package수 출력 -->
 	<c:choose>
 		<c:when test="${sessionScope.memberVO.id!=null }">
-			<input id="back_page" type="button"
-				value="신청 가능 횟수: ${requestScope.userPackage}">
+			<input id="back_page" type="button" value="신청 가능 횟수: ${requestScope.userPackage}">
+			<input id="regStart" type="button" value="강좌 수강 신청하기">
 		</c:when>
 		<c:otherwise>
 			<!-- 비로그인 시 로그인 필요 구문 출력 -->
@@ -218,9 +250,9 @@ td {
 												</c:when>
 												<c:otherwise>
 													<!-- 클래스 내용을 누르면 수강 신청으로 연결되는 링크 삽입 -->
-													<a class="regLink"
-														href="${pageContext.request.contextPath}/DispatcherServlet?command=Create_RegisterClass&classNo=${list.classNo }">${list.programName }<br>${list.teacherNick }<br>
+													<a class="regLink">${list.programName }<br>${list.teacherNick }<br>
 														${list.count_reg }/ ${list.capacity }
+														<input type="hidden" name="classNo" class="classNo" value="${list.classNo }">
 													</a>
 												</c:otherwise>
 											</c:choose>

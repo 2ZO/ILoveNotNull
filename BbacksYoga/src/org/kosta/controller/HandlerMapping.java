@@ -4,6 +4,7 @@ import org.kosta.controller.first.*;
 import org.kosta.controller.second.*;
 import org.kosta.controller.third.*;
 
+
 public class HandlerMapping {
 	private static HandlerMapping instance = new HandlerMapping();
 
@@ -88,6 +89,10 @@ public class HandlerMapping {
 			c = new Delete_TimeTableController();
 		} else if (command.equals("addTeacher")) { 
 			c = new Create_TeacherController();
+		}  else if(command.equals("checkOverlapClass")) {
+			c= new Read_CheckOverlapClassController();
+		} else if (command.equals("Create_NewRegisterClass")) {
+			c = new Create_NewRegisterClassController();
 		}
 		//Paging Controller
 		else if(command.equals("page")) {

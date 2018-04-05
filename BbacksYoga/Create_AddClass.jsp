@@ -25,26 +25,16 @@ $("#addClass").click(function(){
 			}else{
 				alert(data.programName+"추가완료!\n리스트를 확인해주세요");
 					$("#table_body tr:last").after("<tr><td>"+data.programName+"</td>"+
-<<<<<<< HEAD
 							"<td>"+data.teacherName+"</td>"+"<td>"+data.classTime+"</td></tr>"
 							+"<td>"+data.classDay+"</td>");
-=======
-							"<td>"+data.teacherName+"</td>"+
-							"<td>"+data.classDay+"</td>"+
-							"<td>"+data.classTime+"</td></tr>");
->>>>>>> branch 'master' of https://github.com/2ZO/ILoveNotNull.git
 					$('#teacherSelect option:eq(0)').prop("selected", true);
 					$('#programSelect option:eq(0)').prop("selected", true);
 					$('#daySelect option:eq(0)').prop("selected", true);
 					$('#timeSelect option:eq(0)').prop("selected", true);
-<<<<<<< HEAD
 					$('#capacity').val('');
 					$("#programSelect").hide();
 					$("#daySelect").hide();
 					$("#timeSelect").hide();
-=======
-					$('#capacity option:eq(0)').val('');
->>>>>>> branch 'master' of https://github.com/2ZO/ILoveNotNull.git
 				}
 			}
 			//$("#membody").html(info);
