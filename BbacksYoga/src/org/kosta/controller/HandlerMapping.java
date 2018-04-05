@@ -7,10 +7,12 @@ import org.kosta.controller.first.Read_BoardController;
 import org.kosta.controller.first.Read_LoginController;
 import org.kosta.controller.first.Read_MemberByEmailController;
 import org.kosta.controller.first.Read_MemberByIdController;
+import org.kosta.controller.first.Read_ModifyPostView;
 import org.kosta.controller.first.Read_PostDetailController;
 import org.kosta.controller.first.Update_PostController;
 import org.kosta.controller.second.Create_ClassController;
 import org.kosta.controller.second.Create_ProgramController;
+import org.kosta.controller.second.Create_ProgramImgController;
 import org.kosta.controller.second.Create_TeacherController;
 import org.kosta.controller.second.Read_AddClassViewController;
 import org.kosta.controller.second.Read_MyInfoCheckController;
@@ -85,6 +87,8 @@ public class HandlerMapping {
 			c = new Create_TeacherController();
 		} else if (command.equals("addProgram")) {
 			c = new Create_ProgramController();
+		} else if (command.equals("addProgramImg")) { // 프로그램 이미지 등록
+			c = new Create_ProgramImgController();
 		} else if (command.equals("addclass")) {
 			c = new Create_ClassController();
 		}else if(command.equals("addClassView")) { //강좌등록시 강사, 프로그램 데이터를 불러옴
