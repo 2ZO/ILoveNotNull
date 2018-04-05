@@ -1,13 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<<<<<<< HEAD
- <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-=======
-<script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/postEditor.js"></script>
 <script type="text/javascript">
 function datasubmit()
 {
@@ -15,10 +8,7 @@ function datasubmit()
 	return confirm('글을 등록하겠음?');
 	
 }
->>>>>>> branch 'master' of https://github.com/2ZO/ILoveNotNull.git
 
-<<<<<<< HEAD
-=======
 function handlePaste () {
     var clipboardData, pastedData;
  
@@ -41,7 +31,7 @@ function handlePaste () {
 
 
 </script>
->>>>>>> branch 'master' of https://github.com/2ZO/ILoveNotNull.git
+
 <div class="container">
 	<div class="row text">
 		<div class="col-sm-12 contents">
