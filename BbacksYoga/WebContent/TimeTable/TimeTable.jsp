@@ -1,3 +1,4 @@
+<%@page import="org.kosta.model.VO.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -56,6 +57,13 @@ $(document).ready(function(){
 		    	}
 		    });
 		 });//ready
+		 function btn_sys(a){
+				if(a==0)
+					location.href="${pageContext.request.contextPath}/DispatcherServlet?command=temp";
+					else{
+						location.href="${pageContext.request.contextPath}/DispatcherServlet?command=temp2";
+				}
+			}
 	</script>
 
 
@@ -186,7 +194,24 @@ td {
 			</a>
 		</c:otherwise>
 	</c:choose>
-	<br>
+<%	
+	MemberVO mvo=(MemberVO)session.getAttribute("memberVO");
+	/* request.setAttribute("today_date3", new Date().getDay()-1); */
+	pageContext.setAttribute("today_date", new Date().getDay()-1);
+	//request.setAttribute("flag_no", 0);
+	request.setAttribute("flag", request.getAttribute("flag_no"));
+%>
+<c:if test="${sessionScope.memberVO.id eq 'sys' }">
+	<c:choose>
+		<c:when test="${requestScope.flag eq 0}">
+			<input type="button" value="블라인드 모드" onclick="btn_sys(0)"><br>
+		</c:when>
+		<c:otherwise>
+			<input type="button" value="블라인드 모드" onclick="btn_sys(1)"><br>
+		</c:otherwise>
+	</c:choose>
+</c:if> <%-- 용준형 마지막 end --%>
+
 	<div class="table-users">
 		<div class="title">Time Table</div>
 		<!-- timetable -->
@@ -195,19 +220,44 @@ td {
 			<thead id="table_head">
 				<tr>
 					<th id="classtime">TIME</th>
-					<th>MON</th>
-					<th>TUE</th>
-					<th>WED</th>
-					<th>THU</th>
-					<th>FRI</th>
-					<th>SAT</th>
+					<c:choose>
+						<c:when test="${pageScope.today == 0 }">
+							<th id="today">MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th>
+						</c:when>
+						<c:when test="${pageScope.today == 1 }">
+							<th>MON</th><th id="today">TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th>
+						</c:when>
+						<c:when test="${pageScope.today == 2 }">
+							<th>MON</th><th>TUE</th><th id="today">WED</th><th>THU</th><th>FRI</th><th>SAT</th>
+						</c:when>
+						<c:when test="${pageScope.today == 3 }">
+							<th>MON</th><th>TUE</th><th>WED</th><th id="today">THU</th><th>FRI</th><th>SAT</th>
+						</c:when>
+						<c:when test="${pageScope.today == 4 }">
+							<th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th id="today">FRI</th><th>SAT</th>
+						</c:when>
+						<c:when test="${pageScope.today == 5 }">
+							<th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th id="today">SAT</th>
+						</c:when>
+						<c:otherwise>
+							<th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th>
+						</c:otherwise>
+					</c:choose>
+
 				</tr>
 			</thead>
 			<!-- table body -->
 			<tbody id="timetable">
 				<c:choose>
 					<%-- <c:when test="true"> --%>
-					<c:when test="${pageScope.today == -1 }">
+					<c:when test="${requestScope.flag eq 0 }">
+						<tr>
+							<td class="" colspan="7">다음주 시간표 준비중 입니다.<br> <img
+								src="${pageContext.request.contextPath }/TimeTable/settingTime.gif"
+								alt=""></td>
+						</tr>
+					</c:when>
+					<c:when test="${pageScope.today eq -1 }">
 						<tr>
 							<td class="" colspan="7">다음주 시간표 준비중 입니다.<br> <img
 								src="${pageContext.request.contextPath }/TimeTable/settingTime.gif"
@@ -221,7 +271,7 @@ td {
 								<td id="classtime">${countOfClassTime.count }</td>
 								<!-- 요일 데이터변수 week에 0~5 지정 -->
 								<c:forEach begin="0" end="5" varStatus="week">
-									<!-- week과 today 데이터 값이 같을 때 해당 <td>에 id를 주어 색을 입힌다.(오늘에 해당하는 테이블열) -->
+									<%-- <!-- week과 today 데이터 값이 같을 때 해당 <td>에 id를 주어 색을 입힌다.(오늘에 해당하는 테이블열) -->
 									<c:choose>
 										<c:when test="${week.index eq pageScope.today }">
 											<td id="today">
@@ -229,7 +279,8 @@ td {
 										<c:otherwise>
 											<td>
 										</c:otherwise>
-									</c:choose>
+									</c:choose> --%>
+									<td>
 									<!-- 시간표 List 변수 선언 -->
 									<c:forEach items="${timetable_list }" var="list"
 										varStatus="tdNo">

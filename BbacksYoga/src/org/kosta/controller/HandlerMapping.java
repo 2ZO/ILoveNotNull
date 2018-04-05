@@ -32,6 +32,8 @@ import org.kosta.controller.third.Read_CheckOverlapClassController;
 import org.kosta.controller.third.Read_RegisterController;
 import org.kosta.controller.third.Read_TimeTableController;
 import org.kosta.controller.third.Update_TimeTableController;
+import org.kosta.controller.third.temp2Controller;
+import org.kosta.controller.third.tempController;
 
 public class HandlerMapping {
 	private static HandlerMapping instance = new HandlerMapping();
@@ -117,6 +119,10 @@ public class HandlerMapping {
 			c= new Read_CheckOverlapClassController();
 		} else if (command.equals("Create_NewRegisterClass")) {
 			c = new Create_NewRegisterClassController();
+		} else if (command.equals("temp")) { 
+			c = new tempController();
+		} else if (command.equals("temp2")) { 
+			c = new temp2Controller();
 		}
 		//Paging Controller
 		else if(command.equals("page")) {
