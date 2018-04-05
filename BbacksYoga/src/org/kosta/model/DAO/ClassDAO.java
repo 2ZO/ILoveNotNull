@@ -130,5 +130,19 @@ public class ClassDAO {
 		}
 		return classList;
 	}
+	public void deleteClass() throws SQLException {
+		// TODO Auto-generated method stub
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=dataSource.getConnection();
+			String sql="delete from yoga_class";
+			pstmt=con.prepareStatement(sql);
+			pstmt.executeUpdate();
+
+		}finally {
+			closeAll(pstmt, con);
+		}
+	}
 
 }
