@@ -3,9 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style type="text/css">
 h2{
-   width: 120px;
-      margin: 0 auto;
+   	text-align:center;
+      margin-top: 23px;
+       margin-bottom: 10px;
 }
+label{
+        		margin-top: 12px;
+        	}
 </style>
 
 <script type="text/javascript">
@@ -103,6 +107,7 @@ h2{
             <!-- 헤더 들어가는 부분 -->
              <h2>회원 정보 수정</h2>
             <!--// 헤더 들어가는 부분 -->
+            <hr>
 
                 <!-- 본문 들어가는 부분 -->
         
