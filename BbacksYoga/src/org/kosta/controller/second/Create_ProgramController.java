@@ -15,11 +15,13 @@ public class Create_ProgramController implements Controller {
 		String programName = request.getParameter("programName");
 		String programDetail =request.getParameter("programDetail");
 		String programNo=ProgramDAO.getInstance().addProgram(programName, programDetail);
-		ProgramVO program= ProgramDAO.getInstance().getProgramListByNo(Integer.parseInt(programNo));
+		ProgramVO program= ProgramDAO.getInstance().getProgramListByNoUseByMA(Integer.parseInt(programNo));
+		
 		JSONObject json= null;
 		if(program == null) {
 			json= new JSONObject().put("flag", "false"); //클래스가 없으면 false반환
 		}else{
+			System.out.println(program.getProgramDetail());
 			json= new JSONObject().put("programDetail", program.getProgramDetail());
 			json.put("programName", program.getProgramName());
 		}

@@ -14,7 +14,7 @@ public class Read_PostDetailController implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		String postNo = request.getParameter("postNo");
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
 		// 나중에 비공개글 할 때 쓸생각임
 		/*
 		 * if(session==null || session.getAttribute("memberVO")==null) { return

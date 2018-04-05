@@ -91,6 +91,11 @@ classDay varchar2(10) not null,
 constraint fk_teacherId foreign key(teacherId) references YOGA_TEACHER,
 constraint fk_programNo foreign key(programNo) references yoga_program
 )
+select * from YOGA_CLASS;
+select * from YOGA_TEACHER;
+select programNo from YOGA_PROGRAM where programName='?';
+select teacherId from YOGA_TEACHER where teacherName='수호';
+select classTime from YOGA_CLASS where classDay='mon' and programNo='42' and teacherId=?
 -- classNo 시퀀스 생성
 create sequence class_seq;
 
@@ -233,7 +238,7 @@ select p.programno, c.teacherid from yoga_class c, YOGA_PROGRAM p where c.progra
 
 select c.classno, p.programname, c.classday,c.capacity from yoga_class c, YOGA_PROGRAM p where c.programno=p.programno and teacherid=1;
 create sequence rs_seq;    
-
+select p.programno, c.teacherid, c.classDay, c.classTime from yoga_class c, YOGA_PROGRAM p where c.programno=p.programno
 --멤버 업데이트
 select * from yoga_member;
 update yoga_member set password='1234', phone_number='1', address='1' ,email='1@2', password_answer='1', name='1'  where id='html';

@@ -1,39 +1,9 @@
 package org.kosta.controller;
 
-import org.kosta.controller.first.Create_PostController;
-import org.kosta.controller.first.Create_PostControllerView;
-import org.kosta.controller.first.Create_RegisterController;
-import org.kosta.controller.first.Read_BoardController;
-import org.kosta.controller.first.Read_LoginController;
-import org.kosta.controller.first.Read_MemberByEmailController;
-import org.kosta.controller.first.Read_MemberByIdController;
-import org.kosta.controller.first.Read_ModifyPostView;
-import org.kosta.controller.first.Read_PostDetailController;
-import org.kosta.controller.first.Update_PostController;
-import org.kosta.controller.second.Create_ClassController;
-import org.kosta.controller.second.Create_ProgramController;
-import org.kosta.controller.second.Create_ProgramImgController;
-import org.kosta.controller.second.Create_TeacherController;
-import org.kosta.controller.second.Read_AddClassViewController;
-import org.kosta.controller.second.Read_MyInfoCheckController;
-import org.kosta.controller.second.Read_ProgramDetailController;
-import org.kosta.controller.second.Read_ProgramListController;
-import org.kosta.controller.second.Read_TeacherDetailController;
-import org.kosta.controller.second.Read_TeacherListController;
-import org.kosta.controller.second.Update_MyInfoController;
-import org.kosta.controller.second.Update_MyInfoPreviewController;
-import org.kosta.controller.third.Create_NewRegisterClassController;
-import org.kosta.controller.third.Create_RegisterClassController;
-import org.kosta.controller.third.Create_TimeTableController;
-import org.kosta.controller.third.Delete_RegisterClassController;
-import org.kosta.controller.third.Delete_TimeTableController;
-import org.kosta.controller.third.Read_AdminTimeTableController;
-import org.kosta.controller.third.Read_CheckOverlapClassController;
-import org.kosta.controller.third.Read_RegisterController;
-import org.kosta.controller.third.Read_TimeTableController;
-import org.kosta.controller.third.Update_TimeTableController;
-import org.kosta.controller.third.temp2Controller;
-import org.kosta.controller.third.tempController;
+import org.kosta.controller.first.*;
+import org.kosta.controller.second.*;
+import org.kosta.controller.third.*;
+
 
 public class HandlerMapping {
 	private static HandlerMapping instance = new HandlerMapping();
@@ -70,6 +40,8 @@ public class HandlerMapping {
 			c = new Read_BoardController();
 		}else if(command.equals("deletePost")) { // 글쓰기 삭제
 			c = new Delete_BoardController();
+		}else if(command.equals("searchPost")) { // 게시글 검색
+			c = new Search_BoardController();
 					//2조~
 		} else if (command.equals("teacherList")) {
 			c = new Read_TeacherListController();
@@ -93,6 +65,8 @@ public class HandlerMapping {
 			c = new Create_ProgramImgController();
 		} else if (command.equals("addclass")) {
 			c = new Create_ClassController();
+		}else if (command.equals("getTime")) {//관리자모드에서 셀렉터 때매 만듬
+			c = new Read_AvailableTimeController();
 		}else if(command.equals("addClassView")) { //강좌등록시 강사, 프로그램 데이터를 불러옴
 			c = new Read_AddClassViewController();
 		}

@@ -20,7 +20,6 @@ public class Read_TimeTableController implements Controller {
 		ArrayList<RSVO> list=new ArrayList<RSVO>();
 		if(session==null||vo==null) {
 			list=RSDAO.getInstance().readTimetableInfo();
-			System.out.println("hi");
 		}else {
 			int user_package = RSDAO.getInstance().readUserPackage(vo.getId());
 			request.setAttribute("userPackage", user_package);

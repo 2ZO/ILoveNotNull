@@ -146,4 +146,75 @@ public class PostDAO {
 			closeAll( pstmt, con);
 		}		
 	}
+	public ArrayList<PostVO> getPostSearch(String opt,String keyword,PagingBean pb) throws SQLException {
+		ArrayList<PostVO> list=new ArrayList<PostVO>();
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String temp = "%"+keyword+"%";
+		int option= Integer.parseInt(opt);
+		try {
+			con=dataSource.getConnection();
+			if(option==0) {//제목을 선택한 검색
+				StringBuilder sql=new StringBuilder();
+				sql.append("select postNo,title,id,to_char(regDate,'YYYY.MM.DD') ");
+				sql.append("from ( select  row_number() over(order by postNo desc) ");
+				sql.append("as rnum,postNo,title,id,regDate from (SELECT * ");
+				sql.append("FROM POST WHERE title LIKE ?)) ");
+				sql.append("where rnum between ? and ?");
+				pstmt=con.prepareStatement(sql.toString());
+				pstmt.setString(1, temp);
+				pstmt.setInt(2, pb.getStartRowNumber());
+				pstmt.setInt(3, pb.getEndRowNumber());
+			}else if(option==1) {//작성자(id)를 선택한 검색
+				StringBuilder sql=new StringBuilder();
+				sql.append("select postNo,title,id,to_char(regDate,'YYYY.MM.DD') ");
+				sql.append("from ( select  row_number() over(order by postNo desc) ");
+				sql.append("as rnum,postNo,title,id,regDate from (SELECT * ");
+				sql.append("FROM POST WHERE id LIKE ?)) ");
+				sql.append("where rnum between ? and ?");
+				pstmt=con.prepareStatement(sql.toString());
+				pstmt.setString(1, temp);
+				pstmt.setInt(2, pb.getStartRowNumber());
+				pstmt.setInt(3, pb.getEndRowNumber());
+				System.out.println(pb.getStartRowNumber());
+				System.out.println(pb.getEndRowNumber());
+			}
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(new PostVO(rs.getString(1),rs.getString(2),null,rs.getString(3),rs.getString(4)));
+			}
+		}finally {
+			closeAll(rs, pstmt, con);
+		}
+		return list;
+	}
+	public int getTotalSearchPostCount(String opt, String keyword) throws SQLException {
+		// TODO Auto-generated method stub
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int count=0;
+		String temp = "%"+keyword+"%";
+		int option= Integer.parseInt(opt);
+		try {
+			con=dataSource.getConnection();
+			if(option==0) {//제목을 선택한 검색
+				String sql="SELECT count(*) FROM POST WHERE title LIKE ?";
+				pstmt=con.prepareStatement(sql.toString());
+				pstmt.setString(1, temp);
+			}else if(option==1) {
+				String sql="SELECT count(*) FROM POST WHERE id LIKE ?";
+				pstmt=con.prepareStatement(sql.toString());
+				pstmt.setString(1, temp);
+			}
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				count=rs.getInt(1);
+			}
+		}finally {
+			closeAll(rs, pstmt, con);
+		}
+		return count;
+	}
 }
