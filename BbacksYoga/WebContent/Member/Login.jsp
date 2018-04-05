@@ -70,7 +70,6 @@ $("#logInBtn").click(function(){
 									<input class="form-control" placeholder="Password"
 										name="userPassword" type="password" value="" id="password">
 								</div>
-								
 								<input class="btn btn-lg btn-success btn-block" type="button"
 									value="Login" id="logInBtn">
 								<div class="form-group">
