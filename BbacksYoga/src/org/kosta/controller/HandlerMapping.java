@@ -64,6 +64,8 @@ public class HandlerMapping {
 			c = new Create_ClassController();
 		}else if(command.equals("addClassView")) { //강좌등록시 강사, 프로그램 데이터를 불러옴
 			c = new Read_AddClassViewController();
+		}else if(command.equals("addPostImg")) {
+			c = new CreatePostImageController();
 		}
 		//3조
 		else if (command.equals("Create_RegisterClass")) {

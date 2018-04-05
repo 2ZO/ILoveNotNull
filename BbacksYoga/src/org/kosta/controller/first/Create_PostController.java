@@ -23,7 +23,7 @@ public class Create_PostController implements Controller {
 			id=mvo.getId();		
 		//게시판에 글쓰기
 		PostDAO.getInstance().createPost(title,content,id);
-		return "redirect:index.jsp";
+		return "DispatcherServlet?command=postList&nowPage=1";
 	}
 
 }
