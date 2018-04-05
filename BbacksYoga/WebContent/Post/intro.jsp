@@ -2,23 +2,25 @@
     pageEncoding="UTF-8"%>
 <style type="text/css">
 	.introDiv{
-		width: 68%;
-		margin: 55px auto;
+		 /* width: 68%; */
+		/* margin: 55px auto; */
+		margin-top: 55px;
 	}
 	.introDiv h2{
 		margin-bottom: 80px;
 	}
 	.introDiv p{
-		width: 500px;
+		width: 492px;
 		float: left;
 		line-height: 45px;
 	}
 	.introImg{
 		float: right;
+		margin-right: 15%;
 	}
 	.introCon{
-		float: right;
-		padding-right: 30px;
+		float: left;
+		margin-left: 15%;
 	}
 	.introDiv img{
 		width: 500px;
