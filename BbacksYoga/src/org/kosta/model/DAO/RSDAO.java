@@ -117,6 +117,50 @@ public class RSDAO {
 		return true;
 	}
 
+	public void NewRegisterClass(String classNo, String userId) throws ClassNotFoundException, SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		
+		try {
+			con=getConnection();
+			String sql="insert into registerStatus(RSNo, classNo, id, regDate) values(RS_seq.nextVal, ?, ?, sysdate)";
+			ps=con.prepareStatement(sql);
+			ps.setInt(1, Integer.parseInt(classNo));
+			ps.setString(2, userId);
+			ps.executeUpdate();
+			ps.close();
+			
+			sql="update yoga_member set member_status=member_status-1 where id=?";
+			ps=con.prepareStatement(sql);
+			ps.setString(1, userId);
+			ps.executeUpdate();
+					
+		}finally {
+			closeAll(rs,ps,con);
+		}
+	}
+	public boolean Check_OverlapByClassNo(String classNo, String userId) throws ClassNotFoundException, SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		boolean flag=true;
+		System.out.println(classNo+", "+userId);
+		try {
+			con=getConnection();
+			String sql="select RSNo from registeRStatus where classNo=? and id=?";
+			ps=con.prepareStatement(sql);
+			ps.setInt(1, Integer.parseInt(classNo));
+			ps.setString(2, userId);
+			rs=ps.executeQuery();
+			if(rs.next())
+				flag=false;	
+		}finally {
+			closeAll(rs,ps,con);
+		}
+		return flag;
+	}
+	
 	public void Delete_RegisterClass(String userId, Integer classNo) throws ClassNotFoundException, SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
@@ -177,19 +221,8 @@ public class RSDAO {
 	         ps=con.prepareStatement(sql);
 	         ps.setString(1, userId);
 	         RS=ps.executeQuery();
-	         if(RS.next()) {
+	         if(RS.next()) 
 	            userPackage= Integer.parseInt(RS.getString(1));
-	         }
-	         ps.close();
-	         RS.close();
-	         
-	         sql="select count(id) from registerStatus where id=?";
-	         ps=con.prepareStatement(sql);
-	         ps.setString(1, userId);
-	         RS=ps.executeQuery();
-	         if(RS.next()) {
-	        	 userPackage-=RS.getInt(1);
-	         }
 	      }finally {
 	         closeAll(RS,ps,con);
 	      }

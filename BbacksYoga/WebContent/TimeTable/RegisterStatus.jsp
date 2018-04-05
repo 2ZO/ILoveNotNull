@@ -84,10 +84,10 @@ tr:nth-child(even){background-color: #f2f2f2}
 						</c:choose>
 					</td>
 					<td>${list.classTime }교시</td>
-					<td>${list.regDate }</td><c:set var="today" value="<%=new java.util.Date()%>"/>
-					<c:set var="regDate" value="${list.regDate }"/>
-					<td><c:choose>
-						<c:when test="${today ge regDate }">
+					<td>${list.regDate }</td>
+					<c:set var="today" value="<%=new java.util.Date().getDay()%>"/>
+				 	<td><c:choose>
+						<c:when test="${list.classDay < today}">
 							<input type="button" value="수강취소" onclick="disable()" data-toggle="tooltip" title="날짜를 확인하세요!">
 						</c:when>
 						<c:otherwise>

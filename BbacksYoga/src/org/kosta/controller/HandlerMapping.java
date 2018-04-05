@@ -20,11 +20,13 @@ import org.kosta.controller.second.Read_TeacherDetailController;
 import org.kosta.controller.second.Read_TeacherListController;
 import org.kosta.controller.second.Update_MyInfoController;
 import org.kosta.controller.second.Update_MyInfoPreviewController;
+import org.kosta.controller.third.Create_NewRegisterClassController;
 import org.kosta.controller.third.Create_RegisterClassController;
 import org.kosta.controller.third.Create_TimeTableController;
 import org.kosta.controller.third.Delete_RegisterClassController;
 import org.kosta.controller.third.Delete_TimeTableController;
 import org.kosta.controller.third.Read_AdminTimeTableController;
+import org.kosta.controller.third.Read_CheckOverlapClassController;
 import org.kosta.controller.third.Read_RegisterController;
 import org.kosta.controller.third.Read_TimeTableController;
 import org.kosta.controller.third.Update_TimeTableController;
@@ -107,6 +109,10 @@ public class HandlerMapping {
 			c = new Delete_TimeTableController();
 		} else if (command.equals("addTeacher")) { 
 			c = new Create_TeacherController();
+		}  else if(command.equals("checkOverlapClass")) {
+			c= new Read_CheckOverlapClassController();
+		} else if (command.equals("Create_NewRegisterClass")) {
+			c = new Create_NewRegisterClassController();
 		}
 		//Paging Controller
 		else if(command.equals("page")) {
