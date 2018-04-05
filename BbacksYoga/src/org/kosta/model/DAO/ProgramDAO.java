@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
-import org.kosta.model.VO.ProgramImgVO;
 import org.kosta.model.VO.ProgramVO;
 import org.kosta.model.etc.DataSourceManager;
 import org.kosta.model.etc.PagingBean;
@@ -107,25 +106,19 @@ public class ProgramDAO {
 		}
 		return list;
 	}
-	// 프로그램 디테일 출력
 	public ProgramVO getProgramListByNo(int programNo) throws SQLException {
 		ProgramVO vo=null;
-		ProgramImgVO programImgVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			con = datasource.getConnection();
-			StringBuilder sql=new StringBuilder();
-			sql.append("select p.programno, p.programName, p.programDetail, pi.hitCount, pi.imgUrl1, pi.imgUrl2, pi.imgUrl3, pi.imgUrl4 ");
-			sql.append("from yoga_programImg pi, yoga_program p ");
-			sql.append("where pi.programImg=p.programno and programno=?");
-			pstmt=con.prepareStatement(sql.toString());	
+			String sql = "select programNo,programName,programDetail from yoga_program where programNo=?";
+			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, programNo);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				programImgVO = new ProgramImgVO(rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
-				vo = new ProgramVO(rs.getString(1), rs.getString(2), rs.getString(3), programImgVO);
+				vo = new ProgramVO(rs.getString(1), rs.getString(2), rs.getString(3));
 			}
 		}finally {
 			closeAll(rs, pstmt, con);

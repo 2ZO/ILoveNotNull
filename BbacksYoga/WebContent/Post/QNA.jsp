@@ -16,18 +16,11 @@
 	tr:nth-child(even){background-color: #f2f2f2}
 
 	th {
-    background-color: #7c8864;
+    background-color: #4CAF50;
     color: white;
 }
 	h3{
 		text-align: center;
-	}
-	.searchDiv{
-		text-align: center;
-	}
-	.writePost{
-		text-align: right;
-		margin-right: 20%;
 	}
 </style>
 <script type="text/javascript">
@@ -38,10 +31,8 @@ function createPost() {
 	location.href="${pageContext.request.contextPath}/DispatcherServlet?command=writePostView";
 }
 </script>
+<input type="button" value="글쓰기" onclick="return createPost()">
 <h3>Q&amp;A</h3>
-<div class="writePost">
-	<input type="button" value="글쓰기" onclick="return createPost()">
-</div>
 <table>
   <thead>
   	<tr class="success">
@@ -63,22 +54,6 @@ function createPost() {
   </tbody>
 </table>
 <br><br>
-<!-- 게시물 검색 -->
-<form id="listForm" action="${pageContext.request.contextPath}/DispatcherServlet?command=searchPost}">
-<input type="hidden" name="command" value="searchPost">
-	<fieldset>
-		<div class="searchDiv">
-			<select name="opt">
-				<option value="0">제목</option>
-				<option value="1">작성자</option>
-			</select>	
-			<input type="text" size="20" placeholder="키워드를 입력하세요" name="keyword">
-			<input type="submit" value="search" id="searchBtn">
-		</div>
-	</fieldset>
-</form>
-
-<!-- 페이징 처리 -->
 <div class="pagingInfo">
 	<c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
 	<ul class="pagination">
