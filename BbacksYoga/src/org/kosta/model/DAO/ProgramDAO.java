@@ -107,6 +107,7 @@ public class ProgramDAO {
 		}
 		return list;
 	}
+	
 	// 프로그램 디테일 출력
 	public ProgramVO getProgramListByNo(int programNo) throws SQLException {
 		ProgramVO vo=null;
@@ -132,6 +133,27 @@ public class ProgramDAO {
 		}
 		return vo;
 	}
+	//관리자용 읽어오기 입니다. 제발 건들지말아주세요ㅠㅠㅠ
+	public ProgramVO getProgramListByNoUseByMA(int programNo) throws SQLException {
+		ProgramVO vo=null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = datasource.getConnection();
+			String sql = "select programNo,programName,programDetail from yoga_program where programNo=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, programNo);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				vo = new ProgramVO(rs.getString(1), rs.getString(2), rs.getString(3));
+			}
+		}finally {
+			closeAll(rs, pstmt, con);
+		}
+		return vo;
+	}
+	
 	public int getProgramListTotal() throws SQLException {
 		int count=0;
 		Connection con = null;
@@ -149,5 +171,25 @@ public class ProgramDAO {
 			closeAll(pstmt, con);
 		}
 		return count;
+	}
+	
+	public String getProgramNoByName(String programName) throws SQLException {
+		String pNo=null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = datasource.getConnection();
+			String sql = "select programNo from YOGA_PROGRAM where programName=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, programName);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				pNo = rs.getString(1);
+			}
+		}finally {
+			closeAll(pstmt, con);
+		}
+		return pNo;
 	}
 }

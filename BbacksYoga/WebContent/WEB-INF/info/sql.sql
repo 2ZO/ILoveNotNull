@@ -110,6 +110,13 @@ delete from yoga_teacher where teacherid=1;
 select * from yoga_program;
 select * from POST;
 select * from registerStatus
+
+select programNo,programName,programDetail from yoga_program where programNo=85
+delete from yoga_teacher;
+delete from yoga_programimg;
+delete from yoga_program;
+delete from yoga_class
+delete from registerStatus
 --멤버추가
 insert into yoga_member(
 id,
@@ -222,3 +229,5 @@ from ( select  row_number() over(order by postNo desc)
 			where rnum between 1 and 5
 			
 SELECT postNo,title,id,to_char(regDate,'YYYY.MM.DD') FROM POST WHERE title LIKE '%test%';
+
+select classTime from YOGA_CLASS where classDay='thu' and programNo=1 and teacherId=1

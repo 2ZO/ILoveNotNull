@@ -63,7 +63,6 @@ $(document).ready(function(){
 			<!-- 데이터 AJAX에서 추가해서 보여준다 -->
 		</tbody>
 	</table>
-	<button id="deleteBtn">전체삭제</button>
 </form>
 </div>
 </div>

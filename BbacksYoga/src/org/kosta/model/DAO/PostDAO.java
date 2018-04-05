@@ -166,8 +166,6 @@ public class PostDAO {
 				pstmt.setString(1, temp);
 				pstmt.setInt(2, pb.getStartRowNumber());
 				pstmt.setInt(3, pb.getEndRowNumber());
-				System.out.println(pb.getStartRowNumber());
-				System.out.println(pb.getEndRowNumber());
 			}else if(option==1) {//작성자(id)를 선택한 검색
 				StringBuilder sql=new StringBuilder();
 				sql.append("select postNo,title,id,to_char(regDate,'YYYY.MM.DD') ");

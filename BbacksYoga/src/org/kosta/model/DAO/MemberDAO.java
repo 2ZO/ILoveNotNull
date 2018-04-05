@@ -92,7 +92,6 @@ public class MemberDAO {
 			pstmt.setString(1, id);
 			rs=pstmt.executeQuery();
 			if(rs.next()){
-				System.out.println(rs.getString(1));
 				flag=false;
 			}
 		}finally{

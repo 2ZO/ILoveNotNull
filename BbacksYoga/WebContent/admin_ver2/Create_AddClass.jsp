@@ -11,7 +11,8 @@
 <script type="text/javascript">
 /*클래스 입력, 받아오기 ajax로 처리하기~*/
 $(document).ready(function(){
-	var vo;
+var flag='false';
+var count=0;
 $("#addClass").click(function(){
 		$.ajax({
 		type:"post",
@@ -19,33 +20,67 @@ $("#addClass").click(function(){
 		url:"${pageContext.request.contextPath}/DispatcherServlet",
 		data:$("#addClassForm").serialize(),
 		success:function(data){
-			vo=data.classVo;
 			if(data.flag=="false"){
 				alert("뭔가 에러")
 			}else{
 				alert(data.programName+"추가완료!\n리스트를 확인해주세요");
 					$("#table_body tr:last").after("<tr><td>"+data.programName+"</td>"+
-							"<td>"+data.teacherName+"</td>"+
-							"<td>"+data.classDay+"</td>"+
-							"<td>"+data.classTime+"</td></tr>");
-<<<<<<< HEAD
+							"<td>"+data.teacherName+"</td>"+"<td>"+data.classTime+"</td></tr>"
+							+"<td>"+data.classDay+"</td>");
 					$('#teacherSelect option:eq(0)').prop("selected", true);
 					$('#programSelect option:eq(0)').prop("selected", true);
 					$('#daySelect option:eq(0)').prop("selected", true);
 					$('#timeSelect option:eq(0)').prop("selected", true);
-					$('#capacity option:eq(0)').val('');
-=======
->>>>>>> branch 'master' of https://github.com/2ZO/ILoveNotNull.git
+					$('#capacity').val('');
+					$("#programSelect").hide();
+					$("#daySelect").hide();
+					$("#timeSelect").hide();
 				}
 			}
 			//$("#membody").html(info);
 		});//success
 	});//ajax
+	
+	$("#teacherSelect").change(function(){
+		$("#programSelect").show();
+	});
+	
+	$("#programSelect").change(function(){
+		$("#daySelect").show();
+	});
+	
+	$("#daySelect").change(function(){
+		$("#timeSelect").show();
+		var formData = new XMLHttpRequest; //firstName=" + encodeURIComponent(firstName)
+		       //+ "&lastName=" + encodeURIComponent(lastName)
+		  formData="teacher="+$("#teacherSelect option:selected").text()+
+		  "&program="+$("#programSelect option:selected").text()+"&day="+$("#daySelect option:selected").text();
+			console(formData);
+			$.ajax({
+			type:"post",
+			dataType:"json",
+			url:"${pageContext.request.contextPath}/DispatcherServlet?command=getTime",
+			data:formData,
+			success:function(data){
+				if(data.flag=="false"){
+			}else{
+				$("#timeSelect option").remove();
+				$("#timeSelect").append("<option>선택해주세요</option>");
+				for(var i=1;i<9;i++){	
+					if(data.avaTime!=i){
+						$("#timeSelect").append("<option value="+i+">"+i+"교시</option>");	
+					}
+				} 
+				console.log(count++);
+			}
+			}
+		});		
+	}); 		
 });
-</script>
 
-<div class="col-sm-2 "></div>
-<div class="col-sm-8 addClass">
+</script>
+<div class="col-sm-1 "></div>
+<div class="col-sm-10 addClass">
 <form method="post" id="addClassForm" 
 	action="${pageContext.request.contextPath}/DispatcherServlet">
 	<input type="hidden" name="command" value="addclass">
@@ -56,17 +91,16 @@ $("#addClass").click(function(){
 		<c:forEach items="${requestScope.teacherList}" var="list">
 			<option value="${list.teacherId}">${list.teacherName}&lt;${list.teacherNick}&gt;</option>
 		</c:forEach>
-	</select> <select name="programId" id="programSelect">
+	</select> <select name="programId" id="programSelect" style="display:none">
 		<option value="none">프로그램을 선택하세요</option>
 		<c:forEach items="${requestScope.programList}" var="list2">
 			<option value="${list2.programNo}">${list2.programName}</option>
 		</c:forEach>
 	</select>
-
-
 	<!-- 요일 선택 -->
-	<select name="day" id="daySelect">
-		<option value="mon" selected="selected">월</option>
+	<select name="day" id="daySelect" style="display:none">
+		<option selected="selected">요일을 선택하세요</option>
+		<option value="mon">월</option>
 		<option value="tue">화</option>
 		<option value="wed">수</option>
 		<option value="thu">목</option>
@@ -75,20 +109,20 @@ $("#addClass").click(function(){
 	</select>
 
 	<!-- 교시 선택 -->
-	<select name="time" id="timeSelect">
-		<option value="1" selected="selected">1교시</option>
+	<select name="time" id="timeSelect" style="display:none">
+		<!-- <option value="1" selected="selected">1교시</option>
 		<option value="2">2교시</option>
 		<option value="3">3교시</option>
 		<option value="4">4교시</option>
 		<option value="5">5교시</option>
 		<option value="6">6교시</option>
 		<option value="7">7교시</option>
-		<option value="8">8교시</option>
+		<option value="8">8교시</option> -->
 	</select> &nbsp; 정원 입력<input type="number" name="capacity" id="capacity"> <input
 		type="button" id="addClass" value="강좌 등록">
 </form>
 </div>
-<div class="col-sm-2"></div>
+<div class="col-sm-1"></div>
 <br>
 <br>
 <br>
@@ -110,8 +144,8 @@ $("#addClass").click(function(){
 		<c:forEach items="${classList}" var="list" >
 		<!-- 원래 있던 리스트 -->
 		<tr>
-		<td>${list.getProgram().programName}</td>
 		<td>${list.getTeacher().teacherName}</td>
+		<td>${list.getProgram().programName}</td>
 		<td>${list.classTime}</td>
 		<td>${list.classDay}</td>
 		</tr>
