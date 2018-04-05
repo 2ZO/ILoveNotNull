@@ -5,6 +5,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		// iframe에 이전에 쓴 내용 넣기
+		
 		dhtmlframe.document.open(); 
 		dhtmlframe.document.write("${postVO.content}"); 
 		dhtmlframe.document.close();
@@ -31,19 +32,13 @@
 				<!-- 에디터 링크 -->
 				<c:import url="/Post/editor.jsp"></c:import>				<!-- 쓰기영역 -->
 				<br>
-				<IFRAME NAME=dhtmlframe id="dhtmlframe" > </IFRAME><br>				
+				<IFRAME NAME=dhtmlframe id="dhtmlframe"></IFRAME><br>					
 				<!-- 쓰기영역 html -->
 				<textarea rows="10" cols="40" class="postContents" name="content">	</textarea>
 				<!-- 글 등록 & 취소-->
-<<<<<<< HEAD
 				<div class="post_button2">
 					<input id="submit_post" type="submit" value="등록">
 					<input id="cancel_post" type="button" value="취소" Onclick="history.back()">
-=======
-				<div class="post_button">
-					<input id="post_button_bt" type="submit" value="등록" id="submit_button" >
-					<<input id="post_button_bt" type="button" value="취소" Onclick="history.back()">
->>>>>>> branch 'master' of https://github.com/2ZO/ILoveNotNull.git
 				</div>
 			</form>
 			<!-- 사진올리기 -->

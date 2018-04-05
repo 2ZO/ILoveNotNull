@@ -10,6 +10,8 @@
 		$("#input_imgs").on("change", handleImgFileSelect);		
 		
 		
+		
+		
 	});
 		
 	

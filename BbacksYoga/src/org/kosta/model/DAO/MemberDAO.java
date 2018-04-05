@@ -133,7 +133,7 @@ public class MemberDAO {
 			StringBuilder sb = new StringBuilder();
 			sb.append("insert into yoga_member(id,password,name,phone_number,address,email,password_question,");
 			sb.append("password_answer,regDate,member_status,class_package) ");
-			sb.append("values(?,?,?,?,?,?,?,?,sysdate,'0',?)");
+			sb.append("values(?,?,?,?,?,?,?,?,sysdate,?,?)");
 			
 			pstmt=con.prepareStatement(sb.toString());
 			pstmt.setString(1, vo.getId());
@@ -145,6 +145,7 @@ public class MemberDAO {
 			pstmt.setString(7, vo.getPassword_question());
 			pstmt.setString(8, vo.getPassword_answer());
 			pstmt.setString(9, vo.getClass_package());
+			pstmt.setString(10, vo.getClass_package());
 			rs=pstmt.executeQuery();
 
 		}finally{
