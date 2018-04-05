@@ -106,17 +106,61 @@ public class RSDAO {
 			ps.executeUpdate();
 			ps.close();
 			
-			sql="update yoga_member set class_package=class_package-1 where id=?";
-			ps=con.prepareStatement(sql);
-			ps.setString(1, userId);
-			ps.executeUpdate();
-					
+			sql="update yoga_member set member_status=member_status-1 where id=?";
+	         ps=con.prepareStatement(sql);
+	         ps.setString(1, userId);
+	         ps.executeUpdate();
+	         
 		}finally {
 			closeAll(RS,ps,con);
 		}
 		return true;
 	}
 
+	public void NewRegisterClass(String classNo, String userId) throws ClassNotFoundException, SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		
+		try {
+			con=getConnection();
+			String sql="insert into registerStatus(RSNo, classNo, id, regDate) values(RS_seq.nextVal, ?, ?, sysdate)";
+			ps=con.prepareStatement(sql);
+			ps.setInt(1, Integer.parseInt(classNo));
+			ps.setString(2, userId);
+			ps.executeUpdate();
+			ps.close();
+			
+			sql="update yoga_member set member_status=member_status-1 where id=?";
+			ps=con.prepareStatement(sql);
+			ps.setString(1, userId);
+			ps.executeUpdate();
+					
+		}finally {
+			closeAll(rs,ps,con);
+		}
+	}
+	public boolean Check_OverlapByClassNo(String classNo, String userId) throws ClassNotFoundException, SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		boolean flag=true;
+		System.out.println(classNo+", "+userId);
+		try {
+			con=getConnection();
+			String sql="select RSNo from registeRStatus where classNo=? and id=?";
+			ps=con.prepareStatement(sql);
+			ps.setInt(1, Integer.parseInt(classNo));
+			ps.setString(2, userId);
+			rs=ps.executeQuery();
+			if(rs.next())
+				flag=false;	
+		}finally {
+			closeAll(rs,ps,con);
+		}
+		return flag;
+	}
+	
 	public void Delete_RegisterClass(String userId, Integer classNo) throws ClassNotFoundException, SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
@@ -129,11 +173,11 @@ public class RSDAO {
 			ps.setInt(2, classNo);
 			ps.executeUpdate();
 			ps.close();
-			
-			sql="update yoga_member set class_package=class_package+1 where id=?";
-			ps=con.prepareStatement(sql);
-			ps.setString(1, userId);
-			ps.executeUpdate();
+	         
+	         sql="update yoga_member set member_status=member_status+1 where id=?";
+	         ps=con.prepareStatement(sql);
+	         ps.setString(1, userId);
+	         ps.executeUpdate();
 			
 		}finally {
 			closeAll(ps,con);
@@ -165,22 +209,20 @@ public class RSDAO {
 		return list;
 	}
 
-	public String readUserPackage(String userId) throws ClassNotFoundException, SQLException {
+	public int readUserPackage(String userId) throws ClassNotFoundException, SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		ResultSet RS=null;
-		String userPackage=null;
+		int userPackage=0;
 	    
 	      try {
 	         con=getConnection();
-	         StringBuilder sql=new StringBuilder();
-	         sql.append("select class_package from yoga_member where id=?");
-	         ps=con.prepareStatement(sql.toString());
+	         String sql="select member_status from yoga_member where id=?";
+	         ps=con.prepareStatement(sql);
 	         ps.setString(1, userId);
 	         RS=ps.executeQuery();
-	         if(RS.next()) {
-	            userPackage= RS.getString(1);
-	         }
+	         if(RS.next()) 
+	            userPackage= Integer.parseInt(RS.getString(1));
 	      }finally {
 	         closeAll(RS,ps,con);
 	      }

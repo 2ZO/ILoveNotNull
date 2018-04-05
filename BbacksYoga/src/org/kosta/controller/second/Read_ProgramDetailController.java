@@ -25,6 +25,11 @@ public class Read_ProgramDetailController implements Controller {
 		json=new JSONObject().put("programList", vo);
 		json.put("programName", vo.getProgramName());
 		json.put("programDetail", vo.getProgramDetail());
+		json.put("programHit", vo.getProgramImgVO().getHitCount());
+		json.put("programImg1", vo.getProgramImgVO().getImgUrl1());
+		json.put("programImg2", vo.getProgramImgVO().getImgUrl2());
+		json.put("programImg3", vo.getProgramImgVO().getImgUrl3());
+		json.put("programImg4", vo.getProgramImgVO().getImgUrl4());
 		//ajaxview에 값을 넣은 josn을 반환
 		request.setAttribute("responseBody", json);
 		return "AjaxView";

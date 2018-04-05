@@ -3,6 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>
+.addClass{
+	padding-top: 50px;
+} 
+</style>
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#addProgramBtn").click(function(){
@@ -18,6 +23,8 @@ $(document).ready(function(){
 					alert(data.programName+"추가완료!\n리스트를 확인해주세요");
 						$("#table_body tr:last").after("<tr><td>"+data.programName+"</td>"+
 								"<td>"+data.programDetail+"</td>");
+						$('#program').val('');
+						$('#introduce').val('');
 					}
 				}
 				//$("#membody").html(info);
@@ -25,15 +32,27 @@ $(document).ready(function(){
 		});//ajax
 	});
 </script>
-<body>
+<div class="col-sm-1"></div>
+<div class="col-sm-4 addClass">
 <form action="${pageContext.request.contextPath}/DispatcherServlet" id="programForm">
-요가 프로그램: <input type="text" name="programName" required="required"><br>
+요가 프로그램: <input type="text" name="programName" required="required" id="program"><br>
 프로그램 소개<br><br>
-<textarea rows="20" cols="50" name="programDetail" required="required"></textarea> <br>
+<textarea rows="10" cols="40" name="programDetail" required="required" id="introduce"></textarea> <br>
 <input type="hidden" name="command" value="addProgram" > <br>
 <input type="button" id="addProgramBtn" value="추가하기">
 </form>
+<hr>
+<form action="${pageContext.request.contextPath}/DispatcherServlet?command=addProgramImg" method="post" enctype="multipart/form-data" >
+프로그램 이미지 파일<input type="file" name="programFile1" >
+프로그램 이미지 파일<input type="file" name="programFile2" >
+프로그램 이미지 파일<input type="file" name="programFile3" >
+프로그램 이미지 파일<input type="file" name="programFile4" >
+프로그램 인기: <input type="text" name="programHit"><br>
+<input type="submit" value="추가하기">
+</form>
 
+</div>
+<div class="col-sm-6  addClass">
 <div class="container">
 <form>
 	<table id="table" class="table table-hover">
@@ -56,4 +75,4 @@ $(document).ready(function(){
 	</table>
 </form>
 </div>
-</body>
+</div>

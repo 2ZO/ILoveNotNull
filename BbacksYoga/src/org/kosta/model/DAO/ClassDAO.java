@@ -97,7 +97,7 @@ public class ClassDAO {
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				TeacherVO teacher = TeacherDAO.getInstance().getTeacherInfobyId(rs.getString(2));
-				ProgramVO program= ProgramDAO.getInstance().getProgramListByNo(Integer.parseInt(rs.getString(1)));
+				ProgramVO program= ProgramDAO.getInstance().getProgramListByNoUseByMA(Integer.parseInt(rs.getString(1)));
 				classVo = new ClassVO(teacher, program, rs.getString(3), rs.getString(4));
 			}
 		}finally {
@@ -120,7 +120,7 @@ public class ClassDAO {
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				ProgramVO program= ProgramDAO.getInstance().getProgramListByNo(rs.getInt(1));
+				ProgramVO program= ProgramDAO.getInstance().getProgramListByNoUseByMA(rs.getInt(1));
 				TeacherVO teacher = TeacherDAO.getInstance().getTeacherInfobyId(rs.getString(2));
 				classVo= new ClassVO(teacher, program,rs.getString(3),rs.getString(4));
 				classList.add(classVo);
@@ -129,6 +129,44 @@ public class ClassDAO {
 			closeAll(rs,pstmt, con);
 		}
 		return classList;
+	}
+	public void deleteClass() throws SQLException {
+		// TODO Auto-generated method stub
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=dataSource.getConnection();
+			String sql="delete from yoga_class";
+			pstmt=con.prepareStatement(sql);
+			pstmt.executeUpdate();
+
+		}finally {
+			closeAll(pstmt, con);
+		}
+	}
+	//중복 인서트를 막기위해 가능한 시간을 찾는다
+	public ArrayList<String> getAvailableTime(String teacher, String program, String day) throws SQLException {
+		// TODO Auto-generated method stub
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		ArrayList<String> timeList=new ArrayList<String>();
+		try {
+			con=dataSource.getConnection();
+			String sql="select classTime from YOGA_CLASS where classDay=? and programNo=? and teacherId=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, day);
+			pstmt.setString(2, program);
+			pstmt.setString(3, teacher);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				String temp=rs.getString(1);
+				timeList.add(temp);
+			}	
+		}finally {
+			closeAll(rs,pstmt, con);
+		}
+		return timeList;
 	}
 
 }

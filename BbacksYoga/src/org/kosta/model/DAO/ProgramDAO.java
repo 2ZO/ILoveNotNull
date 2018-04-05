@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
+import org.kosta.model.VO.ProgramImgVO;
 import org.kosta.model.VO.ProgramVO;
 import org.kosta.model.etc.DataSourceManager;
 import org.kosta.model.etc.PagingBean;
@@ -106,7 +107,34 @@ public class ProgramDAO {
 		}
 		return list;
 	}
+	
+	// 프로그램 디테일 출력
 	public ProgramVO getProgramListByNo(int programNo) throws SQLException {
+		ProgramVO vo=null;
+		ProgramImgVO programImgVO = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = datasource.getConnection();
+			StringBuilder sql=new StringBuilder();
+			sql.append("select p.programno, p.programName, p.programDetail, pi.hitCount, pi.imgUrl1, pi.imgUrl2, pi.imgUrl3, pi.imgUrl4 ");
+			sql.append("from yoga_programImg pi, yoga_program p ");
+			sql.append("where pi.programImg=p.programno and programno=?");
+			pstmt=con.prepareStatement(sql.toString());	
+			pstmt.setInt(1, programNo);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				programImgVO = new ProgramImgVO(rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
+				vo = new ProgramVO(rs.getString(1), rs.getString(2), rs.getString(3), programImgVO);
+			}
+		}finally {
+			closeAll(rs, pstmt, con);
+		}
+		return vo;
+	}
+	//관리자용 읽어오기 입니다. 제발 건들지말아주세요ㅠㅠㅠ
+	public ProgramVO getProgramListByNoUseByMA(int programNo) throws SQLException {
 		ProgramVO vo=null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -125,6 +153,7 @@ public class ProgramDAO {
 		}
 		return vo;
 	}
+	
 	public int getProgramListTotal() throws SQLException {
 		int count=0;
 		Connection con = null;
@@ -142,5 +171,42 @@ public class ProgramDAO {
 			closeAll(pstmt, con);
 		}
 		return count;
+	}
+	
+	public String getProgramNoByName(String programName) throws SQLException {
+		String pNo=null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = datasource.getConnection();
+			String sql = "select programNo from YOGA_PROGRAM where programName=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, programName);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				pNo = rs.getString(1);
+			}
+		}finally {
+			closeAll(pstmt, con);
+		}
+		return pNo;
+	}
+	public void addProgramImg(String programHit, String imgURL1, String imgURL2, String imgURL3, String imgURL4) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			con = datasource.getConnection();
+			String sql ="insert into yoga_programImg(programImg, hitCount, imgUrl1, imgUrl2, imgUrl3, imgUrl4) values(programImg_seq.nextval, ?, ?, ?, ?, ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, programHit);
+			pstmt.setString(2, imgURL1);
+			pstmt.setString(3, imgURL2);
+			pstmt.setString(4, imgURL3);
+			pstmt.setString(5, imgURL4);
+			pstmt.executeUpdate();
+		}finally {
+			closeAll(pstmt, con);
+		}
 	}
 }

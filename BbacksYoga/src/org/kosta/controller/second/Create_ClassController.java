@@ -34,6 +34,7 @@ public class Create_ClassController implements Controller {
 				}else{
 					json= new JSONObject().put("teacherName", teacher.getTeacherName());
 					json.put("programName", program.getProgramName());
+					System.out.println(program.getProgramName());
 					json.put("classDay", classVo.getClassDay());
 					json.put("classTime", classVo.getClassTime());
 				}

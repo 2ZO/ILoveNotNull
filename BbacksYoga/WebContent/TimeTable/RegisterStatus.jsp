@@ -2,12 +2,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.Date"%>
 <script type="text/javascript">
 	//수강 취소
 	function delete_register(classNo){
 		if(confirm("해당 강좌를 취소하시겠습니까?")){
 			location.href="DispatcherServlet?command=Delete_Register&classNo="+classNo;
 		}
+	}
+	function disable(){
+		alert("어디서 수작질임?");
 	}
 </script>
 
@@ -81,7 +85,15 @@ tr:nth-child(even){background-color: #f2f2f2}
 					</td>
 					<td>${list.classTime }교시</td>
 					<td>${list.regDate }</td>
-					<td><input type="button" value="수강취소" onclick="delete_register(${list.classNo})"></td>
+					<c:set var="today" value="<%=new java.util.Date().getDay()%>"/>
+				 	<td><c:choose>
+						<c:when test="${list.classDay < today}">
+							<input type="button" value="수강취소" onclick="disable()" data-toggle="tooltip" title="날짜를 확인하세요!">
+						</c:when>
+						<c:otherwise>
+							<input type="button" value="수강취소" onclick="delete_register(${list.classNo})">
+						</c:otherwise>
+					</c:choose></td>
 				</tr>
 			</c:forEach>
 		</tbody>

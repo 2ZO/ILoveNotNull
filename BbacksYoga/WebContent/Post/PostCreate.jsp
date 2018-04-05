@@ -1,11 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<<<<<<< HEAD
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+=======
+<script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/postEditor.js"></script>
+<script type="text/javascript">
+function datasubmit()
+{
+	form.content.value = dhtmlframe.document.body.innerHTML;
+	return confirm('글을 등록하겠음?');
+	
+}
+>>>>>>> branch 'master' of https://github.com/2ZO/ILoveNotNull.git
 
+<<<<<<< HEAD
+=======
+function handlePaste () {
+    var clipboardData, pastedData;
+ 
+    // Stop data actually being pasted into div
+    e.stopPropagation();
+    e.preventDefault();
+ 
+    // Get pasted data via clipboard API
+    clipboardData = e.clipboardData || window.clipboardData;
+    pastedData = clipboardData.getData('Text');
+    
+    dhtmlframe.document.open(); 
+	dhtmlframe.document.write(clipboardData); 
+	dhtmlframe.document.close();
+    
+    // Do whatever with pasteddata
+    alert(pastedData);
+}
+
+
+
+</script>
+>>>>>>> branch 'master' of https://github.com/2ZO/ILoveNotNull.git
 <div class="container">
 	<div class="row text">
 		<div class="col-sm-12 contents">
@@ -17,7 +53,7 @@
 				<c:import url="/Post/editor.jsp"></c:import>
 				<!-- 쓰기영역 -->
 				<br>
-				<IFRAME NAME=dhtmlframe id="dhtmlframe" ></IFRAME><br>				
+				<IFRAME NAME=dhtmlframe id="dhtmlframe"></IFRAME><br>				
 				<!-- 쓰기영역 html -->
 				<textarea rows="10" cols="40" class="postContents" name="content">	</textarea>
 				

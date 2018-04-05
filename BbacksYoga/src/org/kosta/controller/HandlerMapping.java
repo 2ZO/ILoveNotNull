@@ -4,6 +4,7 @@ import org.kosta.controller.first.*;
 import org.kosta.controller.second.*;
 import org.kosta.controller.third.*;
 
+
 public class HandlerMapping {
 	private static HandlerMapping instance = new HandlerMapping();
 
@@ -60,8 +61,12 @@ public class HandlerMapping {
 			c = new Create_TeacherController();
 		} else if (command.equals("addProgram")) {
 			c = new Create_ProgramController();
+		} else if (command.equals("addProgramImg")) { // 프로그램 이미지 등록
+			c = new Create_ProgramImgController();
 		} else if (command.equals("addclass")) {
 			c = new Create_ClassController();
+		}else if (command.equals("getTime")) {//관리자모드에서 셀렉터 때매 만듬
+			c = new Read_AvailableTimeController();
 		}else if(command.equals("addClassView")) { //강좌등록시 강사, 프로그램 데이터를 불러옴
 			c = new Read_AddClassViewController();
 		}else if(command.equals("addPostImg")) {
@@ -86,6 +91,14 @@ public class HandlerMapping {
 			c = new Delete_TimeTableController();
 		} else if (command.equals("addTeacher")) { 
 			c = new Create_TeacherController();
+		}  else if(command.equals("checkOverlapClass")) {
+			c= new Read_CheckOverlapClassController();
+		} else if (command.equals("Create_NewRegisterClass")) {
+			c = new Create_NewRegisterClassController();
+		} else if (command.equals("temp")) { 
+			c = new tempController();
+		} else if (command.equals("temp2")) { 
+			c = new temp2Controller();
 		}
 		//Paging Controller
 		else if(command.equals("page")) {
