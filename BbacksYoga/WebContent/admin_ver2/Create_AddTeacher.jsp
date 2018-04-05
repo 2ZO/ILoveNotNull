@@ -3,6 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style>
+.addClass{
+	padding-top: 50px;
+} 
+</style>
 <script type="text/javascript">
 $(document).ready(function(){
 	//파일업로드는 form을 직렬화해서 보낼수 없음
@@ -31,23 +36,28 @@ $(document).ready(function(){
 						$("#table_body tr:last").after("<tr><td>"+data.teacherName+"</td>"+
 								"<td>"+data.teacherNick+"</td>"+
 								"<td>"+data.teacherProfile+"</td>");
+						$('#name').val('');
+						$('#nick').val('');
+						$('#profile').val('');
 					}
-				}
-				//$("#membody").html(info);
-			});//success
-		});//ajax
+				}//success
+			});//ajax
+	});//click	
 	});
-	</script>
+</script>
+<div class="col-sm-1"></div>
+<div class="col-sm-4 addClass">
 <form method="post" action="${pageContext.request.contextPath}/DispatcherServlet?command=addTeacher" enctype="multipart/form-data" id="addTeacherForm">
 <input type="hidden" name="command" value="addTeacher">
-선생님 이름 입력<input type="text" name="teacherName" required="required" >&nbsp;&nbsp;
-선생님 닉네임 입력<input type="text" name="teacherNick" required="required" ><br>
-선생님 이미지 파일<input type="file" name="teacherFile"><br>
-선생님 프로필 입력<br><textarea name="teacherProfile" rows="20" cols="40" placeholder="선생님 프로필을 입력하세요"></textarea><br>
+선생님 이름 입력 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="teacherName" required="required" id="name"><br>
+선생님 닉네임 입력 &nbsp;&nbsp;<input type="text" name="teacherNick" required="required" id="nick"><br>
+선생님 이미지 파일<input type="file" name="teacherFile" ><br>
+선생님 프로필 입력<br><textarea name="teacherProfile" rows="10" cols="40" placeholder="선생님 프로필을 입력하세요" id="profile"></textarea><br>
 <!-- 이미지 이름<input type="text" name="teacherImgURL"> -->
 <input type="button" id="addTeacherBtn" value="강사등록">
 </form>
-
+</div>
+<div class="col-sm-6 addClass">
 <div class="container">
 <form>
 	<table id="table" class="table table-hover">
@@ -71,4 +81,5 @@ $(document).ready(function(){
 		</tbody>
 	</table>
 </form>
+</div>
 </div>

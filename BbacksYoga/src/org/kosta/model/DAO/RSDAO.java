@@ -106,11 +106,11 @@ public class RSDAO {
 			ps.executeUpdate();
 			ps.close();
 			
-			sql="update yoga_member set class_package=class_package-1 where id=?";
-			ps=con.prepareStatement(sql);
-			ps.setString(1, userId);
-			ps.executeUpdate();
-					
+			sql="update yoga_member set member_status=member_status-1 where id=?";
+	         ps=con.prepareStatement(sql);
+	         ps.setString(1, userId);
+	         ps.executeUpdate();
+	         
 		}finally {
 			closeAll(RS,ps,con);
 		}
@@ -129,11 +129,11 @@ public class RSDAO {
 			ps.setInt(2, classNo);
 			ps.executeUpdate();
 			ps.close();
-			
-			sql="update yoga_member set class_package=class_package+1 where id=?";
-			ps=con.prepareStatement(sql);
-			ps.setString(1, userId);
-			ps.executeUpdate();
+	         
+	         sql="update yoga_member set member_status=member_status+1 where id=?";
+	         ps=con.prepareStatement(sql);
+	         ps.setString(1, userId);
+	         ps.executeUpdate();
 			
 		}finally {
 			closeAll(ps,con);
@@ -165,21 +165,30 @@ public class RSDAO {
 		return list;
 	}
 
-	public String readUserPackage(String userId) throws ClassNotFoundException, SQLException {
+	public int readUserPackage(String userId) throws ClassNotFoundException, SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		ResultSet RS=null;
-		String userPackage=null;
+		int userPackage=0;
 	    
 	      try {
 	         con=getConnection();
-	         StringBuilder sql=new StringBuilder();
-	         sql.append("select class_package from yoga_member where id=?");
-	         ps=con.prepareStatement(sql.toString());
+	         String sql="select member_status from yoga_member where id=?";
+	         ps=con.prepareStatement(sql);
 	         ps.setString(1, userId);
 	         RS=ps.executeQuery();
 	         if(RS.next()) {
-	            userPackage= RS.getString(1);
+	            userPackage= Integer.parseInt(RS.getString(1));
+	         }
+	         ps.close();
+	         RS.close();
+	         
+	         sql="select count(id) from registerStatus where id=?";
+	         ps=con.prepareStatement(sql);
+	         ps.setString(1, userId);
+	         RS=ps.executeQuery();
+	         if(RS.next()) {
+	        	 userPackage-=RS.getInt(1);
 	         }
 	      }finally {
 	         closeAll(RS,ps,con);

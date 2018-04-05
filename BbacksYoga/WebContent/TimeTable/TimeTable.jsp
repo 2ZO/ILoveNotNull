@@ -27,34 +27,6 @@ $(document).ready(function(){
 		          return false;
 		       }
 		    }); //click
-		/*     var regList = [];
-		    var packpageNo=${requestScope.userPackage};
-		    $('td').click(function(){
-		    	if(packageNo>0){
-		    		if($(this).css("background-color")=="white"){
-		    				$.ajax({
-		    					type:"get",
-		    					dataType:"json",
-		    					url:"DispatcherServlet?command=Create_RegisterClass",
-		    					data:"regList="+regList[],
-		    					success:function(data){
-		    						if(data.flag){
-			    						$(this).css("background", "green");
-			    						regList.push(//classNo);
-			    						packageNo-=1;
-		    						}else{
-		    						alert("이미 신청한 강좌입니다!");
-		    						}
-		    					}
-		    				});
-		    		}else{
-		    			$(this).css("background", "white");
-		    			packageNo+=1;
-		    		}
-		    	}else{
-		    		alert("수강신청 가능 횟수를 모두 소모하셨습니다.");
-		    	}
-		    }); */
 		 });//ready
 	</script>
 
@@ -103,6 +75,7 @@ table a {
 	color: black;
 	text-decoration: none;
 }
+
 table a:hover {
 	color: #007D12;
 	text-decoration: none;
@@ -153,6 +126,9 @@ td {
 #today {
 	background-color: #A5FFB1;
 }
+.past{
+	color: yellow;
+}
 </style>
 
 <!-- body부분 -->
@@ -197,47 +173,65 @@ td {
 			</thead>
 			<!-- table body -->
 			<tbody id="timetable">
-				<c:forEach begin="1" end="8" varStatus="countOfClassTime">
-					<tr>
-						<!-- 1열 1~8교시 입력 -->
-						<td id="classtime">${countOfClassTime.count }</td>
-						<!-- 요일 데이터변수 week에 0~5 지정 -->
-						<c:forEach begin="0" end="5" varStatus="week">
-							<!-- week과 today 데이터 값이 같을 때 해당 <td>에 id를 주어 색을 입힌다.(오늘에 해당하는 테이블열) -->
-							<c:choose>
-								<c:when test="${week.index eq pageScope.today }">
-									<td id="today">
-								</c:when>
-								<c:otherwise>
-									<td>
-								</c:otherwise>
-							</c:choose>
-							<!-- 시간표 List 변수 선언 -->
-							<c:forEach items="${timetable_list }" var="list" varStatus="tdNo">
-								<!-- 클래스의 시간, 클래스에 맞는 위치에 클래스 정보 출력 -->
-								<c:if
-									test="${list.classTime==countOfClassTime.count&&list.classDay==week.index }">
-									<!-- 정원와 등록인원이 같을 때 link를 해제한다. -->
+				<c:choose>
+					<%-- <c:when test="true"> --%>
+					<c:when test="${pageScope.today == -1 }">
+						<tr>
+							<td class="" colspan="7">다음주 시간표 준비중 입니다.<br> <img
+								src="${pageContext.request.contextPath }/TimeTable/settingTime.gif"
+								alt=""></td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<c:forEach begin="1" end="8" varStatus="countOfClassTime">
+							<tr>
+								<!-- 1열 1~8교시 입력 -->
+								<td id="classtime">${countOfClassTime.count }</td>
+								<!-- 요일 데이터변수 week에 0~5 지정 -->
+								<c:forEach begin="0" end="5" varStatus="week">
+									<!-- week과 today 데이터 값이 같을 때 해당 <td>에 id를 주어 색을 입힌다.(오늘에 해당하는 테이블열) -->
 									<c:choose>
-										<c:when test="${list.capacity==list.count_reg }">
-											<span class="fullClass">${list.programName }<br>${list.teacherNick }<br>${list.count_reg }/
-												${list.capacity }
-											</span>
+										<c:when test="${week.index eq pageScope.today }">
+											<td id="today">
 										</c:when>
 										<c:otherwise>
-											<!-- 클래스 내용을 누르면 수강 신청으로 연결되는 링크 삽입 -->
-											<a class="regLink"
-												href="${pageContext.request.contextPath}/DispatcherServlet?command=Create_RegisterClass&classNo=${list.classNo }">${list.programName }<br>${list.teacherNick }<br>
-												${list.count_reg }/ ${list.capacity }
-											</a>
+											<td>
 										</c:otherwise>
 									</c:choose>
-								</c:if>
-							</c:forEach>
-							</td>
+									<!-- 시간표 List 변수 선언 -->
+									<c:forEach items="${timetable_list }" var="list"
+										varStatus="tdNo">
+										<!-- 클래스의 시간, 클래스에 맞는 위치에 클래스 정보 출력 -->
+										<c:if
+											test="${list.classTime==countOfClassTime.count&&list.classDay==week.index }">
+											<!-- 정원와 등록인원이 같을 때 link를 해제한다. -->
+											<c:choose>
+												<c:when test="${list.capacity==list.count_reg }">
+													<span class="fullClass">${list.programName }<br>${list.teacherNick }<br>${list.count_reg }/
+														${list.capacity }
+													</span>
+												</c:when>
+												<c:when test="${week.index < pageScope.today }">
+													<span class="past">${list.programName }<br>${list.teacherNick }<br>${list.count_reg }/
+														${list.capacity }
+													</span>
+												</c:when>
+												<c:otherwise>
+													<!-- 클래스 내용을 누르면 수강 신청으로 연결되는 링크 삽입 -->
+													<a class="regLink"
+														href="${pageContext.request.contextPath}/DispatcherServlet?command=Create_RegisterClass&classNo=${list.classNo }">${list.programName }<br>${list.teacherNick }<br>
+														${list.count_reg }/ ${list.capacity }
+													</a>
+												</c:otherwise>
+											</c:choose>
+										</c:if>
+									</c:forEach>
+									</td>
+								</c:forEach>
+							</tr>
 						</c:forEach>
-					</tr>
-				</c:forEach>
+					</c:otherwise>
+				</c:choose>
 			</tbody>
 		</table>
 	</div>
