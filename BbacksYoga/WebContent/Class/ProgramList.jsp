@@ -12,11 +12,14 @@
     width: 60%;
 	margin: 40px auto 0;
 }
+
 	th, td {
     text-align: left;
     padding: 8px;
 }
+
 	tr:nth-child(even){background-color: #f2f2f2}
+
 	th {
     background-color: #7c8864;
     color: white;

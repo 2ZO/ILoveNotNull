@@ -33,7 +33,7 @@ imgUrl1 varchar2(100),
 imgUrl2 varchar2(100),
 imgUrl3 varchar2(100),
 imgUrl4 varchar2(100),
-constraint fk_programNo1 foreign key(programImg) references yoga_program
+constraint fk_programNo1 foreign key(programImg) references yoga_program(programNo)
 )
 drop sequence programImg_seq;
 drop table yoga_programImg
@@ -59,10 +59,8 @@ select p.programName, p.programDetail, pi.hitCount, pi.imgUrl1, pi.imgUrl2, pi.i
 from yoga_programImg pi, yoga_program p 
 where pi.programImg=p.programno and programno=1;
 
-
 delete yoga_teacher where teacherId>20
 select * from yoga_teacher
-
 -- teacherId 시퀀스 생성
 create sequence tchNo_seq;
 
@@ -77,7 +75,6 @@ programNo NUMBER primary key,
 programName varchar2(50) not null,
 programDetail varchar2(50)
 )
-
 
 select * from YOGA_PROGRAM;
 -- programNo 시퀀스 생성
@@ -246,3 +243,37 @@ select p.programno, c.teacherid, c.classDay, c.classTime from yoga_class c, YOGA
 select * from yoga_member;
 update yoga_member set password='1234', phone_number='1', address='1' ,email='1@2', password_answer='1', name='1'  where id='html';
 update yoga_member set password=?, phone_number=?, address=? ,email=?, password_question=?, password_answer=?, name=? where id=? 
+
+-- 요가 프로그램 이미지 테이블 생성
+create table yoga_programImg(
+programImg number primary key,
+hitCount varchar2(100),
+imgUrl1 varchar2(100),
+imgUrl2 varchar2(100),
+imgUrl3 varchar2(100),
+imgUrl4 varchar2(100),
+constraint fk_programNo1 foreign key(programImg) references yoga_program(programNo)
+)
+drop sequence programImg_seq;
+drop table yoga_programImg
+-- 요가 프로그램 이미지 시퀀스 생성
+create sequence programImg_seq;
+-- 요가 프로그램 이지지 추가
+insert into yoga_programImg(
+programImg, 
+hitCount, 
+imgUrl1, 
+imgUrl2, 
+imgUrl3, 
+imgUrl4) 
+values(programImg_seq.nextval, '1', 'con01.png', 'con02.png', 'con03.png', 'con01.png');
+
+select * from yoga_programImg;
+
+select *
+from yoga_programImg pi, yoga_program p 
+where pi.programImg=p.programno and programno=1;
+
+select p.programName, p.programDetail, pi.hitCount, pi.imgUrl1, pi.imgUrl2, pi.imgUrl3, pi.imgUrl4
+from yoga_programImg pi, yoga_program p 
+where pi.programImg=p.programno and programno=1;

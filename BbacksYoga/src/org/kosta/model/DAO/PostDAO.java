@@ -60,7 +60,7 @@ public class PostDAO {
 			con=dataSource.getConnection();
 			StringBuilder sql=new StringBuilder();
 			sql.append("select postNo,title,id,to_char(regDate,'YYYY.MM.DD') from ( ");
-			sql.append("select  row_number() over(order by postNo desc) ");
+			sql.append("select  row_number() over(order by postNo asc) ");
 			sql.append("as rnum,postNo,title,id,regDate from post)");
 			sql.append("where rnum between ? and ?");
 			pstmt=con.prepareStatement(sql.toString());
@@ -122,7 +122,7 @@ public class PostDAO {
 				PreparedStatement pstmt=null;
 				try {
 					con=dataSource.getConnection();
-					String sql="update post set title=?, content=?, regDate=sysdate where postno=?";
+					String sql="update post set title=?, content=? where postno=?";
 					pstmt=con.prepareStatement(sql);
 					pstmt.setString(1, postTitle);
 					pstmt.setString(2, postContent);

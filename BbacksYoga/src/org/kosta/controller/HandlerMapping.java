@@ -60,6 +60,8 @@ public class HandlerMapping {
 			c = new Create_TeacherController();
 		} else if (command.equals("addProgram")) {
 			c = new Create_ProgramController();
+		} else if (command.equals("addProgramImg")) { // 프로그램 이미지 등록
+			c = new Create_ProgramImgController();
 		} else if (command.equals("addclass")) {
 			c = new Create_ClassController();
 		}else if (command.equals("getTime")) {//관리자모드에서 셀렉터 때매 만듬

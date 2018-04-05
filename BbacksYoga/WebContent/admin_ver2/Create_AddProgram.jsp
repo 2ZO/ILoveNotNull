@@ -37,10 +37,20 @@ $(document).ready(function(){
 <form action="${pageContext.request.contextPath}/DispatcherServlet" id="programForm">
 요가 프로그램: <input type="text" name="programName" required="required" id="program"><br>
 프로그램 소개<br><br>
-<textarea rows="20" cols="50" name="programDetail" required="required" id="introduce"></textarea> <br>
+<textarea rows="10" cols="40" name="programDetail" required="required" id="introduce"></textarea> <br>
 <input type="hidden" name="command" value="addProgram" > <br>
 <input type="button" id="addProgramBtn" value="추가하기">
 </form>
+<hr>
+<form action="${pageContext.request.contextPath}/DispatcherServlet?command=addProgramImg" method="post" enctype="multipart/form-data" >
+프로그램 이미지 파일<input type="file" name="programFile1" >
+프로그램 이미지 파일<input type="file" name="programFile2" >
+프로그램 이미지 파일<input type="file" name="programFile3" >
+프로그램 이미지 파일<input type="file" name="programFile4" >
+프로그램 인기: <input type="text" name="programHit"><br>
+<input type="submit" value="추가하기">
+</form>
+
 </div>
 <div class="col-sm-6  addClass">
 <div class="container">
