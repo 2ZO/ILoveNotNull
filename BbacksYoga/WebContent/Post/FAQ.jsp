@@ -43,12 +43,14 @@
           <div class="panel panel-default panel-help">
             <a href="#ret-pris" data-toggle="collapse" data-parent="#help-accordion-1">
               <div class="panel-heading">
-                <h4>Question01</h4>
+                <h4>환불 규정이 어떻게 되나요?</h4>
               </div>
             </a>
             <div id="ret-pris" class="collapse">
               <div class="panel-body">
-                <p>답변</p>
+                <p>환불해지는 1주일 안에만 가능합니다. 
+환불시 10%위약금을 공재하고 이용하신 기간의 금액을 제한 후 환불해 드립니다.<br>
+-카드로 결제하셨을 경우 카드 수수료를 공제합니다.</p>
                 <p><strong>Example: </strong>Facere, id excepturi iusto aliquid beatae delectus nemo enim, ad saepe nam et.</p>
               </div>
             </div>
@@ -56,12 +58,18 @@
           <div class="panel panel-default panel-help">
             <a href="#slet-produkt" data-toggle="collapse" data-parent="#help-accordion-1">
               <div class="panel-heading">
-                <h4>Question02</h4>
+                <h4>수업 준비는 어떻게 해야하나요?</h4>
               </div>
             </a>
             <div id="slet-produkt" class="collapse">
               <div class="panel-body">
-                <p>답변</p>
+                <p>	
+진한 화장과 향수 그리고 악세사리(목걸이, 반지, 시계등)의 착용을 삼가 해주시길 바랍니다.<br>
+수련실 안에는 물병과 락카키 외의 반입을 금지합니다.(휴대폰, 디지털카메라, 음식물 등)<br>
+요가는 공복에 하시는 것이 좋습니다.(식후 2~3시간 후)
+뱃속에 음식이 가득 들어있으면 호흡과 아사나에 걸림돌이 됩니다<br>
+수업 5분전에는 입실하여 주시기 바랍니다.
+(명상과 안정은 아사나를 진행하는데 효과를 더욱 높여드립니다)</p>
                 <p><strong>Example: </strong>Facere, id excepturi iusto aliquid beatae delectus nemo enim, ad saepe nam et.</p>
               </div>
             </div>
@@ -69,13 +77,17 @@
           <div class="panel panel-default panel-help">
             <a href="#opret-kampagne" data-toggle="collapse" data-parent="#help-accordion-1">
               <div class="panel-heading">
-                <h4>Question03</h4>
+                <h4>다이어트 요가만 다이어트 효과가 있나요?</h4>
               </div>
             </a>
             <div id="opret-kampagne" class="collapse">
               <div class="panel-body">
-                <p>답변</p>
-                <p><strong>Example: </strong>Facere, id excepturi iusto aliquid beatae delectus nemo enim, ad saepe nam et.</p>
+                <p>다이어트 뿐만 아니라 기타 여러가지 요가들도 다이어트 효과들이 
+       많이 있습니다.
+       요가는 왕성한 식욕을 조절하여주고 소화기능을 좋게 만들어줍니다.
+       또한 요가를 통하여 바르게 잡힌 몸은 평상시에 칼로리 소비를 일정하게
+      높여주어 지속적인 몸매관리와 요요현상이 없는 다이어트가 가능한 것입니다.</p>
+                <p><strong></strong></p>
               </div>
             </div>
           </div>

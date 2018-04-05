@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <style type="text/css">
 	.introDiv{
-		width: 80%;
-		margin-top: 40px;
+		width: 68%;
+		margin: 55px auto;
 	}
 	.introDiv h2{
 		margin-bottom: 80px;
