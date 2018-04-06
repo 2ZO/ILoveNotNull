@@ -11,12 +11,43 @@
 
 <!-- header -->
    <!-- header 쪽 로고 -->   
+   <head>
+     <script type="text/javascript">
+     $(document).ready(function(){
+		setTimeout(function() {
+			$("#rotation2").html('<img id="egg" src="${pageContext.request.contextPath }/TimeTable/카카오.gif" width="200px" height="200px">');
+		}, 2200);
+     });
+    </script>
+   <style type="text/css">
+    #rotation {
+		-webkit-animation: rotation 2s linear;
+		
+	}
+
+	@-webkit-keyframes rotation {
+		from {
+				-webkit-transform: rotate(0deg);
+		}
+		to {
+				-webkit-transform: rotate(359deg);
+		}
+	}
+</style>
+   </head>
    
    <div class="row">
        <div class="col-sm-4"></div>
        <div class="col-sm-4">
           <h1 id="headerLogo">
-            <a href="index.jsp"><img src="${pageContext.request.contextPath}/Image/logo01.png" alt="logo"></a>
+            <c:choose>
+          		<c:when test="${sessionScope.egg_flag eq 'true' }">
+          			<a href="" id="rotation2" ><img id="rotation" src="${pageContext.request.contextPath}/Image/logo01.png" alt="logo"></a>
+          		</c:when>
+          		<c:otherwise>
+          			<a href="${pageContext.request.contextPath }/index.jsp"><img src="${pageContext.request.contextPath}/Image/logo01.png" alt="logo"></a>
+          		</c:otherwise>				
+          	</c:choose>
          </h1>
        </div>
        <div class="col-sm-4" style="background-color:lavender;">
@@ -96,6 +127,14 @@
          </div>
       </div>
    </nav>
-     <audio id="myAudio" controls autoplay="autoplay" loop="loop" hidden="">
-  <source src="TimeTable/main.mp3" type="audio/mpeg" >
-</audio>
+<audio id="club" controls autoplay="autoplay" loop="loop" hidden=""> 
+   			<c:choose>
+   				<c:when test="${sessionScope.egg_flag eq 'true' }">
+   					<source src="TimeTable/EDM.mp3" type="audio/mpeg">
+   				</c:when>
+   				<c:otherwise>
+   					<source src="TimeTable/main.mp3" type="audio/mpeg" >
+   				</c:otherwise>
+   			</c:choose>
+		</audio>
+		<%session.setAttribute("egg_flag", "false"); %>
