@@ -29,6 +29,32 @@
 		text-align: right;
 		margin-right: 20%;
 	}
+	.input-group-btn{
+		display: inline;
+		margin-left: -5px;
+	}
+	/*페이징 클릭 버튼 색*/
+	.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover,
+	 .pagination>.active>span, .pagination>.active>span:focus, 
+	 .pagination>.active>span:hover{
+		background-color: #8ab03e;
+		border-color: #8ab03e;
+	}
+	.pagination>li>a, .pagination>li>span{
+		color: #777;
+	}
+	.btn-primary{
+		background-color: #7c8864 !important;
+		border-color: #7c8864 !important;
+	}
+	.btn-primary:hover{
+		background-color: #8ab03e;
+		border-color: #8ab03e;
+	}
+	.btn-primary option{
+		background-color: #8ab03e;
+		border-color: #8ab03e;
+	}
 </style>
 <script type="text/javascript">
 function getDetailPost(postNo){
@@ -40,7 +66,7 @@ function createPost() {
 </script>
 <h3>Q&amp;A</h3>
 <div class="writePost">
-	<input type="button" value="글쓰기" onclick="return createPost()">
+	<input type="button" class="btn btn-default" value="글쓰기" onclick="return createPost()">
 </div>
 <table>
   <thead>
@@ -68,12 +94,14 @@ function createPost() {
 <input type="hidden" name="command" value="searchPost">
 	<fieldset>
 		<div class="searchDiv">
-			<select name="opt">
+			<select name="opt" class="btn btn-primary">
 				<option value="0">제목</option>
 				<option value="1">작성자</option>
 			</select>	
-			<input type="text" size="20" placeholder="키워드를 입력하세요" name="keyword">
-			<input type="submit" value="search" id="searchBtn">
+			<input type="text" size="20" placeholder="키워드를 입력하세요" name="keyword" class="btn btn-default" required="required">
+			<div class="input-group-btn">
+        		<button class="btn btn-default" type="submit" id="searchBtn"><i class="glyphicon glyphicon-search"></i></button>
+      		</div>
 		</div>
 	</fieldset>
 </form>

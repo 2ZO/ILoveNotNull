@@ -50,7 +50,7 @@
           	</c:choose>
          </h1>
        </div>
-       <div class="col-sm-4" style="background-color:lavender;">
+       <div class="col-sm-4">
           <div id="rightWrap" class="setDiv">
             <ul id="headerRight">
                <c:choose>
@@ -77,7 +77,7 @@
                   <ul class="dropdown-menu ">
                      <li><a href="DispatcherServlet?command=page&url=/Post/intro.jsp">Bbak's 요가소개</a></li>
                      <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=teacherList">강사진소개</a></li>
-                     <li><a href="#">시설소개</a></li>
+                     <li><a href="DispatcherServlet?command=page&url=/Post/studio.jsp">시설소개</a></li>
                   </ul></li>
             </ul>
             <ul class="nav navbar-nav">

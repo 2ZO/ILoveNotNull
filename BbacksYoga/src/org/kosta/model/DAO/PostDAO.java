@@ -60,7 +60,7 @@ public class PostDAO {
 			con=dataSource.getConnection();
 			StringBuilder sql=new StringBuilder();
 			sql.append("select postNo,title,id,to_char(regDate,'YYYY.MM.DD') from ( ");
-			sql.append("select  row_number() over(order by postNo asc) ");
+			sql.append("select  row_number() over(order by postNo desc) ");
 			sql.append("as rnum,postNo,title,id,regDate from post)");
 			sql.append("where rnum between ? and ?");
 			pstmt=con.prepareStatement(sql.toString());
