@@ -48,7 +48,7 @@ classTime NUMBER not null,
 classDay varchar2(10) not null,
 constraint fk_teacherId foreign key(teacherId) references YOGA_TEACHER(teacherId),
 constraint fk_programNo foreign key(programNo) references yoga_program(programNo),
-constraint uk_class unique(programNo, teacherId, classTime, classDay)          //추가     
+constraint uk_class unique(programNo, teacherId, classTime, classDay)          
 )
 
 delete from yoga_class where programNo=2;
@@ -135,7 +135,9 @@ id,password,name,phone_number,address,email,password_question,password_answer,re
 --관리자
 insert into yoga_member(
 id,password,name,phone_number,address,email,password_question,password_answer,regDate,member_status,class_package
-) values('visitor','1234','hwang',3434,'판교','naver.com','test','test',sysdate,'true','3');
+) values('java','1234','hwang',3434,'판교','naver.com','test','test',sysdate,'0','3');
+
+update yoga_member set member_status='0';
 
 
 --멤버 정보 수정
@@ -231,3 +233,8 @@ select classTime from YOGA_CLASS where classDay='thu' and programNo=1 and teache
 =======
 delete from yoga_teacher where teacherid=21;
 >>>>>>> branch 'master' of https://github.com/2ZO/ILoveNotNull.git
+
+
+
+
+

@@ -10,7 +10,10 @@ password_answer varchar2(100) not null,
 regDate date not null,
 member_status varchar2(10) not null,
 class_package varchar2(10) not null --3회 or 5회
-) 
+)
+
+
+
 select count(*) from yoga_program;
 select programNo, programName
 from(
@@ -49,7 +52,7 @@ imgUrl3,
 imgUrl4) 
 values(programImg_seq.nextval, '1', 'con01.png', 'con02.png', 'con03.png', 'con01.png');
 
-select * from yoga_programImg;
+select * from post;
 
 select *
 from yoga_programImg pi, yoga_program p 
@@ -63,6 +66,8 @@ delete yoga_teacher where teacherId>20
 select * from yoga_teacher
 -- teacherId 시퀀스 생성
 create sequence tchNo_seq;
+
+update yoga_member set member_status='0' where id='java'
 
 
 -- 선생님 검색 
@@ -128,6 +133,8 @@ drop sequence post_seq;
 drop sequence class_seq;
 drop sequence prgNo_seq;
 drop sequence tch_seq;
+
+
 
 select * from yoga_member;
 select * from yoga_class;
