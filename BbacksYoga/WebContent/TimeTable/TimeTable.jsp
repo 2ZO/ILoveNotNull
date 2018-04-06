@@ -9,6 +9,14 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+		  /*   $(".regLink").click(function(){
+		    	console.log("regLink click");
+		    	if(${sessionScope.memberVO.id ne null}){
+		    	console.log("memberVO==null");
+		    		alert("로그인을 하세요");
+		    		location.href="${pageContext.request.contextPath}/DispatcherServlet?command=page&url=/Member/Login.jsp";
+		    	}
+		    }); */
 	// 수강 희망 시간표 클릭 시 
 		    var regList=[];
 		    var overlapFlag=true;
@@ -31,7 +39,7 @@ $(document).ready(function(){
 		    							regList.push(td.find(".classNo").val());
 		    							console.log('after push regList: '+regList);
 		    							up-=1;
-		    							$("#back_page").val("신청 가능 횟수: "+up);
+		    							$("#back_page").val("신청 가능 횟수: "+up+"/"+${requestScope.userPackage});
 									}else{
 										alert("이미 신청한 강좌입니다!");
 										overlapFlag=true;
@@ -51,9 +59,13 @@ $(document).ready(function(){
 		    	console.log('package: '+up+', regList: '+regList);
 		    });//click <td>
 		    $("#regStart").click(function(){
-		    	var flag=confirm("수강 신청을 하시겠습니까?");
-		    	if(flag){
-		    		location.href="${pageContext.request.contextPath}/DispatcherServlet?command=Create_NewRegisterClass&classNo="+regList;
+		    	if(regList==""){
+		    		alert("최소 1개 이상의 강좌를 신청하세요.");
+		    	}else{
+		    		var flag=confirm("수강 신청을 하시겠습니까?");
+		    		if(flag){
+		    			location.href="${pageContext.request.contextPath}/DispatcherServlet?command=Create_NewRegisterClass&classNo="+regList;
+		    		}
 		    	}
 		    });
 		 });//ready
@@ -133,9 +145,6 @@ th {
 	height: 40px;
 	color: #4E7D55;
 }
-/* #table_head {
-	background-color: black;
-} */
 td {
 	background-color: white;
 	text-align: center;
@@ -188,17 +197,14 @@ td {
 		</c:when>
 		<c:otherwise>
 			<!-- 비로그인 시 로그인 필요 구문 출력 -->
-			<a
-				href="${pageContext.request.contextPath}/DispatcherServlet?command=page&url=/Member/Login.jsp">
-				<input id="back_page" type="button" value="로그인을 하세요.">
+			<a href="${pageContext.request.contextPath}/DispatcherServlet?command=page&url=/Member/Login.jsp">
+				<input id="back_page" type="button" value="로그인을 하세요">
 			</a>
 		</c:otherwise>
 	</c:choose>
 <%	
 	MemberVO mvo=(MemberVO)session.getAttribute("memberVO");
-	/* request.setAttribute("today_date3", new Date().getDay()-1); */
 	pageContext.setAttribute("today_date", new Date().getDay()-1);
-	//request.setAttribute("flag_no", 0);
 	request.setAttribute("flag", request.getAttribute("flag_no"));
 %>
 <c:if test="${sessionScope.memberVO.id eq 'sys' }">

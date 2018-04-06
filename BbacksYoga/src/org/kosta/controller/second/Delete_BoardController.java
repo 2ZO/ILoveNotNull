@@ -1,8 +1,9 @@
-package org.kosta.controller;
+package org.kosta.controller.second;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.kosta.controller.Controller;
 import org.kosta.model.DAO.PostDAO;
 
 public class Delete_BoardController implements Controller {

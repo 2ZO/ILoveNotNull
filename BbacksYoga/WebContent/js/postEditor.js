@@ -7,10 +7,7 @@
 		dhtmlframe.document.designMode = "On";	
 		
 		//a link로 input
-		$("#input_imgs").on("change", handleImgFileSelect);		
-		
-		
-		
+		$("#input_imgs").on("change", handleImgFileSelect);				
 		
 	});
 		
