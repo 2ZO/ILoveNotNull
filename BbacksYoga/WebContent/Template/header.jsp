@@ -94,7 +94,7 @@
                   <ul class="dropdown-menu">
                      <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=programList">프로그램 소개</a></li>
                      <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=Read_Timetable">강좌시간표</a></li>
-                     <li><a href="#">강좌 신청</a></li>
+                     <li><a href="${pageContext.request.contextPath}/DispatcherServlet?command=page&url=/TimeTable/RegisterClass_ok.jsp">강좌 신청</a></li>
                   </ul></li>
             </ul>
             <ul class="nav navbar-nav">
