@@ -6,7 +6,7 @@
 <style>
 .addClass{
 	padding-top: 50px;
-} 
+}  
 </style>
 <script type="text/javascript">
 $(document).ready(function(){

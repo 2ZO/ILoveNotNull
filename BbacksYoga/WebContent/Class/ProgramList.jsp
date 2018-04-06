@@ -24,6 +24,16 @@
     background-color: #7c8864;
     color: white;
 }
+/*페이징 클릭 버튼 색*/
+	.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover,
+	 .pagination>.active>span, .pagination>.active>span:focus, 
+	 .pagination>.active>span:hover{
+		background-color: #8ab03e;
+		border-color: #8ab03e;
+	}
+	.pagination>li>a, .pagination>li>span{
+		color: #777;
+	}
 </style>
 <script>
 	$(document).ready(function() {
