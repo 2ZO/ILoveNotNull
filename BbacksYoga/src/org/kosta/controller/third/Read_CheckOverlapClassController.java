@@ -20,6 +20,7 @@ public class Read_CheckOverlapClassController implements Controller {
 			return "/DispatcherServlet?command=page&url=/Member/Login.jsp";
 		
 		boolean flag=RSDAO.getInstance().Check_OverlapByClassNo(request.getParameter("classNo"),vo.getId());
+		
 		json=new JSONObject();
 		json.put("flag", flag);
 		request.setAttribute("responseBody", json);

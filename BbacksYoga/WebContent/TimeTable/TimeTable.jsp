@@ -17,10 +17,16 @@ $(document).ready(function(){
 		    		location.href="${pageContext.request.contextPath}/DispatcherServlet?command=page&url=/Member/Login.jsp";
 		    	}
 		    }); */
+		    $(".eventBtn").click(function(){
+				$("#eventSpan").toggle(0);
+		    });
 	// 수강 희망 시간표 클릭 시 
 		    var regList=[];
 		    var overlapFlag=true;
 		    var up=${requestScope.userPackage};
+		    for(var i=0; i<up; i++){
+				$("#event"+i).html('<img id="e_img" src="${pageContext.request.contextPath }/TimeTable/알.gif" alt="">');
+		    }
 		    $('td').click(function(){
 		    	var td=$(this); //현재 <td> 위치값 저장
 		    	if($(this).css("background-color")=="rgb(255, 255, 255)"||$(this).css("background-color")=="rgb(165, 255, 177)"){
@@ -54,15 +60,29 @@ $(document).ready(function(){
 			    	$(this).css("background","white");
 		    		regList.splice(regList.indexOf(""), 1);
 		    		up+=1;
-		    		$("#back_page").val("신청 가능 횟수: "+up);
+		    		if(${requestScope.userPackage}==up)
+		    			$("#back_page").val("신청 가능 횟수: "+up);
+		    		else
+		    			$("#back_page").val("신청 가능 횟수: "+up+"/"+${requestScope.userPackage});
 		    	}//else bgcolor=black
-		    	console.log('package: '+up+', regList: '+regList);
+		    	console.log('package: '+up+', package: '+${requestScope.userPackage});
+		    	$("#btn").val('패키지: '+up);
+				for(var i=0; i<up; i++){
+					$("#event"+i).html('<img id="e_img" src="${pageContext.request.contextPath }/TimeTable/알.gif" alt="">');
+				}
+				for(var j=up; j<${requestScope.userPackage}; j++){
+					if(j==0){
+						$("#event"+j).html('<img id="e_img" src="${pageContext.request.contextPath }/TimeTable/후라이2.gif" alt="">');
+					}else{
+						$("#event"+j).html('<img id="e_img" src="${pageContext.request.contextPath }/TimeTable/토토로.gif" alt="">');
+					}
+				}
 		    });//click <td>
 		    $("#regStart").click(function(){
 		    	if(regList==""){
 		    		alert("최소 1개 이상의 강좌를 신청하세요.");
 		    	}else{
-		    		var flag=confirm("수강 신청을 하시겠습니까?");
+		    		var flag=confirm("신청 강좌수: "+regList.length+"개\n수강 신청을 하시겠습니까?\n\n(*주의: 당일 강좌는 신청 후 취소가 불가능 합니다.)\n");
 		    		if(flag){
 		    			location.href="${pageContext.request.contextPath}/DispatcherServlet?command=Create_NewRegisterClass&classNo="+regList;
 		    		}
@@ -81,6 +101,9 @@ $(document).ready(function(){
 
 <!-- CSS -->
 <style type="text/css">
+#eventSpan{
+	display: none;
+}
 .title {
 	background-color: #4E7D55;
 	color: white;
@@ -178,6 +201,9 @@ td {
 	font-style: italic;
 	text-decoration: line-through;
 }
+#e_img{
+	width: 5%;
+}
 </style>
 
 <!-- body부분 -->
@@ -192,8 +218,9 @@ td {
 	<!-- 로그인 시 회원의 package수 출력 -->
 	<c:choose>
 		<c:when test="${sessionScope.memberVO.id!=null }">
-			<input id="back_page" type="button" value="신청 가능 횟수: ${requestScope.userPackage}">
+			<input id="back_page" class="eventBtn" type="button" value="신청 가능 횟수: ${requestScope.userPackage}">
 			<input id="regStart" type="button" value="강좌 수강 신청하기">
+			<span id="eventSpan"><span id="event0"></span><span id="event1"></span><span id="event2"></span><span id="event3"></span><span id="event4"></span></span>
 		</c:when>
 		<c:otherwise>
 			<!-- 비로그인 시 로그인 필요 구문 출력 -->
@@ -216,7 +243,7 @@ td {
 			<input type="button" value="블라인드 모드" onclick="btn_sys(1)"><br>
 		</c:otherwise>
 	</c:choose>
-</c:if> <%-- 용준형 마지막 end --%>
+</c:if> 
 
 	<div class="table-users">
 		<div class="title">Time Table</div>
