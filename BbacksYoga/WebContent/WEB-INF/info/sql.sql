@@ -216,7 +216,6 @@ constraint fk_yoga_member foreign key(id) references yoga_member(id)
 )
 insert into registerStatus(rsNo, classNo,id,regDate) values(rs_seq.nextval,210,'java',sysdate);
 delete from yoga_class where teacherid=22;
-<<<<<<< HEAD
 delete from yoga_teacher where teacherid=21;
 
 SELECT postNo,title,id,regDate FROM POST WHERE title LIKE '%안%'
@@ -230,6 +229,7 @@ from ( select  row_number() over(order by postNo desc)
 SELECT postNo,title,id,to_char(regDate,'YYYY.MM.DD') FROM POST WHERE title LIKE '%test%';
 
 select classTime from YOGA_CLASS where classDay='thu' and programNo=1 and teacherId=1
+<<<<<<< HEAD
 =======
 delete from yoga_teacher where teacherid=21;
 >>>>>>> branch 'master' of https://github.com/2ZO/ILoveNotNull.git
@@ -238,3 +238,5 @@ delete from yoga_teacher where teacherid=21;
 
 
 
+=======
+>>>>>>> branch 'master' of https://github.com/2ZO/ILoveNotNull.git

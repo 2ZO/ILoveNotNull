@@ -6,9 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <title>error</title>
+<style type="text/css">
+	body{
+		width:1000px;
+		margin: 0 auto;
+		padding-top: 100px;
+	}
+	img{
+		width:1000px;
+	}
+</style>
 </head>
-<body bgcolor="yellow">
-<h2>에러페이지~</h2>
+<body>
+	<img alt="error" src="${pageContext.request.contextPath}/Image/error.gif">
 </body>
 </html>
 

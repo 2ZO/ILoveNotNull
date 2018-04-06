@@ -6,6 +6,39 @@
 .addClass{
 	padding-top: 50px;
 } 
+.table{
+	width: 80%;
+	margin: 0 auto;
+}
+h3{
+	text-align: center;
+	margin-bottom: 40px;
+}
+#addClassForm{
+	width: 322px;
+	margin: 0 auto 40px;
+	text-align: center;
+}
+#teacherSelect, #programSelect{
+	float: left;
+	margin-bottom: 5px;
+}
+#daySelect{
+	float: left;
+	width: 154px;
+
+}
+#timeSelect{
+	float: left;
+	width: 167px;
+
+}
+#capacity{
+	width: 155px;
+}
+.down{
+	width: 50px;
+}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -97,8 +130,8 @@ $("#addClass").click(function(){
 });
 
 </script>
-<div class="col-sm-1 "></div>
-<div class="col-sm-10 addClass">
+<h3>&lt; 강좌 등록 &gt;</h3>
+<div class="">
 <form method="post" id="addClassForm" 
 	action="${pageContext.request.contextPath}/DispatcherServlet">
 	<input type="hidden" name="command" value="addclass">
@@ -109,12 +142,14 @@ $("#addClass").click(function(){
 		<c:forEach items="${requestScope.teacherList}" var="list">
 			<option value="${list.teacherId}">${list.teacherName}&lt;${list.teacherNick}&gt;</option>
 		</c:forEach>
-	</select> <select name="programId" id="programSelect" style="display:none">
+	</select>
+	<select name="programId" id="programSelect" style="display:none">
 		<option value="none">프로그램을 선택하세요</option>
 		<c:forEach items="${requestScope.programList}" var="list2">
 			<option value="${list2.programNo}">${list2.programName}</option>
 		</c:forEach>
 	</select>
+	<br>
 	<!-- 요일 선택 -->
 	<select name="day" id="daySelect" style="display:none">
 		<option selected="selected">요일을 선택하세요</option>
@@ -136,17 +171,13 @@ $("#addClass").click(function(){
 		<option value="6">6교시</option>
 		<option value="7">7교시</option>
 		<option value="8">8교시</option> -->
-	</select> &nbsp; 정원 입력<input type="number" name="capacity" id="capacity"> <input
-		type="button" id="addClass" value="강좌 등록">
+	</select>
+	<br><br>
+	 &nbsp; 정원 입력 &nbsp;:&nbsp; <input type="number" name="capacity" id="capacity">
+	  <input type="button" id="addClass" value="강좌 등록">
 </form>
 </div>
-<div class="col-sm-1"></div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 <div class="container addClass">
 <form>
 	<table id="table" class="table table-hover">

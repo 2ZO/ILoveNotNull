@@ -7,7 +7,11 @@
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <link rel="stylesheet"	href="${pageContext.request.contextPath}/CSS/faq.css">
-
+<style type="text/css">
+	.panel-group a{
+		color:#60694e !important;
+	}
+</style>
 <div class="container">
   <div class="col-md-12">
     <div class="tab-content panels-faq">
