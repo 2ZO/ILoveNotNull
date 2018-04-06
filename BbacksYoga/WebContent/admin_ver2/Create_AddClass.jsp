@@ -25,8 +25,8 @@ $("#addClass").click(function(){
 			}else{
 				alert(data.programName+"추가완료!\n리스트를 확인해주세요");
 					$("#table_body tr:last").after("<tr><td>"+data.programName+"</td>"+
-							"<td>"+data.teacherName+"</td>"+"<td>"+data.classTime+"</td></tr>"
-							+"<td>"+data.classDay+"</td>");
+							"<td>"+data.teacherName+"</td>"+"<td>"+data.classTime+"</td>"
+							+"<td>"+data.classDay+"</td></tr>");
 					$('#teacherSelect option:eq(0)').prop("selected", true);
 					$('#programSelect option:eq(0)').prop("selected", true);
 					$('#daySelect option:eq(0)').prop("selected", true);
@@ -55,26 +55,44 @@ $("#addClass").click(function(){
 		       //+ "&lastName=" + encodeURIComponent(lastName)
 		  formData="teacher="+$("#teacherSelect option:selected").text()+
 		  "&program="+$("#programSelect option:selected").text()+"&day="+$("#daySelect option:selected").text();
-			console(formData);
+		
+			console.log(formData);
 			$.ajax({
 			type:"post",
 			dataType:"json",
 			url:"${pageContext.request.contextPath}/DispatcherServlet?command=getTime",
 			data:formData,
 			success:function(data){
-				if(data.flag=="false"){
-			}else{
 				$("#timeSelect option").remove();
 				$("#timeSelect").append("<option>선택해주세요</option>");
-				for(var i=1;i<9;i++){	
-					if(data.avaTime!=i){
+				if(data.flag=="false"){
+					 for(var i=1;i<9;i++){	
 						$("#timeSelect").append("<option value="+i+">"+i+"교시</option>");	
+					}  
+			}else{
+				 var values =[];
+				 values=data.avaTime;
+				 console.log(values.length);
+				 var flag= 'true';
+				 for(var i=1;i<9;i++){	
+					 for(var j=0;j<values.length;j++){
+						if(values[j]==i){
+							console.log(i);
+							console.log(values[j]);
+						 	flag='false';
+						 	}
+		                }  
+					 console.log(flag);
+						if(flag=='true'){
+						 $("#timeSelect").append("<option value="+i+">"+i+"교시</option>");
+						
+							 }else{
+								 flag= 'true';
+							 }
+                		 }
 					}
-				} 
-				console.log(count++);
-			}
-			}
-		});		
+			}//succ	
+			});
 	}); 		
 });
 

@@ -46,11 +46,12 @@ public class Read_AvailableTimeController implements Controller {
 		String tNo=TeacherDAO.getInstance().getTeacherNoByName(teacher);
 		
 		ArrayList<String> timeList=ClassDAO.getInstance().getAvailableTime(tNo,pNo,day);
-
+		
 		//이거 넘기기기
 		JSONObject json= null;
-		if(timeList == null) {
-			json= new JSONObject().put("flag", "false"); //클래스가 없으면 false반환
+		if(timeList == null || timeList.size()<1) {
+			json= new JSONObject().put("flag", "false"); 
+			//클래스가 없으면 false반환
 		}else{
 			json= new JSONObject().put("avaTime", timeList);
 		}
